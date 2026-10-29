@@ -1,57 +1,52 @@
-# Structur of the Web-App project.
 
+# Stephworld Delights — Architecture
+
+## 1. System Architecture
+
+```mermaid
+flowchart TD
+    A["Stephworld Delights"]
+    A --> B["Public Website"]
+    A --> C["Admin Dashboard"]
+    A --> D["Mobile App (Future)"]
+
+    C --> E["Content Editor"]
+    C --> F["Design Studio"]
+    C --> G["Media Library"]
+
+    B --> H["Backend / API"]
+    C --> H
+    D --> H
+
+    H --> I["Database"]
+    H --> J["Authentication"]
+    H --> K["Media Storage"]
+```
+
+## 2. Project Structure
+
+```text
 Stephworld-Delights/
 │
 ├── application/
 │   ├── web/
 │   │   ├── public/
-│   │   │   ├── images/
-│   │   │   │   ├── cakes/
-│   │   │   │   └── branding/
-│   │   │   └── icons/
-│   │   │
 │   │   ├── src/
 │   │   │   ├── app/
-│   │   │   │   ├── layout.tsx
-│   │   │   │   ├── page.tsx
-│   │   │   │   ├── global.css
 │   │   │   ├── components/
 │   │   │   ├── config/
 │   │   │   ├── data/
 │   │   │   └── lib/
-│   │   │── next.config.ts
-│   │   ├── tsconfig.json
-│   │   ├── postcss.config.mjs
-│   │   ├── eslint.config.mjs
-│   │   │
 │   │   └── package.json
 │   │
 │   └── mobile/          # Future development
 │
-├── Packages/
+├── packages/
 │   └── shared/          # Future shared code
 │
 ├── docs/
 │   ├── requirements.md
 │   └── architecture.md
 │
-├── design/
-│   └── concepts/
-│
-├── .gitignore
-├── LICENSE
 └── README.md
-
-
-Web:
-
-application/web/
-├── next.config.ts
-├── tsconfig.json
-├── postcss.config.mjs
-├── eslint.config.mjs
-└── src/
-    └── app/
-        ├── layout.tsx
-        ├── page.tsx
-        └── globals.css
+```

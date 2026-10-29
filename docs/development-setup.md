@@ -1,4 +1,6 @@
-# Stephworld Delights — Development Environment
+# Stephworld Delights
+
+# Development Environment
 
 ## 1. Node.js Configuration
 
@@ -128,7 +130,30 @@ npm install -D tailwindcss @tailwindcss/postcss postcss
 ```bash
 npm list next react react-dom typescript tailwindcss
 ```
-## Important: 
+
+# Code verification
+
+## Verification
+
+* Verify TypeScript:
+```bash
+npx tsc --noEmit
+```
+    Expected: promt emty.
+
+* Check code quality: 
+```bash
+npm run lint
+```
+    Expected: no error
+
+* Test production build:
+```bash
+npm run build
+```
+    Expected: no error 
+    
+## Important for dev build and dev build (for deploiment)
 
 * Using:
 ```bash
@@ -141,20 +166,3 @@ ist for development.
 npm run start
 ```
 is intended for running a production build.
-
-## Verification
-
-* Verify TypeScript:
-```bash
-npx tsc --noEmit
-```
-
-* Check code quality: 
-```bash
-npm run lint
-```
-
-* Test production build:
-```bash
-npm run build
-```

@@ -1,1 +1,26 @@
 @import "tailwindcss";
+
+/* @theme inline {
+    --color-primary: var(--color-primary);
+    --color-secondary: var(--color-secondary);
+    --color-background: var(--color-background);
+    --color-foreground: var(--color-foreground);
+    --color-surface: var(--color-surface);
+    --color-border: var(--color-border);
+} */
+
+body {
+    Background-color: var(--swd-background);
+    Color: var(--swd-foreground);
+    font-family: var(--swd-font-base);
+    font-size: var(--swd-font-size-base);
+}
+
+/* temporary fix for tailwindcss issue with nextjs 13 app directory
+*/
+
+/* body {
+    background-color: #b91818;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+} */
