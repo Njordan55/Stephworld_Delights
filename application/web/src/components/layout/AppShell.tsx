@@ -20,7 +20,6 @@ useEffect(() => {
   function updateScreenSize() {
     const desktop = mediaQuery.matches;
     setIsDesktop(desktop);
-    setIsMenuOpen(desktop);
   }
 
   updateScreenSize();
@@ -97,10 +96,9 @@ function toggleAccount() {
       <TopNavigation
         isMenuOpen={isMenuOpen}
         isAccountOpen={isAccountOpen}
-        isDesktop={isDesktop}
         onMenuToggle={toggleMenu}
         onAccountToggle={toggleAccount}
-        onMenuClose={() => setIsMenuOpen(false)}
+        onMenuClose={() => {setIsMenuOpen(false); setIsAccountOpen(false);}}
         onAccountClose={() => setIsAccountOpen(false)}
       />
 

@@ -16,7 +16,10 @@ export default function RightSidebar({
           type="button"
           aria-label="Close account menu"
           onClick={onClose}
-          className="fixed inset-0 z-40 bg-black/40"
+          className="fixed inset-0 z-40"
+          style={{
+            backgroundColor: "var(--swd-overlay)",
+          }}
         />
       )}
 
@@ -25,10 +28,11 @@ export default function RightSidebar({
         aria-label="Account navigation"
         aria-hidden={!isOpen}
         inert={!isOpen}
-        className={`fixed bottom-0 right-0 z-40 border-l shadow-xl transition-transform ${
+        className={`fixed bottom-0 right-0 z-40 border-l transition-transform ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
         style={{
+          boxShadow: "var(--swd-sidebar-shadow)",
           top: "var(--swd-navigation-height)",
           width: "min(var(--swd-sidebar-width), 85vw)",
           backgroundColor: "var(--swd-surface)",
@@ -41,7 +45,7 @@ export default function RightSidebar({
           <Link
             href="/login"
             onClick={onClose}
-            className="rounded-lg px-4 py-3 hover:bg-black/10"
+            className="rounded-lg px-4 py-3 transition-colors hover:bg-[var(--swd-hover)]"
           >
             Sign In
           </Link>
@@ -49,7 +53,7 @@ export default function RightSidebar({
           <Link
             href="/register"
             onClick={onClose}
-            className="rounded-lg px-4 py-3 hover:bg-black/10"
+            className="rounded-lg px-4 py-3 transition-colors hover:bg-[var(--swd-hover)]"
           >
             Create Account
           </Link>

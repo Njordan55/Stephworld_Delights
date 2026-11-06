@@ -31,7 +31,8 @@ export default function LeftSidebar({
             onClose();
           }
         }}
-          className="fixed inset-0 z-40 bg-black/40 lg:hidden"
+          className="fixed inset-0 z-40 lg:hidden"
+          style={{ backgroundColor: "var(--swd-overlay)" }}
         />
       )}
 
@@ -40,11 +41,12 @@ export default function LeftSidebar({
         aria-label="Main navigation"
         aria-hidden={!isOpen}
         inert={!isOpen}
-        className={`fixed bottom-0 left-0 top-[var(--swd-navigation-height)] z-40 overflow-y-auto border-r shadow-xl transition-transform lg:top-0 lg:shadow-none ${
+        className={`fixed bottom-0 left-0 top-[var(--swd-navigation-height)] z-40 overflow-y-auto border-r transition-transform lg:top-0 lg:shadow-none ${
             isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
         style={{
-          top: "0px",
+          boxShadow: "var(--swd-sidebar-shadow)",
+          top: "var(--swd-navigation-height)",
           width: "min(var(--swd-sidebar-width), 85vw)",
           backgroundColor: "var(--swd-surface)",
           borderColor: "var(--swd-border)",
@@ -53,17 +55,7 @@ export default function LeftSidebar({
         }}
       >
         <div className="flex justify-end px-4 pt-2">
-  <button
-    type="button"
-    aria-label="Close navigation menu"
-    onClick={onClose}
-    className="absolute right-3 top-2 z-10 flex h-7 w-7 items-center justify-center rounded-md text-lg hover:opacity-60"
-    style={{
-      color: "var(--swd-foreground)",
-    }}
-  >
-    ×
-  </button>
+
 </div>
 <nav
   aria-label="Primary"
@@ -89,8 +81,8 @@ export default function LeftSidebar({
         className="flex min-h-12 items-center rounded-lg border-l-4 px-4 py-3 font-medium transition-[background-color,opacity,transform] hover:opacity-75 active:scale-[0.98]"
         style={{
           backgroundColor: isActive
-            ? "var(--swd-secondary)"
-            : "transparent",
+          ? "var(--swd-active-navigation)"
+          : "transparent",
           borderLeftColor: isActive
             ? "var(--swd-primary)"
             : "transparent",
