@@ -91,3 +91,27 @@ The important principle is that website content and appearance must be editable 
 - Verified the theme by changing the website background color.
 
 Result: The website now uses centralized theme variables instead of hardcoded background and text colors.
+
+### 2026-11-05
+
+## Phase 2: Design Token Integration
+
+**Objective:** Connect the responsive navigation system to centralized design tokens.
+
+**Implementation completed:**
+- Extended `theme-default.ts` with overlay, hover, active navigation, and sidebar shadow tokens.
+- Connected the new tokens through `ThemeProvider.tsx`.
+- Updated `LeftSidebar.tsx`, `RightSidebar.tsx`, and `TopNavigation.tsx`.
+- Centralized navigation colors, borders, shadows, border radius, and transition settings.
+- Preserved navigation functionality and responsive behavior.
+
+**Verification results:**
+- Theme color checks: 8/8 passed.
+- Smartphone (390px): 7/7 passed.
+- Tablet (768px): Pending.
+- Desktop (1440px): Pending.
+- TypeScript, ESLint, and production build: Final confirmation pending.
+
+**Status:** Design-token integration completed. Phase 2 final verification pending.
+
+**Next action:** Complete tablet and desktop responsive testing, then close Phase 2 and begin Phase 3 — Homepage Layout and Components.
