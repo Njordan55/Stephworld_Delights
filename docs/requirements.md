@@ -202,7 +202,7 @@ All navigation components work correctly and use configurable styling instead of
 
 |||**Status:** |||
 |---|---|---|---|---|
-|[x] Next  | [ ]ongoing  | [ ]complet  | [ ]verification  |  [ ]done |
+|[0] Next  | [x]ongoing  | [ ]complet  | [ ]verification  |  [ ]done |
 |---|---|---|---|---|
 
 Description: Planned
