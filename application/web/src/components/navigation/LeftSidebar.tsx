@@ -9,7 +9,7 @@ type LeftSidebarProps = {
 };
 
 const navigationLinks = [
-  { label: "Home", href: "/" },
+  { label: "Home", href: "/home" },
   { label: "Products", href: "/products" },
   { label: "About Us", href: "/abouts" },
   { label: "Contact", href: "/contact" },

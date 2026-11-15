@@ -57,7 +57,7 @@ export default function TopNavigation({
         </button>
 
         <Link
-          href="/"
+          href="/home"
           className="ml-3 flex min-w-0 flex-1 items-center gap-3"
         >
           {/* Reserved logo area */}
