@@ -160,3 +160,44 @@ Verification: ESLint, standalone TypeScript, and webpack production build passed
 ### Account and cart temporarily disabled
 
 The top navigation retains visible, disabled account and cart buttons while these features are unfinished. Native disabled buttons prevent mouse and keyboard activation; the cart has no active link and the account sidebar cannot open. Existing account sidebar, handlers, cart page, and enabled cart link are retained. Reactivate independently by setting `accountEnabled` or `cartEnabled` to `true` in `application/web/src/config/features.ts`. This controls navigation availability only; it is not route authorization.
+
+
+### 2026-11-15 — Internationalization (`feature/i18n`)
+
+Inspected routing, navigation, theme, homepage components, page placeholders, and the clean branch before editing. Added `next-intl` 4.15.1 using its locale routing and navigation APIs, with independent namespaced English/French/German message catalogs.
+
+**Implementation and migration:**
+
+- `application/web/messages/{en,fr,de}.json`: 49 consistent keys per language, including visible content, accessibility labels, reserved account/cart labels, error messages, and metadata description.
+- `src/i18n/routing.ts`, `navigation.ts`, `request.ts`, `server.ts`, and `types.d.ts`: supported locale definitions, locale-aware links/router/pathnames, validated message loading, per-page locale setup, and typed keys.
+- `src/proxy.ts`: next-intl locale routing. URLs take precedence, followed by the one-year `NEXT_LOCALE` cookie, then English. The proxy normalizes Accept-Language to English so a first-time visitor's browser language does not silently change the default. Images/framework assets, API paths, and future unprefixed `/admin` paths are excluded.
+- Moved the existing root layout and pages under `src/app/[locale]`. The layout validates locale, sets the HTML language, preserves theme variables, and supplies NextIntlClientProvider around the existing AppShell. Pages are prerendered for all three languages using explicit locale setup.
+- Removed the old permanent `/ → /home` redirect from `next.config.ts` and wrapped the config with the next-intl plugin. Old `/home`, `/products`, `/abouts`, `/contact`, and `/cart` URLs redirect to the saved/default locale. `/` and `/{locale}` resolve to the corresponding localized homepage. Temporary redirects are appropriate because the target depends on a preference cookie.
+- Added `LanguageSelector.tsx` immediately before the account button: globe, current language name, chevron, active-language check/highlight, translated language names, keyboard navigation, Escape/outside/blur dismissal, and same-page switching with query/hash preservation.
+- Updated navigation and homepage links to the shared locale-aware Link. Locale-stripped pathname matching preserves active sidebar highlights. Kept page layout classes and centralized theme tokens. On phones the logo provides compact branding; full brand text and slogan remain visible from 640px so all header controls fit.
+- Kept desktop expanded/tablet icon-only/phone closed defaults and the 500ms transitions. Account/cart remain disabled through their existing flags. Disabled account implementation is preserved but not mounted, preventing prefetches to unfinished login/register pages. No authentication, commerce, backend, or footer implementation added.
+- Future public pages belong under `[locale]` and should call `prepareLocale(params)`. Future unprefixed admin routes need their own layout/provider. Future CMS content translations remain separate work.
+- Added `scripts/check-messages.mjs` and `npm run check:i18n` for key parity, nonempty text, and valid ICU messages. Add new keys to all three catalogs; use translation hooks/server APIs rather than inline translated strings.
+
+**Validation:**
+
+- Node 24 used for final checks, matching the project's engine requirement.
+- Route types and TypeScript were checked incrementally before navigation changes. Stale generated types referring to moved routes were archived outside the repository under `/tmp` and regenerated.
+- `npx tsc --noEmit`: passed.
+- `npm run lint`: passed.
+- `npm run check:i18n`: passed, 49 valid matching keys per locale.
+- `npm run build`: attempted, including an elevated retry; Turbopack cannot bind its CSS processing worker port in this environment. `npm run build -- --webpack` passed and generated all 15 localized content routes plus the three locale entry redirects. Build scripts/configuration were not changed to hide this environment limitation.
+- Chromium production browser checks passed at desktop 1440px, tablet 768px, and phone 390px/320px, with no browser page/console errors. They cover all localized pages, old URL redirects, explicit locale entry redirects, English default even with a German browser, cookie preference, refresh, language names/highlight, same-page switching on every existing page, filters/query/hash preservation, locale-aware links, active page, responsive sidebar defaults/collapse/content resizing, disabled account/cart, keyboard selection/dismissal, and header fit.
+- API/admin exclusion paths and unsupported locale/missing-page requests return 404; public logo asset loads successfully. Browser checks use viewport emulation, not physical devices.
+- Test harness and screenshots are in `/tmp/stephworld-navigation-check/i18n.cjs` and `i18n-*.png`; browser tooling was not added as a project dependency.
+
+**Status:** Implemented; review and merge remain manual. No commit or push created.
+
+
+### 2026-11-15 — Safari language selection fix
+
+Reproduced a Safari/WebKit-specific regression: selecting French closed the dropdown while the URL, HTML language, and active language remained English. Safari can blur the focused menu button with a null `relatedTarget` before dispatching the clicked item's click event. The wrapper's blur handler unmounted the dropdown before that event could change locale.
+
+Updated `LanguageSelector.tsx` to dismiss on blur only when focus moves to a known element outside the selector. The existing outside-pointer handler still dismisses outside clicks; keyboard focus handling and Escape remain available. This preserves the clicked menu item's handler without changing routing or cookie behavior. ESLint, TypeScript, and the webpack production build passed. Cross-browser regression harness: `/tmp/stephworld-navigation-check/cross-browser-language.cjs`.
+
+Cross-browser checks passed in WebKit and Chromium at 1440px, 768px, and 390px: mouse/keyboard language changes, updated active label/check, translated content, query/hash preservation, cookie/refresh, outside dismissal, and Escape. No browser page errors.

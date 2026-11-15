@@ -1,10 +1,10 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
-    allowedDevOrigins: ["JordanMac.local","172.18.110.1"],
-    async redirects() {
-        return [{ source: "/", destination: "/home", permanent: true }];
-    },
+    allowedDevOrigins: ["JordanMac.local","172.20.10.10"],
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

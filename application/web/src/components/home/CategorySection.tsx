@@ -1,12 +1,14 @@
-import Link from "next/link";
+import {Link} from "@/i18n/navigation";
+import {useTranslations} from "next-intl";
 
 const categories = [
-  { name: "Cakes", slug: "cakes" },
-  { name: "Cupcakes", slug: "cupcakes" },
-  { name: "Custom Orders", slug: "custom-orders" },
-];
+  { name: "cakes", slug: "cakes" },
+  { name: "cupcakes", slug: "cupcakes" },
+  { name: "customOrders", slug: "custom-orders" },
+] as const;
 
 export default function CategorySection() {
+  const t = useTranslations("Categories");
   return (
     <section
       aria-labelledby="categories-title"
@@ -21,11 +23,11 @@ export default function CategorySection() {
           id="categories-title"
           className="text-2xl font-bold sm:text-3xl"
         >
-          Shop by Category
+          {t('title')}
         </h2>
 
         <p className="mt-2">
-          Explore our delicious creations.
+          {t('description')}
         </p>
 
         <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -41,7 +43,7 @@ export default function CategorySection() {
                 transitionDuration: "var(--swd-quick-transition-duration)",
               }}
             >
-              {category.name}
+              {t(category.name)}
             </Link>
           ))}
         </div>

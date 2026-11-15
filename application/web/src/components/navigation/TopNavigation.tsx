@@ -1,6 +1,8 @@
 "use client";
 
-import Link from "next/link";
+import {Link} from "@/i18n/navigation";
+import {useTranslations} from "next-intl";
+import LanguageSelector from "./LanguageSelector";
 import Image from "next/image";
 import { features } from "@/config/features";
 import LeftSidebar from "./LeftSidebar";
@@ -28,6 +30,7 @@ export default function TopNavigation({
   onMenuClose,
   onAccountClose,
 }: TopNavigationProps) {
+  const t = useTranslations("Navigation");
   return (
     <>
       <header
@@ -42,7 +45,7 @@ export default function TopNavigation({
         <button
           type="button"
           aria-label={
-            isMenuOpen ? "Close navigation menu" : "Open navigation menu"
+            isMenuOpen ? t("closeMenu") : t("openMenu")
           }
           aria-expanded={isMenuOpen}
           aria-controls="left-navigation"
@@ -63,13 +66,14 @@ export default function TopNavigation({
 
         <Link
           href="/home"
+          aria-label="Stephworld Delights"
           className="ml-3 flex min-w-0 flex-1 items-center gap-3"
         >
           {/* Reserved logo area */}
           <div className="relative h-12 w-12 shrink-0 sm:h-14 sm:w-14">
             <Image
               src="/images/logo/logo.jpeg"
-              alt="Stephworld Delights logo"
+              alt={t("logoAlt")}
               fill
               sizes="(min-width: 640px) 56px, 48px"
               className="object-contain"
@@ -77,7 +81,7 @@ export default function TopNavigation({
           </div>
 
           {/* Brand name and slogan */}
-          <div className="flex min-w-0 flex-col justify-center">
+          <div className="hidden min-w-0 flex-col justify-center sm:flex">
             <span className="truncate text-base font-semibold sm:text-xl">
               Stephworld Delights
             </span>
@@ -86,19 +90,21 @@ export default function TopNavigation({
               className="mt-1 text-xs italic sm:text-sm"
               style={{ color: "var(--swd-secondary)" }}
             >
-              Made with Love
+              {t("slogan")}
             </span>
           </div>
         </Link>
+
+        <LanguageSelector />
 
         {/* Right-side buttons for user actions (Account) */}
         <button
           type="button"
           aria-label={
-            isAccountOpen ? "Close account menu" : "Open account menu"
+            isAccountOpen ? t("closeAccount") : t("openAccount")
           }
           disabled={!features.accountEnabled}
-          title={!features.accountEnabled ? "Account coming soon" : undefined}
+          title={!features.accountEnabled ? t("accountSoon") : undefined}
           aria-expanded={isAccountOpen}
           aria-controls="right-navigation"
           onClick={isAccountOpen ? onAccountClose : onAccountToggle}
@@ -126,7 +132,7 @@ export default function TopNavigation({
         <Link
           href="/cart"
           onClick={onAccountClose}
-          aria-label="View shopping cart"
+          aria-label={t("viewCart")}
           className="flex h-10 w-10 shrink-0 items-center justify-center border transition-[background-color,opacity,transform] hover:opacity-75 active:scale-95"
           style={{
             backgroundColor: "var(--swd-background)",
@@ -142,8 +148,8 @@ export default function TopNavigation({
           <button
             type="button"
             disabled
-            aria-label="Shopping cart"
-            title="Shopping cart coming soon"
+            aria-label={t("cart")}
+            title={t("cartSoon")}
             className="flex h-10 w-10 shrink-0 cursor-not-allowed items-center justify-center border opacity-40"
             style={{
               backgroundColor: "var(--swd-background)",
@@ -163,7 +169,7 @@ export default function TopNavigation({
         onCollapseToggle={onSidebarCollapseToggle}
         onClose={onMenuClose}
       />
-      <RightSidebar isOpen={features.accountEnabled && isAccountOpen} onClose={onAccountClose} />
+      {features.accountEnabled && <RightSidebar isOpen={isAccountOpen} onClose={onAccountClose} />}
     </>
   );
 }

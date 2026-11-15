@@ -1,0 +1,73 @@
+{
+  "Navigation": {
+    "home": "Home",
+    "products": "Products",
+    "abouts": "About Us",
+    "contact": "Contact",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu",
+    "main": "Main navigation",
+    "primary": "Primary",
+    "collapse": "Collapse sidebar",
+    "expand": "Expand sidebar",
+    "openAccount": "Open account menu",
+    "closeAccount": "Close account menu",
+    "accountNavigation": "Account navigation",
+    "accountSoon": "Account coming soon",
+    "cart": "Shopping cart",
+    "viewCart": "View shopping cart",
+    "cartSoon": "Shopping cart coming soon",
+    "signIn": "Sign In",
+    "register": "Create Account",
+    "slogan": "Made with Love",
+    "logoAlt": "Stephworld Delights logo"
+  },
+  "Language": {
+    "label": "Choose language",
+    "en": "English",
+    "fr": "French",
+    "de": "German"
+  },
+  "Hero": {
+    "welcome": "Welcome to Stephworld Delights",
+    "title": "Delicious creations, made with love.",
+    "description": "Discover our cakes, cupcakes, and special creations for your memorable moments.",
+    "products": "Explore Products",
+    "contact": "Contact Us"
+  },
+  "Categories": {
+    "title": "Shop by Category",
+    "description": "Explore our delicious creations.",
+    "cakes": "Cakes",
+    "cupcakes": "Cupcakes",
+    "customOrders": "Custom Orders"
+  },
+  "Products": {
+    "title": "Stephworld Delights Products Page",
+    "description": "Welcome to our products page! Here you can explore the wide range of products offered by Stephworld Delights. We take pride in providing high-quality items that cater to your needs and preferences. Browse through our collection and discover the perfect products for you!"
+  },
+  "About": {
+    "title": "About Stephworld Delights",
+    "description": "This is the about page of our application. Here you can learn more about our mission, values, and the team behind Stephworld Delights. We are committed to providing the best experience for our users and continuously improving our services."
+  },
+  "Contact": {
+    "title": "Stephworld Delights Contact Page",
+    "description": "Contact us at Stephworld Delights! We value your feedback and inquiries. Please reach out to us through the following channels:"
+  },
+  "Cart": {
+    "title": "Shopping Cart",
+    "description": "Your cart is currently empty."
+  },
+  "Metadata": {
+    "description": "Made with Love"
+  },
+  "Errors": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist.",
+    "home": "Return home"
+  },
+  "PageIndicator": {
+    "current": "Current page: {page}",
+    "fallback": "Page"
+  }
+}
