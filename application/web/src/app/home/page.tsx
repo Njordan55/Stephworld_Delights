@@ -1,12 +1,11 @@
+import HeroSection from "@/components/home/HeroSection";
+import CategorySection from "@/components/home/CategorySection";
+
 export default function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center">
-      <h1 className="text-4xl font-bold">
-        Stephworld Delights
-      </h1>
-      <p className="mt-4">
-        Welcome to our application!
-      </p>
+    <main>
+      <HeroSection />
+      <CategorySection />
     </main>
   );
 }
