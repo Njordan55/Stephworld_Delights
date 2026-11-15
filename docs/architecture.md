@@ -138,3 +138,14 @@ application/web/src/
 └── config/
     └── theme-default.ts
 ```
+
+## Recommended testing architecture
+
+flowchart TD
+    A["GitHub Repository"] --> B["Vercel Deployment"]
+    B --> C["stephworld.ndeluma.com"]
+    D["Cloudflare DNS"] --> C
+    C --> E["Wife and Friends"]
+    E --> F["Feedback and Bug Reports"]
+    F --> G["Development Improvements"]
+    G --> A

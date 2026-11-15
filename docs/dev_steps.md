@@ -115,3 +115,48 @@ Result: The website now uses centralized theme variables instead of hardcoded ba
 **Status:** Design-token integration completed. Phase 2 final verification pending.
 
 **Next action:** Complete tablet and desktop responsive testing, then close Phase 2 and begin Phase 3 — Homepage Layout and Components.
+
+### 2026-11-15 — Global Navigation Enhancement
+
+**Branch:** `feature/global-navigation`
+
+Inspected AppShell, both sidebars, TopNavigation, ThemeProvider, and theme-default before editing. Kept the existing component structure and added independent collapse state in AppShell, passed through TopNavigation to LeftSidebar. The hamburger continues opening/closing the menu; the new 36 × 36px button immediately above Home switches between icons with labels and icons only.
+
+- Added `spacing.sidebarCollapsedWidth: "64px"` and `--swd-sidebar-collapsed-width`.
+- Added Lucide navigation icons, 14px labels, accessible names, native desktop title tooltips, keyboard focus styling, and preserved active-page highlights.
+- Desktop content margin follows the expanded/collapsed width using existing transition durations. Tablet/mobile retain overlays, scroll locking, Escape dismissal, and close-on-navigation.
+- Preserved the current closed initial menu state, branding, account menu, and cart. No changes to page content, footer, authentication, or internationalization.
+
+**Verification:**
+
+- ESLint: passed (`npm run lint`).
+- TypeScript: passed (`npx tsc --noEmit --incremental false`, after build-generated types were ready).
+- Production build: passed (`npm run build -- --webpack`). Default Turbopack build was attempted but blocked by an environment worker/port permission error, including on retry with elevated execution. No build configuration was changed.
+- Chromium browser checks against the production server: passed at desktop 1440px, tablet 768px, and mobile 390px. Checked hamburger open/close, 280px/64px sidebar widths, content margins, 36px control, 14px labels, icon-only accessible names and tooltip attributes, route highlighting after navigation, keyboard activation, Escape, overlay dismissal, scroll locking, account controls, cart destination, branding, and breakpoint resizing. No browser page errors.
+- Visually reviewed desktop collapsed and mobile expanded screenshots; captured expanded/collapsed screenshots at all three widths. These are browser viewport tests, not physical-device tests.
+- Browser tooling, test script, and screenshots were kept in `/tmp/stephworld-navigation-check`, without adding project dependencies.
+
+**Status:** Enhancement implemented and checked. No commit created.
+
+
+### 2026-11-15 — Restore sidebar slide transition
+
+Added `translate` to the left sidebar transition properties: Tailwind uses the individual CSS `translate` property for opening/closing. Retained width animation and the shared medium transition duration used by the account sidebar. ESLint and the webpack production build (including TypeScript) passed.
+
+
+### 2026-11-15 — Responsive sidebar defaults
+
+Updated the navigation modes to follow viewport width, including browser resizing:
+
+- Desktop (≥1024px): initially open with icons and labels.
+- Tablet (768–1023px): initially open with icons only.
+- Both persistent modes resize the content when expanded/collapsed or closed, keep the page interactive, and preserve the sidebar on route navigation, Escape, and account-menu opening. X closes it; hamburger reopens it.
+- Phone (<768px): initially closed; hamburger opens the full menu over a shaded page. The collapse control is hidden. Overlay, Escape, and route navigation still dismiss the phone menu.
+- Crossing a breakpoint reapplies the new mode's default. Resizing within a mode preserves the user's open/collapsed choice. The existing 500ms slide and width transitions remain in place.
+
+Verification: ESLint, standalone TypeScript, and webpack production build passed. Responsive Chromium checks passed at 1440, 1024, 1023, 768, 767, and 390px, covering initial state, collapse/expand, content margins, active links, route navigation, X/reopen, phone overlay, account/Escape behavior, breakpoint crossing, and manual-close preservation within one mode. No commit created.
+
+
+### Account and cart temporarily disabled
+
+The top navigation retains visible, disabled account and cart buttons while these features are unfinished. Native disabled buttons prevent mouse and keyboard activation; the cart has no active link and the account sidebar cannot open. Existing account sidebar, handlers, cart page, and enabled cart link are retained. Reactivate independently by setting `accountEnabled` or `cartEnabled` to `true` in `application/web/src/config/features.ts`. This controls navigation availability only; it is not route authorization.

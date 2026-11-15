@@ -45,6 +45,26 @@ The website must also provide an Admin Dashboard that allows authorized administ
 - Validated media uploads.
 - Support for future expansion.
 
+## Development Roadmap
+
+| # | Workflow | Git Branch | Status | Merged to develop | Published to main |
+|---|---|---|---|---|---|
+| 01 | Global Navigation | `feature/global-navigation` | In Progress | [] | [] |
+| 02 | Internationalization | `feature/i18n` | Planned | [] | [] |
+| 03 | Global Footer | `feature/global-footer` | Planned | [] | [] |
+| 04 | Homepage | `feature/home` | Planned | [] | [] |
+| 05 | Products | `feature/products` | Planned | [] | [] |
+| 06 | Admin Dashboard | `feature/admin` | Future | [] | [] |
+
+### status system
+To be use consistently:
+- Planned — Not started.
+- In Progress — Currently being developed.
+- Testing — Implementation completed, awaiting verification.
+- Completed — Tested and merged into develop.
+- Published — Released through main.
+- Blocked — Cannot continue until an issue is resolved.
+
 ---
 
 # 2. Development Plan
@@ -191,6 +211,22 @@ Design reference: Collapsible dashboard-style navigation with a persistent activ
 - [x] Implement responsive layouts.
 - [x] Connect styling to design tokens.
 - [x] Test desktop, tablet and mobile behavior.
+
+### Global Navigation Enhancement — `feature/global-navigation`
+
+- [x] Preserve the top navigation, branding, account button, and shopping cart.
+- [x] Keep hamburger open/close separate from sidebar collapse/expand.
+- [x] Place a 36 × 36px collapse/expand button immediately above Home.
+- [x] Show icons and 14px labels when expanded; icons with accessible names and native desktop tooltips when collapsed.
+- [x] Preserve active-page highlighting in both modes.
+- [x] Define `sidebarCollapsedWidth: "64px"` centrally and expose it through ThemeProvider.
+- [x] Resize desktop/tablet content with the sidebar; retain phone overlay, Escape dismissal, navigation dismissal, and scroll locking.
+- [x] Use existing theme colors, radius, and transition durations.
+- Desktop (≥1024px) defaults open with icons and labels; tablet (768–1023px) defaults open with icons only. Both resize content, allow collapse/expand, and remain open on navigation or Escape until closed with X.
+- Phone (<768px) defaults closed and opens expanded over a shaded page; hide the collapse control.
+- Apply these defaults on initial load and when crossing responsive breakpoints; preserve manual choices when resizing within one mode.
+- Homepage, catalog, footer, authentication, and internationalization remain outside this enhancement.
+- [x] Validate TypeScript, ESLint, and production build (webpack); test Chromium at desktop 1440px, tablet 768px, and mobile 390px. See `dev_steps.md` for checks and the Turbopack environment limitation.
 
 ### Completion Criteria
 
@@ -636,3 +672,8 @@ A phase is considered complete only after its completion criteria have been veri
 
 Current status: Basic navigation functionality is implemented. Final visual refinements are postponed until the navigation design-polishing stage.
 These features require separate requirements before implementation.
+
+
+### Account and cart temporarily disabled
+
+The top navigation retains visible, disabled account and cart buttons while these features are unfinished. Native disabled buttons prevent mouse and keyboard activation; the cart has no active link and the account sidebar cannot open. Existing account sidebar, handlers, cart page, and enabled cart link are retained. Reactivate independently by setting `accountEnabled` or `cartEnabled` to `true` in `application/web/src/config/features.ts`. This controls navigation availability only; it is not route authorization.
