@@ -2,12 +2,15 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { features } from "@/config/features";
 import LeftSidebar from "./LeftSidebar";
 import RightSidebar from "./RightSidebar";
 import { ShoppingCart, UserRound } from "lucide-react";
 
 type TopNavigationProps = {
   isMenuOpen: boolean;
+  isSidebarCollapsed: boolean;
+  onSidebarCollapseToggle: () => void;
   isAccountOpen: boolean;
   onMenuToggle: () => void;
   onAccountToggle: () => void;
@@ -17,6 +20,8 @@ type TopNavigationProps = {
 
 export default function TopNavigation({
   isMenuOpen,
+  isSidebarCollapsed,
+  onSidebarCollapseToggle,
   isAccountOpen,
   onMenuToggle,
   onAccountToggle,
@@ -92,10 +97,12 @@ export default function TopNavigation({
           aria-label={
             isAccountOpen ? "Close account menu" : "Open account menu"
           }
+          disabled={!features.accountEnabled}
+          title={!features.accountEnabled ? "Account coming soon" : undefined}
           aria-expanded={isAccountOpen}
           aria-controls="right-navigation"
           onClick={isAccountOpen ? onAccountClose : onAccountToggle}
-          className="flex h-10 w-10 shrink-0 items-center justify-center border transition-[background-color,opacity,transform] hover:opacity-75 active:scale-95"
+          className="flex h-10 w-10 shrink-0 items-center justify-center border transition-[background-color,opacity,transform] enabled:hover:opacity-75 enabled:active:scale-95 disabled:cursor-not-allowed disabled:opacity-40"
           style={{
             backgroundColor: "var(--swd-background)",
             borderColor: "var(--swd-border)",
@@ -115,6 +122,7 @@ export default function TopNavigation({
         </button>
 
         {/* Right-side buttons for user actions (Shopping Cart) */}
+        {features.cartEnabled ? (
         <Link
           href="/cart"
           onClick={onAccountClose}
@@ -130,10 +138,32 @@ export default function TopNavigation({
         >
           <ShoppingCart size={22} strokeWidth={1.8} aria-hidden="true" />
         </Link>
+        ) : (
+          <button
+            type="button"
+            disabled
+            aria-label="Shopping cart"
+            title="Shopping cart coming soon"
+            className="flex h-10 w-10 shrink-0 cursor-not-allowed items-center justify-center border opacity-40"
+            style={{
+              backgroundColor: "var(--swd-background)",
+              borderColor: "var(--swd-border)",
+              color: "var(--swd-foreground)",
+              borderRadius: "var(--swd-radius-default)",
+            }}
+          >
+            <ShoppingCart size={22} strokeWidth={1.8} aria-hidden="true" />
+          </button>
+        )}
       </header>
 
-      <LeftSidebar isOpen={isMenuOpen} onClose={onMenuClose} />
-      <RightSidebar isOpen={isAccountOpen} onClose={onAccountClose} />
+      <LeftSidebar
+        isOpen={isMenuOpen}
+        isCollapsed={isSidebarCollapsed}
+        onCollapseToggle={onSidebarCollapseToggle}
+        onClose={onMenuClose}
+      />
+      <RightSidebar isOpen={features.accountEnabled && isAccountOpen} onClose={onAccountClose} />
     </>
   );
 }

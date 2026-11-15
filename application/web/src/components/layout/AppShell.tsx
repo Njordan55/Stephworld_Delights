@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
+import { features } from "@/config/features";
 import TopNavigation from "@/components/navigation/TopNavigation";
 
 type AppShellProps = {
@@ -10,24 +11,28 @@ type AppShellProps = {
 
 export default function AppShell({ children }: AppShellProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
+  const [isPersistentNavigation, setIsPersistentNavigation] = useState(false);
 
-  // Effect to handle screen size changes and set the initial state
+  // Apply defaults only when entering a different responsive mode.
 useEffect(() => {
-  const mediaQuery = window.matchMedia("(min-width: 1024px)");
+  const tabletQuery = window.matchMedia("(min-width: 768px)");
+  const desktopQuery = window.matchMedia("(min-width: 1024px)");
 
   function updateScreenSize() {
-    const desktop = mediaQuery.matches;
-    setIsDesktop(desktop);
+    setIsPersistentNavigation(tabletQuery.matches);
+    setIsMenuOpen(tabletQuery.matches);
+    setIsSidebarCollapsed(tabletQuery.matches && !desktopQuery.matches);
   }
 
   updateScreenSize();
-
-  mediaQuery.addEventListener("change", updateScreenSize);
+  tabletQuery.addEventListener("change", updateScreenSize);
+  desktopQuery.addEventListener("change", updateScreenSize);
 
   return () => {
-    mediaQuery.removeEventListener("change", updateScreenSize);
+    tabletQuery.removeEventListener("change", updateScreenSize);
+    desktopQuery.removeEventListener("change", updateScreenSize);
   };
 }, []);
 
@@ -40,9 +45,8 @@ useEffect(() => {
 
     setIsAccountOpen(false);
 
-    // Only close the left sidebar with Escape on
-    // tablet and smartphone.
-    if (!window.matchMedia("(min-width: 1024px)").matches) {
+    // Persistent tablet/desktop navigation closes only with its menu button.
+    if (!window.matchMedia("(min-width: 768px)").matches) {
       setIsMenuOpen(false);
     }
   }
@@ -56,7 +60,7 @@ useEffect(() => {
 
 // Effect to prevent body scrolling when sidebars are open
 useEffect(() => {
-  if (isDesktop || (!isMenuOpen && !isAccountOpen)) {
+  if (isPersistentNavigation || (!isMenuOpen && !isAccountOpen)) {
     return;
   }
 
@@ -66,21 +70,21 @@ useEffect(() => {
   return () => {
     document.body.style.overflow = previousOverflow;
   };
-}, [isDesktop, isMenuOpen, isAccountOpen]);
+}, [isPersistentNavigation, isMenuOpen, isAccountOpen]);
 
 // Functions to toggle the menu and account sidebars
 function toggleMenu() {
-  // The hamburger only opens the sidebar.
-  setIsMenuOpen(true);
+  setIsMenuOpen((previous) => !previous);
   setIsAccountOpen(false);
 }
 
   // Function to toggle the account sidebar
 function toggleAccount() {
+  if (!features.accountEnabled) return;
   setIsAccountOpen((previous) => !previous);
 
-  // Preserve the persistent sidebar on desktop.
-  if (!isDesktop) {
+  // Preserve the persistent sidebar on tablet and desktop.
+  if (!isPersistentNavigation) {
     setIsMenuOpen(false);
   }
 }
@@ -95,6 +99,8 @@ function toggleAccount() {
     >
       <TopNavigation
         isMenuOpen={isMenuOpen}
+        isSidebarCollapsed={isSidebarCollapsed}
+        onSidebarCollapseToggle={() => setIsSidebarCollapsed((previous) => !previous)}
         isAccountOpen={isAccountOpen}
         onMenuToggle={toggleMenu}
         onAccountToggle={toggleAccount}
@@ -107,8 +113,10 @@ function toggleAccount() {
         className="min-w-0 transition-[margin-left]"
         style={{
           marginLeft:
-            isDesktop && isMenuOpen
-              ? "var(--swd-sidebar-width)"
+            isPersistentNavigation && isMenuOpen
+              ? (isSidebarCollapsed
+                  ? "var(--swd-sidebar-collapsed-width)"
+                  : "var(--swd-sidebar-width)")
               : "0px",
           transitionDuration:
             "var(--swd-medium-transition-duration)",

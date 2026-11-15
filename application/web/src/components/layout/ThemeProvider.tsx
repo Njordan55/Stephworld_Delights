@@ -15,6 +15,7 @@ export function getThemeVariables(): ThemeVariables {
     "--swd-font-size-base": defaultTheme.typography.baseFontSize,
     "--swd-navigation-height": defaultTheme.spacing.navigationHeight,
     "--swd-sidebar-width": defaultTheme.spacing.sidebarWidth,
+    "--swd-sidebar-collapsed-width": defaultTheme.spacing.sidebarCollapsedWidth,
     "--swd-radius-default": defaultTheme.effects.borderRadius,
     "--swd-blur": defaultTheme.effects.blur,
     "--swd-overlay": defaultTheme.colors.overlay,

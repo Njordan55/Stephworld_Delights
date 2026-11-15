@@ -19,6 +19,7 @@ export const defaultTheme = {
   spacing: {
     navigationHeight: "96px",
     sidebarWidth: "280px",
+    sidebarCollapsedWidth: "64px",
   },
 
   effects: {
