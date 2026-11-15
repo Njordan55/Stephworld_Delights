@@ -49,8 +49,8 @@ The website must also provide an Admin Dashboard that allows authorized administ
 
 | # | Workflow | Git Branch | Status | Merged to develop | Published to main |
 |---|---|---|---|---|---|
-| 01 | Global Navigation | `feature/global-navigation` | In Progress | [] | [] |
-| 02 | Internationalization | `feature/i18n` | Planned | [] | [] |
+| 01 | Global Navigation | `feature/global-navigation` | Completed | [x] | [] |
+| 02 | Internationalization | `feature/i18n` | Progress | [] | [] |
 | 03 | Global Footer | `feature/global-footer` | Planned | [] | [] |
 | 04 | Homepage | `feature/home` | Planned | [] | [] |
 | 05 | Products | `feature/products` | Planned | [] | [] |
@@ -59,7 +59,7 @@ The website must also provide an Admin Dashboard that allows authorized administ
 ### status system
 To be use consistently:
 - Planned — Not started.
-- In Progress — Currently being developed.
+- Progress — Currently being developed.
 - Testing — Implementation completed, awaiting verification.
 - Completed — Tested and merged into develop.
 - Published — Released through main.
