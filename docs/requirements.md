@@ -52,7 +52,7 @@ The website must also provide an Admin Dashboard that allows authorized administ
 | 01 | Global Navigation | `feature/global-navigation` | Completed | [x] | [] |
 | 02 | Internationalization | `feature/i18n` | Progress | [] | [] |
 | 03 | Global Footer | `feature/global-footer` | Planned | [] | [] |
-| 04 | Homepage | `feature/home` | Planned | [] | [] |
+| 04 | Homepage | `feature/home` | Pending | [] | [] |
 | 05 | Products | `feature/products` | Planned | [] | [] |
 | 06 | Admin Dashboard | `feature/admin` | Future | [] | [] |
 
@@ -60,6 +60,7 @@ The website must also provide an Admin Dashboard that allows authorized administ
 To be use consistently:
 - Planned — Not started.
 - Progress — Currently being developed.
+- Pending - work's state on hold
 - Testing — Implementation completed, awaiting verification.
 - Completed — Tested and merged into develop.
 - Published — Released through main.
