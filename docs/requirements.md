@@ -234,7 +234,13 @@ Design reference: Collapsible dashboard-style navigation with a persistent activ
 All navigation components work correctly and use configurable styling instead of hardcoded brand colors.
 
 ---
+## Utility tool before continuing with phase 3
 
+### Internationalization (i18n)
+
+### Global Footer
+
+---
 ## Phase 3 — Homepage Layout and Components
 
 |||**Status:** |||
