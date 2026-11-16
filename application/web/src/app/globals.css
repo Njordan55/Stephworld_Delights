@@ -24,3 +24,23 @@ body {
     color: #ffffff;
     font-family: Arial, sans-serif;
 } */
+
+/* Respect motion preferences while preserving the sidebar's structural offsets. */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    a:hover, button:hover, .group:hover svg {
+        transform: none !important;
+        translate: none !important;
+    }
+
+    a:active, button:active {
+        transform: none !important;
+        scale: none !important;
+    }
+}

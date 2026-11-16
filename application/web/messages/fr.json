@@ -33,14 +33,24 @@
     "title": "De délicieuses créations, faites avec amour.",
     "description": "Découvrez nos gâteaux, cupcakes et créations spéciales pour vos moments inoubliables.",
     "products": "Découvrir les produits",
-    "contact": "Nous contacter"
+    "contact": "Parlons de votre commande",
+    "photoAlt": "Exemple de gâteau d’anniversaire rose avec des macarons, des décorations blanches et des touches dorées.",
+    "photoCaption": "Image de gâteau d’exemple — à remplacer par une photographie de l’entreprise.",
+    "imagePlaceholder": "Espace réservé à une photographie de gâteau de Stephworld Delights."
   },
   "Categories": {
     "title": "Découvrir par catégorie",
     "description": "Explorez nos délicieuses créations.",
     "cakes": "Gâteaux",
     "cupcakes": "Cupcakes",
-    "customOrders": "Commandes personnalisées"
+    "customOrders": "Commandes personnalisées",
+    "cakesDescription": "Découvrez des gâteaux pour vos moments inoubliables.",
+    "cupcakesDescription": "Découvrez nos créations de cupcakes.",
+    "customOrdersDescription": "Explorez des idées pour une création à votre image.",
+    "cakesAlt": "Un gâteau d’anniversaire de Stephworld Delights avec des roses rouges, une décoration à la crème et une inscription dorée.",
+    "customOrdersAlt": "Un gâteau rose personnalisé avec des papillons et des prénoms, issu du dépliant de Stephworld Delights.",
+    "photoPending": "Photographie de la catégorie bientôt disponible.",
+    "cupcakesAlt": "Des cupcakes au glaçage turquoise et crème sur un présentoir doré à étages."
   },
   "Products": {
     "title": "Les produits de Stephworld Delights",
@@ -95,5 +105,70 @@
     "unavailable": "Bientôt disponible",
     "socialPending": "Nos liens vers les réseaux sociaux seront partagés ici dès qu’ils seront disponibles.",
     "copyright": "© {year} {businessName}. Tous droits réservés."
+  },
+  "FeaturedProducts": {
+    "title": "Créations à découvrir",
+    "description": "Une sélection de créations en images. Explorez la collection et trouvez l’inspiration pour votre prochaine occasion.",
+    "exploreAll": "Découvrir tous les produits",
+    "viewDetails": "Voir les détails",
+    "photoPending": "Photographie du produit bientôt disponible.",
+    "exampleImage": "Image d’exemple",
+    "roseCakeName": "Gâteau d’anniversaire aux roses rouges",
+    "roseCakeDescription": "Des décorations en volutes, des roses rouges et une inscription d’anniversaire dorée.",
+    "roseCakeAlt": "Un gâteau d’anniversaire avec des roses rouges, des volutes blanches et une inscription Happy Birthday dorée.",
+    "cupcakesName": "Assortiment de cupcakes",
+    "cupcakesDescription": "Des décorations turquoise et crème sur un présentoir doré à étages.",
+    "cupcakesAlt": "Un présentoir doré à étages avec des cupcakes aux décorations turquoise et crème.",
+    "pinkCakeName": "Gâteau rose personnalisé",
+    "pinkCakeDescription": "Deux étages roses avec des papillons et des prénoms décoratifs.",
+    "pinkCakeAlt": "Un gâteau rose à deux étages avec des papillons et les prénoms Kira et Dahlia."
+  },
+  "AboutPreview": {
+    "eyebrow": "À propos de Stephworld Delights",
+    "title": "Des créations pour vos moments inoubliables.",
+    "introduction": "Stephworld Delights réunit gâteaux, cupcakes et créations personnalisées pour vos célébrations.",
+    "invitation": "Découvrez nos créations en images et contactez-nous pour discuter de vos idées. Retrouvez plus d’informations sur Stephworld Delights sur notre page À propos.",
+    "aboutUs": "À propos",
+    "photoAlt": "Un gâteau blanc avec des décorations en forme de perles et des initiales dorées, présenté dans le dépliant de Stephworld Delights.",
+    "photoCaption": "Une création présentée dans le dépliant de Stephworld Delights.",
+    "photoPending": "Une photographie de l’entreprise Stephworld Delights sera ajoutée ici."
+  },
+  "CustomOrders": {
+    "title": "Un gâteau personnalisé commence par votre idée.",
+    "description": "De l’inspiration à la discussion, voici comment demander une création personnalisée.",
+    "chooseTitle": "Choisir",
+    "chooseDescription": "Explorez les styles de gâteaux et nos créations en images pour trouver l’inspiration.",
+    "requestTitle": "Faire une demande",
+    "requestDescription": "Lors de votre prise de contact, précisez l’occasion, le décor souhaité, la taille et la date.",
+    "confirmTitle": "Confirmer",
+    "confirmDescription": "Discutez des détails, des disponibilités et du prix avec l’entreprise avant de convenir de votre commande.",
+    "requestCake": "Demander un gâteau personnalisé",
+    "confirmationNote": "Une demande de renseignements ne constitue pas une confirmation de commande."
+  },
+  "Gallery": {
+    "title": "Nos créations en images",
+    "description": "Parcourez les créations en images et sélectionnez une photographie pour la voir de plus près.",
+    "viewAll": "Voir toutes les créations",
+    "openImage": "Agrandir l’image : {title}",
+    "close": "Fermer l’aperçu de l’image",
+    "previous": "Image précédente",
+    "next": "Image suivante",
+    "previewTitle": "Aperçu de l’image",
+    "keyboardHelp": "Utilisez les flèches gauche et droite pour parcourir les images, Début ou Fin pour aller à une extrémité, et Échap pour fermer.",
+    "position": "Image {current} sur {total}",
+    "photoPending": "Photographie bientôt disponible.",
+    "exampleImage": "Image d’exemple",
+    "roseTitle": "Gâteau d’anniversaire aux roses rouges",
+    "roseAlt": "Un gâteau d’anniversaire avec des roses rouges, des décorations blanches et une inscription dorée.",
+    "roseDescription": "Des roses rouges, des volutes blanches et une inscription d’anniversaire dorée.",
+    "cupcakesTitle": "Assortiment de cupcakes",
+    "cupcakesAlt": "Des cupcakes aux décorations turquoise et crème sur un présentoir doré à étages.",
+    "cupcakesDescription": "Des décorations turquoise et crème sur un présentoir doré à étages.",
+    "pinkTitle": "Gâteau rose personnalisé",
+    "pinkAlt": "Un gâteau rose à deux étages avec des papillons et des prénoms décoratifs.",
+    "pinkDescription": "Des papillons et des prénoms décoratifs sur deux étages roses.",
+    "pearlTitle": "Gâteau blanc décoré",
+    "pearlAlt": "Un gâteau blanc avec des décorations en forme de perles et des initiales dorées.",
+    "pearlDescription": "Des décorations en forme de perles et des initiales dorées sur un gâteau blanc."
   }
 }

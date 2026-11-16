@@ -10,6 +10,7 @@ type AppShellProps = {
 };
 
 export default function AppShell({ children }: AppShellProps) {
+  const [isViewportReady, setIsViewportReady] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
@@ -24,6 +25,7 @@ useEffect(() => {
     setIsPersistentNavigation(tabletQuery.matches);
     setIsMenuOpen(tabletQuery.matches);
     setIsSidebarCollapsed(tabletQuery.matches && !desktopQuery.matches);
+    setIsViewportReady(true);
   }
 
   updateScreenSize();
@@ -48,6 +50,7 @@ useEffect(() => {
     // Persistent tablet/desktop navigation closes only with its menu button.
     if (!window.matchMedia("(min-width: 768px)").matches) {
       setIsMenuOpen(false);
+      document.querySelector<HTMLButtonElement>('header button[aria-controls="left-navigation"]')?.focus();
     }
   }
 
@@ -98,6 +101,7 @@ function toggleAccount() {
       }}
     >
       <TopNavigation
+        isViewportReady={isViewportReady}
         isMenuOpen={isMenuOpen}
         isSidebarCollapsed={isSidebarCollapsed}
         onSidebarCollapseToggle={() => setIsSidebarCollapsed((previous) => !previous)}
@@ -110,9 +114,10 @@ function toggleAccount() {
 
       <div
         id="app-content"
-        className="min-w-0 transition-[margin-left]"
+        inert={!isPersistentNavigation && isMenuOpen}
+        className="min-w-0 transition-[margin-left] md:ml-[var(--swd-sidebar-collapsed-width)] lg:ml-[var(--swd-sidebar-width)]"
         style={{
-          marginLeft:
+          marginLeft: !isViewportReady ? undefined :
             isPersistentNavigation && isMenuOpen
               ? (isSidebarCollapsed
                   ? "var(--swd-sidebar-collapsed-width)"

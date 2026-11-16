@@ -5,6 +5,7 @@ import {useTranslations} from "next-intl";
 import { House, Package, Info, Mail, PanelLeftClose, PanelLeftOpen } from "lucide-react";
 
 type LeftSidebarProps = {
+  isViewportReady: boolean;
   isOpen: boolean;
   isCollapsed: boolean;
   onCollapseToggle: () => void;
@@ -19,6 +20,7 @@ const navigationLinks = [
 ] as const;
 
 export default function LeftSidebar({
+  isViewportReady,
   isOpen,
   isCollapsed,
   onCollapseToggle,
@@ -46,13 +48,13 @@ export default function LeftSidebar({
         aria-label={t("main")}
         aria-hidden={!isOpen}
         inert={!isOpen}
-        className={`fixed bottom-0 left-0 z-40 overflow-y-auto border-r transition-[width,transform,translate] md:shadow-none ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
+        className={`fixed bottom-0 left-0 z-40 w-[min(var(--swd-sidebar-width),85vw)] overflow-y-auto border-r md:w-[var(--swd-sidebar-collapsed-width)] lg:w-[var(--swd-sidebar-width)] transition-[width,transform,translate] md:shadow-none ${
+          isOpen ? "translate-x-0" : isViewportReady ? "-translate-x-full" : "-translate-x-full md:translate-x-0"
         }`}
         style={{
           boxShadow: "var(--swd-sidebar-shadow)",
           top: "var(--swd-navigation-height)",
-          width: isCollapsed
+          width: !isViewportReady ? undefined : isCollapsed
             ? "min(var(--swd-sidebar-collapsed-width), 85vw)"
             : "min(var(--swd-sidebar-width), 85vw)",
           backgroundColor: "var(--swd-surface)",
@@ -61,7 +63,7 @@ export default function LeftSidebar({
           transitionDuration: "var(--swd-medium-transition-duration)",
         }}
       >
-        <div className={`hidden pt-2 md:flex ${isCollapsed ? "justify-center" : "justify-end px-4"}`}>
+        <div className={`hidden pt-2 md:flex ${!isViewportReady ? "justify-center lg:justify-end lg:px-4" : isCollapsed ? "justify-center" : "justify-end px-4"}`}>
           <button
             type="button"
             aria-label={collapseLabel}
@@ -82,7 +84,7 @@ export default function LeftSidebar({
         <nav
           id="primary-navigation"
           aria-label={t("primary")}
-          className={`flex flex-col gap-1 pb-4 pt-2 ${isCollapsed ? "px-1" : "px-4"}`}
+          className={`flex flex-col gap-1 pb-4 pt-2 ${!isViewportReady ? "px-1 lg:px-4" : isCollapsed ? "px-1" : "px-4"}`}
         >
           {navigationLinks.map(({ label, href, icon: Icon }) => {
             const isActive = pathname === href || pathname.startsWith(`${href}/`);
@@ -100,7 +102,7 @@ export default function LeftSidebar({
                 title={isCollapsed ? t(label) : undefined}
                 aria-current={isActive ? "page" : undefined}
                 className={`flex min-h-12 items-center gap-3 border-l-4 py-3 text-sm font-medium transition-[background-color,opacity,transform] hover:opacity-75 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--swd-primary)] ${
-                  isCollapsed ? "justify-center pr-1" : "px-4"
+                  !isViewportReady ? "justify-center pr-1 lg:justify-start lg:px-4" : isCollapsed ? "justify-center pr-1" : "px-4"
                 }`}
                 style={{
                   borderRadius: "var(--swd-radius-default)",
@@ -111,7 +113,7 @@ export default function LeftSidebar({
                 }}
               >
                 <Icon size={20} className="shrink-0" aria-hidden="true" />
-                {!isCollapsed && <span className="whitespace-nowrap">{t(label)}</span>}
+                {!isCollapsed && <span className={`whitespace-nowrap ${!isViewportReady ? "hidden lg:inline" : ""}`}>{t(label)}</span>}
               </Link>
             );
           })}

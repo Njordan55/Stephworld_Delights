@@ -10,6 +10,7 @@ import RightSidebar from "./RightSidebar";
 import { ShoppingCart, UserRound } from "lucide-react";
 
 type TopNavigationProps = {
+  isViewportReady: boolean;
   isMenuOpen: boolean;
   isSidebarCollapsed: boolean;
   onSidebarCollapseToggle: () => void;
@@ -21,6 +22,7 @@ type TopNavigationProps = {
 };
 
 export default function TopNavigation({
+  isViewportReady,
   isMenuOpen,
   isSidebarCollapsed,
   onSidebarCollapseToggle,
@@ -88,7 +90,7 @@ export default function TopNavigation({
 
             <span
               className="mt-1 text-xs italic sm:text-sm"
-              style={{ color: "var(--swd-secondary)" }}
+              style={{ color: "var(--swd-primary)" }}
             >
               {t("slogan")}
             </span>
@@ -105,8 +107,8 @@ export default function TopNavigation({
           }
           disabled={!features.accountEnabled}
           title={!features.accountEnabled ? t("accountSoon") : undefined}
-          aria-expanded={isAccountOpen}
-          aria-controls="right-navigation"
+          aria-expanded={features.accountEnabled ? isAccountOpen : undefined}
+          aria-controls={features.accountEnabled ? "right-navigation" : undefined}
           onClick={isAccountOpen ? onAccountClose : onAccountToggle}
           className="flex h-10 w-10 shrink-0 items-center justify-center border transition-[background-color,opacity,transform] enabled:hover:opacity-75 enabled:active:scale-95 disabled:cursor-not-allowed disabled:opacity-40"
           style={{
@@ -164,6 +166,7 @@ export default function TopNavigation({
       </header>
 
       <LeftSidebar
+        isViewportReady={isViewportReady}
         isOpen={isMenuOpen}
         isCollapsed={isSidebarCollapsed}
         onCollapseToggle={onSidebarCollapseToggle}

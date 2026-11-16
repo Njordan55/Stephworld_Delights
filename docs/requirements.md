@@ -51,9 +51,9 @@ The website must also provide an Admin Dashboard that allows authorized administ
 | # | Workflow | Git Branch | Status | Merged to develop | Published to main |
 |---|---|---|---|---|---|
 | 01 | Global Navigation | `feature/global-navigation` | Completed | [x] | [] |
-| 02 | Internationalization | `feature/i18n` | Testing | [] | [] |
-| 03 | Global Footer | `feature/global-footer` | Testing | [] | [] |
-| 04 | Homepage | `feature/home` | Pending | [] | [] |
+| 02 | Internationalization | `feature/i18n` | Completed | [x] | [] |
+| 03 | Global Footer | `feature/global-footer` | Completed | [x] | [] |
+| 04 | Homepage | `feature/home` | Progress | [] | [] |
 | 05 | Products | `feature/products` | Planned | [] | [] |
 | 06 | Admin Dashboard | `feature/admin` | Future | [] | [] |
 
@@ -235,7 +235,7 @@ Design reference: Collapsible dashboard-style navigation with a persistent activ
 All navigation components work correctly and use configurable styling instead of hardcoded brand colors.
 
 ---
-## Utility tool before continuing with phase 3
+## Phase 3 — Shared Utilities
 
 ### Internationalization (i18n)
 
@@ -273,20 +273,20 @@ Validation details, environment limitations, and migration notes are recorded in
 To activate a future destination, create its public page and set the corresponding non-prefixed `href` in `footerContent.groups`. Set `visible: true` for FAQ/Terms when ready. Supply approved social profile/contact URLs in `footerSocialLinks`. Localized description and labels are edited in `messages/{en,fr,de}.json`; do not add business details without approval.
 
 ---
-## Phase 3 — Homepage Layout and Components
+## Phase 4 — Pages Layout and Components
+### 4.1 Homepage
 
-|||**Status:** |||
+| Next | Ongoing | Complete | Verification | Done |
 |---|---|---|---|---|
-|[0] Next  | [x]ongoing  | [ ]complet  | [ ]verification  |  [ ]done |
-|---|---|---|---|---|
+| [ ] | [ ] | [ ] | [x] | [ ] |---|
 
-Description: Planned
+Description: Implemented; verification pending. Standard production build and WebKit refresh-error assessment remain merge gates. See Step 4.7 in `dev_steps.md`.
 
-### Objective
+#### Objective
 
 Develop the public homepage.
 
-### Features
+#### Features
 
 - Hero section.
 - Featured products.
@@ -297,24 +297,146 @@ Develop the public homepage.
 - Social media links.
 - Footer.
 
-### Tasks
+#### Tasks
 
-- [ ] Create reusable homepage sections.
-- [ ] Implement responsive layouts.
-- [ ] Integrate initial images and logo.
-- [ ] Add placeholder or initial business content.
-- [ ] Prepare content for future admin editing.
-- [ ] Optimize images.
+- [x] Create reusable homepage sections.
+- [x] Implement responsive layouts.
+- [x] Integrate initial images and logo.
+- [x] Add placeholder or initial business content.
+- [x] Prepare content for future admin editing.
+- [x] Optimize images.
 - [ ] Add SEO metadata.
-- [ ] Test desktop and mobile layouts.
+- [x] Test desktop and mobile layouts.
 
-### Completion Criteria
+#### Completion Criteria
 
 The homepage is responsive, functional and prepared for administrator-managed content.
 
 ---
 
-## Phase 4 — Centralized Theme and Content System
+### 4.2 Products Page
+
+| Next | Ongoing | Complete | Verification | Done |
+|---|---|---|---|---|
+| [ ] | [ ] | [ ] | [ ] | [ ] |
+
+Description: Planned — reserved for future implementation. Confirm detailed scope before development.
+
+#### Objective
+
+Develop the public product catalog for the Digital Flyer & Portfolio stage.
+
+#### Features
+
+- Cakes, Cupcakes, and Custom Orders categories.
+- Approved photographs, product names, descriptions, and alternative text.
+- Working category destinations and optional published product-detail pages.
+- No purchasing, checkout, payments, or invented availability.
+
+#### Tasks
+
+- [ ] Inspect the existing page, routes, configuration, and translations.
+- [ ] Confirm approved content and layout before implementation.
+- [ ] Keep page data separate from presentation for future Admin integration.
+- [ ] Reuse global navigation, footer, and centralized theme tokens.
+- [ ] Support English, French, and German with localized links.
+- [ ] Verify accessibility and layouts at 390px, 768px, 1024px, and 1440px.
+- [ ] Run TypeScript, ESLint, translation validation, and production build checks.
+- [ ] Record implementation and validation in requirements and development notes.
+
+#### Completion Criteria
+
+The catalog is responsive, accessible, translated, and configurable. All category links and any published detail links work.
+
+---
+
+### 4.3 About Us Page
+
+| Next | Ongoing | Complete | Verification | Done |
+|---|---|---|---|---|
+| [ ] | [ ] | [ ] | [ ] | [ ] |
+
+Description: Planned — reserved for future implementation. Confirm detailed scope before development.
+
+#### Objective
+
+Introduce Stephworld Delights using approved business information.
+
+#### Features
+
+- Business introduction and offering.
+- Authentic photographs when available.
+- Business story only after approved details are provided.
+- Links to Products and Contact.
+
+#### Tasks
+
+- [ ] Inspect the existing page, routes, configuration, and translations.
+- [ ] Confirm approved content and layout before implementation.
+- [ ] Keep page data separate from presentation for future Admin integration.
+- [ ] Reuse global navigation, footer, and centralized theme tokens.
+- [ ] Support English, French, and German with localized links.
+- [ ] Verify accessibility and layouts at 390px, 768px, 1024px, and 1440px.
+- [ ] Run TypeScript, ESLint, translation validation, and production build checks.
+- [ ] Record implementation and validation in requirements and development notes.
+
+#### Completion Criteria
+
+The page presents approved business information across all three languages and screen sizes, without inventing biographies, history, qualifications, or achievements.
+
+---
+
+### 4.4 Contact Page
+
+| Next | Ongoing | Complete | Verification | Done |
+|---|---|---|---|---|
+| [ ] | [ ] | [ ] | [ ] | [ ] |
+
+Description: Planned — reserved for future implementation. Confirm detailed scope before development.
+
+#### Objective
+
+Provide approved contact channels and guidance for custom-order inquiries.
+
+#### Features
+
+- Contact channels only when configured with approved information.
+- Guidance for sharing occasion, design, size, and preferred date.
+- Business hours and location only when approved.
+- A contact form reserved for a separately approved scope.
+
+#### Tasks
+
+- [ ] Inspect the existing page, routes, configuration, and translations.
+- [ ] Confirm approved content and layout before implementation.
+- [ ] Keep page data separate from presentation for future Admin integration.
+- [ ] Reuse global navigation, footer, and centralized theme tokens.
+- [ ] Support English, French, and German with localized links.
+- [ ] Verify accessibility and layouts at 390px, 768px, 1024px, and 1440px.
+- [ ] Run TypeScript, ESLint, translation validation, and production build checks.
+- [ ] Record implementation and validation in requirements and development notes.
+
+#### Completion Criteria
+
+Contact links work, inquiry guidance is clear and translated, and no invented contact details or automatic order acceptance is implied.
+
+---
+
+### 4.5 Additional Public Pages — Reserved
+
+Description: Planned. Use the same Status, Objective, Features, Tasks, and Completion Criteria template when each page is approved.
+
+- Imprint — requires approved business/legal details.
+- Privacy Policy — requires approved content reflecting the actual services used.
+- FAQ — requires approved questions and answers.
+- Dedicated Creations/Gallery page — optional future destination.
+- Terms & Conditions — future scope with approved content.
+
+Do not publish placeholder legal text or enable links to pages that do not exist. Authentication, cart, checkout, and Admin pages remain separately scoped.
+
+---
+
+## Phase 5 — Centralized Theme and Content System
 
 |||**Status:** |||
 |---|---|---|---|---|
@@ -373,7 +495,7 @@ Website content and visual settings can be changed without modifying reusable co
 
 ---
 
-## Phase 5 — Admin Authentication and Dashboard
+## Phase 6 — Admin Authentication and Dashboard
 
 |||**Status:** |||
 |---|---|---|---|---|
@@ -419,7 +541,7 @@ Only authorized administrators can access and modify administrative resources.
 
 ---
 
-## Phase 6 — Media Library and Content Editor
+## Phase 7 — Media Library and Content Editor
 
 |||**Status:** |||
 |---|---|---|---|---|
@@ -482,7 +604,7 @@ Administrators can change and publish website text and images without modifying 
 
 ---
 
-## Phase 7 — Admin Design Studio
+## Phase 8 — Admin Design Studio
 
 |||**Status:** |||
 |---|---|---|---|---|
@@ -539,7 +661,7 @@ Administrators can configure and publish the website's appearance without editin
 
 ---
 
-## Phase 8 — Product Management
+## Phase 9 — Product Management
 
 |||**Status:** |||
 |---|---|---|---|---|
@@ -598,7 +720,7 @@ Administrators can manage products and visitors can browse the published catalog
 
 ---
 
-## Phase 9 — Testing, Security and Deployment
+## Phase 10 — Testing, Security and Deployment
 
 |||**Status:** |||
 |---|---|---|---|---|
@@ -675,13 +797,14 @@ A phase is considered complete only after its completion criteria have been veri
 |---|---|---|
 | 1 | Project Setup and Documentation | Completed — verification pending |
 | 2 | Responsive Navigation System | Next |
-| 3 | Homepage Layout and Components | Planned |
-| 4 | Centralized Theme and Content System | Planned |
-| 5 | Admin Authentication and Dashboard | Planned |
-| 6 | Media Library and Content Editor | Planned |
-| 7 | Admin Design Studio | Planned |
-| 8 | Product Management | Planned |
-| 9 | Testing, Security and Deployment | Planned |
+| 3 | Shared Utilities | Internationalization and footer: Testing |
+| 4 | Pages Layout and Components | Homepage: Testing; other pages: Planned |
+| 5 | Centralized Theme and Content System | Planned |
+| 6 | Admin Authentication and Dashboard | Planned |
+| 7 | Media Library and Content Editor | Planned |
+| 8 | Admin Design Studio | Planned |
+| 9 | Product Management | Planned |
+| 10 | Testing, Security and Deployment | Planned |
 
 ---
 
