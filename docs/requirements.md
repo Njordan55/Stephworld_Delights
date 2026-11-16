@@ -52,7 +52,7 @@ The website must also provide an Admin Dashboard that allows authorized administ
 |---|---|---|---|---|---|
 | 01 | Global Navigation | `feature/global-navigation` | Completed | [x] | [] |
 | 02 | Internationalization | `feature/i18n` | Testing | [] | [] |
-| 03 | Global Footer | `feature/global-footer` | Planned | [] | [] |
+| 03 | Global Footer | `feature/global-footer` | Testing | [] | [] |
 | 04 | Homepage | `feature/home` | Pending | [] | [] |
 | 05 | Products | `feature/products` | Planned | [] | [] |
 | 06 | Admin Dashboard | `feature/admin` | Future | [] | [] |
@@ -256,6 +256,21 @@ All navigation components work correctly and use configurable styling instead of
 Validation details, environment limitations, and migration notes are recorded in `docs/dev_steps.md`. Authentication, checkout, payments, backend work, and unrelated page layout changes are excluded.
 
 ### Global Footer
+
+**Branch:** `feature/global-footer` — Digital Flyer & Portfolio.
+
+- [x] Reusable `src/components/layout/Footer.tsx`, rendered after page content by the shared public `[locale]/layout.tsx` inside AppShell's resizing content area.
+- [x] Compact footer with configurable localized description; repeated logo, business name, and slogan removed by design revision. Business name remains in copyright.
+- [x] Four link groups: Explore, Customer Service, Legal, Follow Us.
+- [x] Locale-aware Home, Products, About Us, and Contact links. Custom Orders currently leads to Contact for inquiries.
+- [x] Imprint and Privacy Policy are non-clickable “Coming soon” labels until approved pages exist. FAQ and Terms remain hidden. No policy content or business contact details added.
+- [x] Instagram/TikTok/WhatsApp are rendered only when approved HTTPS URLs are configured; an explanatory message appears when none are configured. No invented accounts or dead links.
+- [x] Central configuration in `src/config/footer.ts`; translated content in the `Footer` message namespace for English, French, and German.
+- [x] Four columns at ≥1024px, two at 768–1023px, one below 768px. Footer follows page content in normal flow, with wrapping for narrow screens. Category/link gaps and vertical padding reduced by half for a compact layout.
+- [x] Existing theme colors and transition durations; existing sidebar behavior and disabled commerce controls preserved.
+- [x] TypeScript, ESLint, and translation checks passed. Production build and browser validation details are recorded in `docs/dev_steps.md`.
+
+To activate a future destination, create its public page and set the corresponding non-prefixed `href` in `footerContent.groups`. Set `visible: true` for FAQ/Terms when ready. Supply approved social profile/contact URLs in `footerSocialLinks`. Localized description and labels are edited in `messages/{en,fr,de}.json`; do not add business details without approval.
 
 ---
 ## Phase 3 — Homepage Layout and Components

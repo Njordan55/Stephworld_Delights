@@ -69,5 +69,31 @@
   "PageIndicator": {
     "current": "Current page: {page}",
     "fallback": "Page"
+  },
+  "Footer": {
+    "description": "Discover our cakes, cupcakes, and special creations for your memorable moments.",
+    "headings": {
+      "explore": "Explore",
+      "service": "Customer Service",
+      "legal": "Legal",
+      "social": "Follow Us"
+    },
+    "links": {
+      "home": "Home",
+      "products": "Products",
+      "abouts": "About Us",
+      "contact": "Contact",
+      "customOrders": "Custom Orders",
+      "faq": "FAQ",
+      "imprint": "Imprint",
+      "privacy": "Privacy Policy",
+      "terms": "Terms & Conditions",
+      "instagram": "Instagram",
+      "tiktok": "TikTok",
+      "whatsapp": "WhatsApp"
+    },
+    "unavailable": "Coming soon",
+    "socialPending": "Our social links will be shared here when available.",
+    "copyright": "© {year} {businessName}. All rights reserved."
   }
 }

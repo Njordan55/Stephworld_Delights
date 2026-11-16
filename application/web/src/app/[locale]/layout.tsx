@@ -5,6 +5,7 @@ import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import { getThemeVariables } from "@/components/layout/ThemeProvider";
 import AppShell from "@/components/layout/AppShell";
+import Footer from "@/components/layout/Footer";
 import type { Metadata } from "next";
 
 const baseMetadata: Metadata = {
@@ -44,7 +45,10 @@ export default async function LocaleLayout({children, params}: Props) {
     <html lang={locale} style={getThemeVariables()}>
       <body>
         <NextIntlClientProvider>
-          <AppShell>{children}</AppShell>
+          <AppShell>
+            {children}
+            <Footer />
+          </AppShell>
         </NextIntlClientProvider>
       </body>
     </html>
