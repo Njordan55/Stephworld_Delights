@@ -610,3 +610,51 @@ A future server content service can pass a published `CatalogProduct` to `<Produ
 - Actual gallery component fixture: **18/18 combinations passed** in Chromium/WebKit at all required widths and languages. Verified two-photo selection, selected-state changes, main alt/source update, Enter and Space activation, keyboard traversal (Option-Tab for default macOS WebKit button traversal), translated position status, single-image control suppression, and no-image fallback. No fixture photos or extended-content samples were added to published data. Fixture checks cover component behavior; responsive styling/optimized media are verified on real production routes.
 
 Temporary tooling is under `/tmp/stephworld-navigation-check/product-details*.cjs`, `product-gallery-fixture.cjs`, and `fixture-*`; no test-only route, sample product database, or dependency was added to the application. Fixture gallery checks bundle the actual component with React/next-intl and a plain-image adapter; actual production routes separately verify optimized Next images. Physical-device/screen-reader certification remains outside browser-emulation evidence. Source flyer resolution limits and the existing Contact placeholder remain. No commit, merge, or push performed.
+
+
+### 2026-11-16 — Step 5.3: Products final verification (`feature/products`)
+
+**Architecture review:**
+
+Started on `feature/products` with a clean working tree. Inspected the catalog route/filter handling, detail route/static parameters/404 lookup, ProductCatalog, ProductCard, ProductDetails, ProductImageGallery, ProductImage, centralized product records, homepage Categories/Featured Products, locale routing/request helpers, theme tokens, AppShell/navigation, and footer configuration.
+
+The seven catalog records remain the single product source; homepage Featured Products selects from that source. IDs/slugs are unique, category labels match category slugs, ordering does not mutate records, and all optional commercial values remain absent. Shared image/card components avoid duplicate catalog/detail rendering. Catalog/detail content stays server-rendered; only interactive gallery selection requires a client boundary, and product imports within it are type-only. No missing imports, unused Products components, duplicate product database, or unnecessary runtime dependency was found. `npm ls --depth=0` resolves existing dependencies without missing packages. No dependency or architectural refactor was added.
+
+The retired `ActivePageIndicator.tsx` remains an unimported navigation leftover outside Products scope. Other page/section configuration intentionally references the same business photos for different presentation roles; those references are not independent product databases. Unrelated navigation/footer structure, authentication/cart implementation, content, and source assets remain unchanged.
+
+**Issues reproduced and fixed:**
+
+1. Gallery removal state: with three fixture photos, select the third, then supply only two without remounting the component. Baseline incorrectly announced “Photograph 3 of 2” and had no selected thumbnail. The gallery now derives a bounded active index and uses it consistently for the main photo, position status, `aria-pressed`, and selected border. The regression now announces “Photograph 2 of 2” with exactly one selected control. Zero/one-image behavior remains supported.
+2. Detail image sizes: at 1024px with an expanded persistent sidebar, the detail layout is stacked but its `sizes` advertised only 50vw. Main-image sizing now conservatively allows full viewport width below 1280px, including crop scaling; larger viewports retain 50vw. This avoids requesting an undersized image for a stacked small-desktop frame. Layout, image sources, crops, and card image-sizing rules are unchanged.
+
+Only `ProductImageGallery.tsx`, `ProductImage.tsx`, and the two documentation files changed in this step. No new feature, redesign, product facts, photos, routes, dependencies, or commerce behavior was introduced.
+
+**Automated checks:**
+
+- `npx tsc --noEmit`: passed.
+- `npm run lint`: passed.
+- `npm run check:i18n`: passed; 167 matching, nonempty, valid messages in each of EN/FR/DE. No missing product/UI translations were identified.
+- `npm run build`: failed normally and after an elevated retry. The pre-existing environment restriction prevents Turbopack's CSS worker from binding a port (`EPERM`, reported through `globals.css`). This is not counted as a passing standard build or a Products TypeScript/source error.
+- `npm run build -- --webpack`: passed after fixes, including TypeScript and 41 generated paths (21 localized detail paths). No build script/config change was used to hide the standard-build limitation.
+- `git diff --check`: passed.
+
+**Functional, visual, accessibility, and performance verification:**
+
+- Catalog: **24/24** Chromium/WebKit × four widths × EN/FR/DE combinations passed: all filters (7 total / 3 Cakes / 2 Cupcakes / 2 Custom Orders), selected URL state, All Products reset, browser back/forward, unknown/repeated category fallback, homepage category links, photo decoding, localized categories, inquiry CTA, locale switching with category retention, settled refresh persistence, sidebar states, and overflow checks. No console/page/HTTP errors or warnings were recorded.
+- Details: **24/24** combinations passed, clicking through all seven catalog detail links in every case in both engines. Verified matching translated titles/labels, authentic/AI media states, omission of absent optional fields and redundant single-photo controls, category Back links, inquiry product query, browser back, locale switching preserving the slug, settled refresh, sidebar states, and homepage featured links. No recorded console/page errors.
+- Gallery fixtures: **24/24** combinations passed for thumbnail selection, Enter/Space activation, Tab traversal (Option-Tab for default macOS WebKit behavior), translated position, selected state, single-photo controls hidden, and missing-photo fallback. The separate removal regression also passes after reproducing the baseline failure.
+- **24 Chromium WCAG A/AA axe scans** (12 catalog plus 12 detail) reported zero violations, including automated text-contrast checks. Automated accessibility scans are not a full screen-reader or physical-device certification.
+
+Independent audit checks have passed on catalog and representative detail pages at 390/768/1024/1440px in EN/FR/DE: semantic main/footer and one h1, no skipped heading levels, nonempty descriptive alt text, undistorted photos with reserved square frames, actual Next image optimizer sources, lazy catalog images/eager detail main image, corrected 1024px sizes, no horizontal overflow, keyboard traversal/visible outlines, reduced-motion transitions, active Products navigation, and static footer positioned after main content.
+
+All 63 unique internal destinations discovered from catalog/detail navigation and CTA links returned HTTP 200. All 21 known localized detail routes returned 200; unknown product slugs returned 404 with localized error content. Local initial CLS measured on catalog and representative detail pages was at most 0.00000275 across the four widths and three languages. These local measurements do not certify field Core Web Vitals, network-dependent LCP, or physical-device behavior.
+
+Isolated EN/FR/DE render/data checks passed for empty catalog, no-match selection, localized recovery/Contact links, missing-photo placeholders, stable unique IDs/slugs, sort nonmutation, central detail lookup, absent optional sections, supplied approved-test extended content, and absent commercial values. Fixture content is temporary and never published. Actual gallery fixture checks use React/next-intl and the real selector component with a plain-image adapter; real production routes independently verify optimized images and styling. The selected-photo removal regression was tested before and after the fix. Live resizing across desktop/tablet/phone modes passed on catalog and real-photo detail pages in Chromium and WebKit.
+
+Visually reviewed current catalog and detail screenshots at all four widths. Product grids stay one phone/two tablet columns; at 1024px they adapt from two to three with sidebar collapse; desktop uses three. Detail photos stack above information when space is limited and appear left of information on wide desktop. Existing seven cards, authentic photos, four clearly labelled AI concepts, and three real homepage featured records are preserved.
+
+**Remaining limitations and merge gate:**
+
+Products remains **Testing** and is not unconditionally ready to merge until the required standard build passes in a normal terminal or CI. No Products functional/source error remains identified by the completed local checks. Contact is still the existing placeholder and does not process inquiry context. Each published record currently has one photograph and no approved extended description/customization data; multiple-image and optional-content paths are verified through fixtures. Flyer crops retain their source resolution. AI examples remain clearly labelled presentation concepts. Physical-device/screen-reader review and field performance measurements were not performed. Earlier rapid-refresh WebKit errors are not declared globally resolved by this settled-navigation test run.
+
+Temporary audit artifacts: `/tmp/stephworld-navigation-check/products-final-*.cjs`, corresponding JSON reports/screenshots, `product-details-data.cjs`, and `gallery-shrink.cjs`. No test-only route, dependency, or data source was added to the repository. No commit, merge, or push performed.

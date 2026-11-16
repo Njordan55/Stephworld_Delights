@@ -13,7 +13,8 @@ export default function ProductImageGallery({photos}: {photos: readonly ProductP
   const t = useTranslations('ProductDetails');
   const shared = useTranslations('FeaturedProducts');
   const imageId = useId();
-  const active = photos[selected] ?? photos[0];
+  const activeIndex = Math.min(selected, Math.max(photos.length - 1, 0));
+  const active = photos[activeIndex];
   if (!active) return (
     <div className="flex aspect-square flex-col items-center justify-center gap-3 rounded-[var(--swd-radius-default)] border p-6 text-center" style={{borderColor: 'var(--swd-border)', backgroundColor: 'var(--swd-surface)'}}>
       <Camera size={36} aria-hidden="true" /><p>{shared('photoPending')}</p>
@@ -27,13 +28,13 @@ export default function ProductImageGallery({photos}: {photos: readonly ProductP
       </div>
       {active.image.isExample && <p className="mt-3 text-sm leading-6">{shared(active.image.isAiGenerated ? 'aiExampleImage' : 'exampleImage')}</p>}
       {photos.length > 1 && <>
-        <p role="status" className="mt-3 text-sm">{t('imagePosition', {current: selected + 1, total: photos.length})}</p>
+        <p role="status" className="mt-3 text-sm">{t('imagePosition', {current: activeIndex + 1, total: photos.length})}</p>
         <div role="group" aria-label={t('selectPhoto')} className="mt-3 grid grid-cols-3 gap-3 sm:grid-cols-4">
           {photos.map((photo, index) => (
-            <button key={index} type="button" aria-label={t('showPhoto', {current: index + 1})} aria-pressed={selected === index}
+            <button key={index} type="button" aria-label={t('showPhoto', {current: index + 1})} aria-pressed={activeIndex === index}
               aria-controls={imageId} onClick={() => setSelected(index)}
               className="relative aspect-square min-h-11 min-w-11 overflow-hidden rounded-[var(--swd-radius-default)] border-2 transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--swd-primary)]"
-              style={{borderColor: selected === index ? 'var(--swd-primary)' : 'var(--swd-border)', backgroundColor: 'var(--swd-surface)', transitionDuration: 'var(--swd-quick-transition-duration)'}}>
+              style={{borderColor: activeIndex === index ? 'var(--swd-primary)' : 'var(--swd-border)', backgroundColor: 'var(--swd-surface)', transitionDuration: 'var(--swd-quick-transition-duration)'}}>
               <ProductImage image={photo.image} alt="" />
             </button>
           ))}

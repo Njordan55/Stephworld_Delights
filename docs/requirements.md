@@ -320,7 +320,7 @@ The homepage is responsive, functional and prepared for administrator-managed co
 |---|---|---|---|---|
 | [ ] | [ ] | [ ] | [x] | [ ] |
 
-Description: Steps 5.1 and 5.2 implemented on `feature/products`; verification results and environment limitations are recorded in `dev_steps.md`. Not committed or merged.
+Description: Steps 5.1 and 5.2 implemented; Step 5.3 reviewed on `feature/products`; verification results and environment limitations are recorded in `dev_steps.md`. Not committed or merged.
 
 #### Objective
 
@@ -368,6 +368,18 @@ No purchasing, backend, Admin interface, invented prices, or availability is add
 - [x] Available-width layout places photos left/information right on wide screens, stacks photos above text on smaller screens, and accommodates sidebar changes.
 - [x] Inquiry links to localized `/contact?product=<slug>`; Contact remains its existing placeholder and does not submit orders or process the query yet.
 - [ ] Complete standard Turbopack build verification outside the documented environment restriction. Detailed validation results are in `dev_steps.md`.
+
+#### Step 5.3 — Products Final Verification
+
+- [x] Review catalog/detail routes, centralized product data, shared cards/images, gallery, locale helpers, homepage links, theme, and shared navigation/footer.
+- [x] Fix gallery counter/selected-state consistency after the selected photo is removed from supplied data.
+- [x] Correct detail-image responsive sizes for stacked layouts at small desktop widths with a persistent sidebar.
+- [x] Verify catalog filters, URL/history, localized card links, all seven detail destinations, Contact/back links, unknown-slug 404s, empty/missing-image states, and AI labels.
+- [x] Verify EN/FR/DE at 390px, 768px, 1024px, and 1440px, including sidebar states, image proportions, readable grids/details, keyboard/focus, reduced motion, and footer flow.
+- [x] Validate message parity, TypeScript, ESLint, production webpack build, and browser accessibility checks; see `dev_steps.md` for exact results and local performance limits.
+- [ ] Pass the required standard `npm run build` in a normal local terminal or CI. Both normal and elevated attempts remain blocked by Turbopack CSS worker port binding (`EPERM`) in this environment.
+
+Products remains **Testing**, not Completed or merged. Functional/visual verification does not waive the standard-build gate. No commit, merge, or push performed.
 
 #### Completion Criteria
 
