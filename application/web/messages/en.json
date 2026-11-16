@@ -122,5 +122,15 @@
     "pinkCakeName": "Personalised pink cake",
     "pinkCakeDescription": "Two pink tiers with butterflies and decorative names.",
     "pinkCakeAlt": "A two-tier pink cake with butterfly decorations and the names Kira and Dahlia."
+  },
+  "AboutPreview": {
+    "eyebrow": "About Stephworld Delights",
+    "title": "Creations for your memorable moments.",
+    "introduction": "Stephworld Delights brings together cakes, cupcakes, and personalised creations for your celebrations.",
+    "invitation": "Discover our pictured creations and get in touch to discuss your ideas. Learn more about Stephworld Delights on our About Us page.",
+    "aboutUs": "About Us",
+    "photoAlt": "A white cake with pearl-style decorations and gold initials, pictured in the Stephworld Delights flyer.",
+    "photoCaption": "A creation pictured in the Stephworld Delights flyer.",
+    "photoPending": "A Stephworld Delights business photograph will be added here."
   }
 }

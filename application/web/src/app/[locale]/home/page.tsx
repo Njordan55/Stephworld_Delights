@@ -2,6 +2,7 @@ import {prepareLocale} from "@/i18n/server";
 import HeroSection from "@/components/home/HeroSection";
 import CategorySection from "@/components/home/CategorySection";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
+import AboutPreview from "@/components/home/AboutPreview";
 
 
 
@@ -12,6 +13,7 @@ export default async function HomePage({params}: {params: Promise<{locale: strin
       <HeroSection />
       <CategorySection />
       <FeaturedProducts />
+      <AboutPreview />
     </main>
   );
 }

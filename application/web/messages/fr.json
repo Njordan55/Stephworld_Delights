@@ -122,5 +122,15 @@
     "pinkCakeName": "Gâteau rose personnalisé",
     "pinkCakeDescription": "Deux étages roses avec des papillons et des prénoms décoratifs.",
     "pinkCakeAlt": "Un gâteau rose à deux étages avec des papillons et les prénoms Kira et Dahlia."
+  },
+  "AboutPreview": {
+    "eyebrow": "À propos de Stephworld Delights",
+    "title": "Des créations pour vos moments inoubliables.",
+    "introduction": "Stephworld Delights réunit gâteaux, cupcakes et créations personnalisées pour vos célébrations.",
+    "invitation": "Découvrez nos créations en images et contactez-nous pour discuter de vos idées. Retrouvez plus d’informations sur Stephworld Delights sur notre page À propos.",
+    "aboutUs": "À propos",
+    "photoAlt": "Un gâteau blanc avec des décorations en forme de perles et des initiales dorées, présenté dans le dépliant de Stephworld Delights.",
+    "photoCaption": "Une création présentée dans le dépliant de Stephworld Delights.",
+    "photoPending": "Une photographie de l’entreprise Stephworld Delights sera ajoutée ici."
   }
 }

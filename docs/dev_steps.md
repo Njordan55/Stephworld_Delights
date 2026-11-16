@@ -378,3 +378,31 @@ Edit the selection/order and media in `featured-products.ts`, with translated co
 - Browser harness/screenshots: `/tmp/stephworld-navigation-check/featured.cjs` and `featured-*.png`; test tools remain outside the project dependencies.
 
 Only Step 4.3 and the requested file organization/naming changes implemented. No commerce, accounts, backend, or later homepage steps added. No commit created.
+
+### 2026-11-16 — Step 4.4: About Preview (`feature/home`)
+
+Inspected the locale homepage order, existing About Us route (`/abouts`), component/configuration patterns, all supplied imagery, translations, and centralized theme tokens. The branch was already `feature/home` with a clean working tree.
+
+**Implementation:**
+
+- Added reusable `src/components/home/AboutPreview.tsx`, mounted immediately below Featured Products. The desktop grid places a business creation photograph on the left and the heading, two short introductory paragraphs, and About Us action on the right. A 56rem content-width container query switches to two columns; narrower tablet/mobile content stacks and remains compatible with sidebar expansion/collapse.
+- Reused the authentic white decorated cake photographed in the supplied business flyer. The unchanged flyer is displayed through optimized, lazy-loaded `next/image` with crop x=620/y=360/380×380. Alt text and caption accurately describe it as a creation pictured in the flyer; it is not presented as a photograph of staff or bakery premises. The crop is limited by the source flyer's resolution.
+- Copy describes only the already established cakes, cupcakes, personalized creations, and contact invitation. No founder biography, business history, qualifications, awards, dates, or achievements were added.
+- Added `src/config/about-preview.ts` for translation keys, image source/dimensions/crop, and action route. `AboutPreviewContent` and the component's content prop support future server-supplied, locale-resolved title/paragraphs, image alt/caption, and uploaded image URL/dimensions. A null image displays an explicit translated photo placeholder. No Admin backend/upload implementation added.
+- The shared locale-aware Link targets `/abouts`, preserving English, French, or German. Added eight matching AboutPreview keys per locale, bringing message validation to 102 keys per language.
+- Styling uses existing surface/background/foreground/primary/border colors, inherited typography, radius, and quick transition duration. Keyboard focus remains visible and the action has a minimum 44px height. No dependencies added.
+- Hero, CategorySection, FeaturedProducts, navigation, footer, and the About Us page implementation are unchanged. The homepage changed only to import/render the new preview.
+
+**Replacing content later:**
+
+Edit the AboutPreview message namespace in each language file and media/action settings in `src/config/about-preview.ts`. Replace the flyer with an approved standalone photo and omit `crop`; set null if a suitable image is unavailable. A future Admin content service should store approved published descriptions and media metadata, resolve localized copy server-side, and pass `<AboutPreview content={publishedAboutPreview} />`. Persistent upload storage, approved image-host configuration, and homepage revalidation remain part of the future Admin phase rather than this step.
+
+**Validation:**
+
+- `npx tsc --noEmit`, `npm run lint`, and `npm run check:i18n`: passed under Node 24.
+- `npm run build`: attempted and retried with elevated execution; the existing Turbopack CSS worker-port restriction persists in this environment. `npm run build -- --webpack` passed without build configuration changes.
+- Chromium and WebKit functional checks passed at 390px, 768px, and 1440px in EN/FR/DE, including expanded/collapsed persistent-sidebar states. Verified position below Featured Products, two-column desktop/stacked smaller layouts, image loading and alt/caption text, translated introduction, localized About Us click with HTTP 200 destination, language switching, no horizontal overflow, and existing Hero/Categories/Featured/footer presence. Desktop and phone screenshots were visually reviewed.
+- WebKit emitted the existing background RSC access-control messages during automated navigation; these were recorded separately from the functional assertions. No shared navigation code was modified. Tests use browser viewport emulation, not physical devices.
+- Browser harness/screenshots: `/tmp/stephworld-navigation-check/about-preview.cjs` and `about-preview-*.png`. No browser tooling added to project dependencies.
+
+Only Step 4.4 implemented. No authentication, cart, checkout, payments, backend, or later homepage work added. No commit created.

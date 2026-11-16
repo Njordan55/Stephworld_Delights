@@ -348,7 +348,19 @@ Hero, navigation, and footer implementation are unchanged. Admin uploads remain 
 - [x] EN/FR/DE text and alt descriptions; TypeScript, ESLint, message validation, production-build, and browser checks recorded in `dev_steps.md`.
 - [x] Flatten source pictures from `Image/cak/` to `Image/`, preserve all six files, and remove the empty `cak` directory. Align served Hero/cupcake filenames/imports with the actual source names without changing their displayed images.
 
-No purchasing, authentication, payment, or new backend functionality. Hero and Category presentation components, navigation, and footer remain unchanged. Scope stops after Step 4.3.
+No purchasing, authentication, payment, or new backend functionality. Hero and Category presentation components, navigation, and footer remain unchanged. Step 4.3 added Featured Products and the requested image organization only; subsequent steps are recorded below.
+
+### Step 4.4 — About Preview (`feature/home`)
+
+- [x] Reusable `AboutPreview.tsx` below Featured Products, with an authentic supplied business creation photograph on the left and a heading/introduction/About Us action on the right when space allows.
+- [x] Two-column desktop layout based on available content width; stacked tablet/mobile layout, preserving sidebar resizing.
+- [x] Configurable `src/config/about-preview.ts` for text keys, image metadata/crop, and action destination. A typed content prop accepts future Admin-published copy and media; null image shows a translated placeholder.
+- [x] Use optimized `next/image` for the white decorated cake from the existing business flyer. Do not depict invented bakery premises or staff.
+- [x] EN/FR/DE text, alt description, caption, and localized `/abouts` navigation. Introduction covers only the existing cake/cupcake/personalized offering; no founder biography, history, qualifications, or achievements invented.
+- [x] Existing theme tokens and inherited typography; no new dependencies, commerce functionality, or unrelated component changes.
+- [x] TypeScript, lint, translations, build, and responsive browser checks recorded in `dev_steps.md`.
+
+Scope stops after Step 4.4. Existing Hero, Categories, Featured Products, navigation, and footer remain unchanged.
 
 ### Completion Criteria
 

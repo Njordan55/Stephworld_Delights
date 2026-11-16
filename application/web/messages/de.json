@@ -122,5 +122,15 @@
     "pinkCakeName": "Personalisierter rosa Kuchen",
     "pinkCakeDescription": "Zwei rosa Etagen mit Schmetterlingen und dekorativen Namen.",
     "pinkCakeAlt": "Ein zweistöckiger rosa Kuchen mit Schmetterlingen und den Namen Kira und Dahlia."
+  },
+  "AboutPreview": {
+    "eyebrow": "Über Stephworld Delights",
+    "title": "Kreationen für unvergessliche Momente.",
+    "introduction": "Stephworld Delights vereint Kuchen, Cupcakes und personalisierte Kreationen für Ihre Feierlichkeiten.",
+    "invitation": "Entdecken Sie unsere abgebildeten Kreationen und kontaktieren Sie uns, um Ihre Ideen zu besprechen. Mehr über Stephworld Delights erfahren Sie auf unserer Über-uns-Seite.",
+    "aboutUs": "Über uns",
+    "photoAlt": "Ein weißer Kuchen mit perlenförmigen Verzierungen und goldenen Initialen aus dem Flyer von Stephworld Delights.",
+    "photoCaption": "Eine Kreation aus dem Flyer von Stephworld Delights.",
+    "photoPending": "Hier wird ein Unternehmensfoto von Stephworld Delights ergänzt."
   }
 }
