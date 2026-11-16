@@ -1,7 +1,7 @@
 import type {StaticImageData} from 'next/image';
 import type messages from '../../messages/en.json';
 import businessFlyer from '../../public/branding/flyer.jpeg';
-import cupcakes from '../../public/images/categories/cupcakes.png';
+import cupcakePhotograph from '../../public/images/categories/screenshot_insta.png';
 
 type CategoryTextKey = keyof typeof messages.Categories;
 export type CategoryImage = {
@@ -29,7 +29,7 @@ export const homeCategories: readonly CategoryDefinition[] = [
   },
   {
     slug: 'cupcakes', labelKey: 'cupcakes', descriptionKey: 'cupcakesDescription',
-    image: {src: cupcakes, width: cupcakes.width, height: cupcakes.height, altKey: 'cupcakesAlt'}
+    image: {src: cupcakePhotograph, width: cupcakePhotograph.width, height: cupcakePhotograph.height, altKey: 'cupcakesAlt'}
   },
   {
     slug: 'custom-orders', labelKey: 'customOrders', descriptionKey: 'customOrdersDescription',

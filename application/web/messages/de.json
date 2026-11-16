@@ -105,5 +105,22 @@
     "unavailable": "Demnächst verfügbar",
     "socialPending": "Unsere Social-Media-Links werden hier veröffentlicht, sobald sie verfügbar sind.",
     "copyright": "© {year} {businessName}. Alle Rechte vorbehalten."
+  },
+  "FeaturedProducts": {
+    "title": "Ausgewählte Kreationen",
+    "description": "Eine Auswahl unserer abgebildeten Kreationen. Entdecken Sie die Kollektion und lassen Sie sich für Ihren nächsten Anlass inspirieren.",
+    "exploreAll": "Alle Produkte entdecken",
+    "viewDetails": "Details ansehen",
+    "photoPending": "Ein Produktfoto folgt in Kürze.",
+    "exampleImage": "Beispielbild",
+    "roseCakeName": "Geburtstagskuchen mit roten Rosen",
+    "roseCakeDescription": "Geschwungene Verzierungen, rote Rosen und ein goldener Geburtstagsstecker.",
+    "roseCakeAlt": "Ein Geburtstagskuchen mit roten Rosen, weißen geschwungenen Verzierungen und einem goldenen Happy-Birthday-Stecker.",
+    "cupcakesName": "Cupcake-Auswahl",
+    "cupcakesDescription": "Türkisfarbene und cremefarbene Verzierungen auf einer goldenen Etagere.",
+    "cupcakesAlt": "Eine goldene Etagere mit Cupcakes mit türkisfarbenen und cremefarbenen Verzierungen.",
+    "pinkCakeName": "Personalisierter rosa Kuchen",
+    "pinkCakeDescription": "Zwei rosa Etagen mit Schmetterlingen und dekorativen Namen.",
+    "pinkCakeAlt": "Ein zweistöckiger rosa Kuchen mit Schmetterlingen und den Namen Kira und Dahlia."
   }
 }

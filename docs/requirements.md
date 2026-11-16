@@ -312,7 +312,7 @@ Develop the public homepage.
 
 - [x] Extend the existing `HeroSection.tsx`; preserve the homepage route and other sections.
 - [x] Brand introduction, prominent real cake photograph, short localized message, Explore Products, and custom-order/contact action.
-- [x] Use the supplied example from `Image/cak/ai_cak_ex`, served as `public/images/home/hero-cake-example.jpg`, with an explicitly translated example caption. Use `next/image` with responsive sizes and preload; no new product imagery generated.
+- [x] Use the supplied example from `Image/ai_cak_ex.png`, served as `public/images/home/ai_cak_ex.jpg`, with an explicitly translated example caption. Use `next/image` with responsive sizes and preload; no new product imagery generated.
 - [x] Configure image/crop and locale-neutral button destinations in `src/config/home.ts`; keep all copy, alt text, caption, and placeholder text in EN/FR/DE message catalogs.
 - [x] Use existing theme colors, inherited typography, border radius, and transitions. Add Hero clearance beneath the fixed top bar.
 - [x] Adapt the Hero grid to available content width using container queries; preserve sidebar expanded/collapsed resizing and phone stacking.
@@ -327,14 +327,28 @@ Step 4.1 changed only the Hero. Step 4.2 below adds category cards; later homepa
 
 - [x] Preserve Cakes, Cupcakes, and Custom Orders in the existing `CategorySection`.
 - [x] Separate typed category records, stable slugs, descriptions, and image metadata into `src/config/categories.ts`. Accept a category-data prop for future Admin content-service integration.
-- [x] Use `next/image` for real Cakes and Custom Orders photographs from the existing business flyer, with configurable CSS crops. Cupcakes uses the subsequently supplied photograph at `public/images/categories/cupcakes.png`; the placeholder remains available for future categories without an image.
+- [x] Use `next/image` for real Cakes and Custom Orders photographs from the existing business flyer, with configurable CSS crops. Cupcakes uses the subsequently supplied photograph at `public/images/categories/screenshot_insta.png`; the placeholder remains available for future categories without an image.
 - [x] Responsive cards: three columns at ≥1024px, two at 768–1023px, one below 768px. Keep centralized colors, radius, and transition tokens, readable descriptions, and keyboard focus states.
 - [x] Locale-aware `/products?category=cakes`, `cupcakes`, and `custom-orders` links. The Products landing page recognises the selected category and displays its localized heading/description; no inventory/filtering/purchase workflow added.
 - [x] Preserve the query when switching languages. Missing, unknown, or repeated category values fall back to the general Products page.
 - [x] EN/FR/DE labels, descriptions, image alt text, and placeholder copy; no hardcoded translated content in React.
 - [x] TypeScript, ESLint, translations, production build, and browser validation recorded in `dev_steps.md`.
 
-Hero, navigation, and footer implementation are unchanged. Admin uploads remain future content work; no purchasing functionality is implemented. Scope stops after Step 4.2.
+Hero, navigation, and footer implementation are unchanged. Admin uploads remain future content work; no purchasing functionality is implemented. Step 4.2 added only category cards and matching landing headings; later steps are documented below.
+
+### Step 4.3 — Featured Products (`feature/home`)
+
+- [x] Add `FeaturedProducts.tsx` after Categories, with three configurable pictured creations, descriptive labels, short appearance-based descriptions, and localized category labels.
+- [x] Separate typed records in `src/config/featured-products.ts`; support future server-provided records, uploaded image URLs/dimensions, and locale-resolved names/descriptions/alt text.
+- [x] Use real cake photographs from the supplied business flyer and the supplied cupcake photograph through optimized, lazy-loaded `next/image`. No prices, inventory/availability claims, or invented official product names.
+- [x] Support a clearly labelled placeholder for absent images and an example badge when a future record uses illustrative imagery.
+- [x] Optional View Details is hidden for every current record because there are no product-detail pages. Only configure it after a published detail route exists; no nonfunctional links or new detail routes.
+- [x] Explore All Products links to the localized existing `/products` catalog landing page.
+- [x] Three columns at ≥1024px, two at 768–1023px, one below 768px. Use existing theme variables and preserve sidebar resizing.
+- [x] EN/FR/DE text and alt descriptions; TypeScript, ESLint, message validation, production-build, and browser checks recorded in `dev_steps.md`.
+- [x] Flatten source pictures from `Image/cak/` to `Image/`, preserve all six files, and remove the empty `cak` directory. Align served Hero/cupcake filenames/imports with the actual source names without changing their displayed images.
+
+No purchasing, authentication, payment, or new backend functionality. Hero and Category presentation components, navigation, and footer remain unchanged. Scope stops after Step 4.3.
 
 ### Completion Criteria
 

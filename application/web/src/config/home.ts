@@ -1,6 +1,6 @@
 import type {StaticImageData} from 'next/image';
 import type messages from '../../messages/en.json';
-import exampleCake from '../../public/images/home/hero-cake-example.jpg';
+import heroCakeExample from '../../public/images/home/ai_cak_ex.jpg';
 
 type HeroTextKey = keyof typeof messages.Hero;
 export type HeroPhoto = {
@@ -27,9 +27,9 @@ export type HeroContent = {
 
 export const heroContent: HeroContent = {
   image: {
-    src: exampleCake,
-    width: exampleCake.width,
-    height: exampleCake.height,
+    src: heroCakeExample,
+    width: heroCakeExample.width,
+    height: heroCakeExample.height,
     altKey: 'photoAlt',
     captionKey: 'photoCaption'
   },

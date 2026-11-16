@@ -105,5 +105,22 @@
     "unavailable": "Bientôt disponible",
     "socialPending": "Nos liens vers les réseaux sociaux seront partagés ici dès qu’ils seront disponibles.",
     "copyright": "© {year} {businessName}. Tous droits réservés."
+  },
+  "FeaturedProducts": {
+    "title": "Créations à découvrir",
+    "description": "Une sélection de créations en images. Explorez la collection et trouvez l’inspiration pour votre prochaine occasion.",
+    "exploreAll": "Découvrir tous les produits",
+    "viewDetails": "Voir les détails",
+    "photoPending": "Photographie du produit bientôt disponible.",
+    "exampleImage": "Image d’exemple",
+    "roseCakeName": "Gâteau d’anniversaire aux roses rouges",
+    "roseCakeDescription": "Des décorations en volutes, des roses rouges et une inscription d’anniversaire dorée.",
+    "roseCakeAlt": "Un gâteau d’anniversaire avec des roses rouges, des volutes blanches et une inscription Happy Birthday dorée.",
+    "cupcakesName": "Assortiment de cupcakes",
+    "cupcakesDescription": "Des décorations turquoise et crème sur un présentoir doré à étages.",
+    "cupcakesAlt": "Un présentoir doré à étages avec des cupcakes aux décorations turquoise et crème.",
+    "pinkCakeName": "Gâteau rose personnalisé",
+    "pinkCakeDescription": "Deux étages roses avec des papillons et des prénoms décoratifs.",
+    "pinkCakeAlt": "Un gâteau rose à deux étages avec des papillons et les prénoms Kira et Dahlia."
   }
 }

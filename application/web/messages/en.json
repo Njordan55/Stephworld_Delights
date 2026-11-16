@@ -105,5 +105,22 @@
     "unavailable": "Coming soon",
     "socialPending": "Our social links will be shared here when available.",
     "copyright": "© {year} {businessName}. All rights reserved."
+  },
+  "FeaturedProducts": {
+    "title": "Featured Creations",
+    "description": "A selection of pictured creations. Explore the collection and find inspiration for your next occasion.",
+    "exploreAll": "Explore All Products",
+    "viewDetails": "View Details",
+    "photoPending": "Product photograph coming soon.",
+    "exampleImage": "Example image",
+    "roseCakeName": "Birthday cake with red roses",
+    "roseCakeDescription": "Swirled decoration, red roses, and a gold birthday topper.",
+    "roseCakeAlt": "A birthday cake with red roses, white swirled decoration, and a gold Happy Birthday topper.",
+    "cupcakesName": "Cupcake assortment",
+    "cupcakesDescription": "Turquoise and cream-coloured decorations arranged on a tiered gold stand.",
+    "cupcakesAlt": "A tiered gold stand holding cupcakes with turquoise and cream-coloured decorations.",
+    "pinkCakeName": "Personalised pink cake",
+    "pinkCakeDescription": "Two pink tiers with butterflies and decorative names.",
+    "pinkCakeAlt": "A two-tier pink cake with butterfly decorations and the names Kira and Dahlia."
   }
 }

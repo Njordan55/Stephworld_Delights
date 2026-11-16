@@ -327,3 +327,54 @@ Only Step 4.2 implemented. Hero, navigation, footer, and their configuration fil
 Replaced the Cupcakes placeholder with the newly supplied `Image/cak/Screenshot 2026-11-16 at 13.12.54.png`, copied unchanged to `application/web/public/images/categories/cupcakes.png`. Category configuration now uses this standalone 1666 × 1738 image through next/image; added descriptive EN/FR/DE alt text. Other category images and the Hero remain unchanged. Original source files and the user’s renames in `Image/` were preserved.
 
 Validation: TypeScript, ESLint, all 79 translation keys per locale, and the webpack production build passed. No commit created.
+
+### 2026-11-16 — Step 4.3: Featured Products and image organization (`feature/home`)
+
+Inspected the homepage component order, category data, Products query routing, locale messages, all source pictures, and available app routes before editing. No product-detail pages currently exist. The working tree already contained a removed screenshot name and newly supplied image files; those user changes were preserved.
+
+**Featured Products:**
+
+- Added `src/components/home/FeaturedProducts.tsx` after CategorySection in the locale homepage. It shows a configurable three-record selection using descriptive portfolio labels: a birthday cake with red roses, a cupcake assortment, and a personalized pink cake. These describe what is pictured, not invented official product names or inventory entries. Descriptions cover visible decoration only; no flavors, ingredient/allergen claims, prices, availability, or purchasing controls were added.
+- Added `src/config/featured-products.ts` with stable record IDs, localized name/description keys, category keys, image metadata/crops, and optional detail destinations. A data prop allows future server/backend records with uploaded media URLs, dimensions, and locale-resolved text to replace the current configuration. No dependency was added.
+- Used existing real cake photographs from the supplied business flyer and the supplied cupcake photograph. `next/image` optimizes/lazy-loads the media. A null image renders a translated photo-pending placeholder; set `image.isExample: true` when selecting an illustrative/example asset so its status is visible.
+- Featured records deliberately do not use the newly supplied `ai_*` images as verified business photographs; those files remain available as examples. Replace media with approved photographs or explicitly mark example imagery.
+- Cards display one column below 768px, two at 768–1023px, and three from 1024px. Existing theme colors, radius, typography inheritance, and transition settings are reused; sidebar state/spacing implementation is unchanged.
+- Every card displays its localized category label. Explore All Products uses the shared locale-aware Link to `/products`.
+- Current records have no `detailsHref`, so no View Details links are rendered. Add a locale-neutral detail destination only after its actual published route exists and has been checked; this step does not create detail pages or link to nonexistent slugs.
+- Added 15 matching `FeaturedProducts` keys per locale (94 total keys per language), including names, appearance descriptions, alt text, placeholder/example labels, heading, and links.
+
+**Image moves and actual filenames:**
+
+All six source files were moved out of `Image/cak/` directly into the existing `Image/` folder, with no image modifications or overwrites:
+
+```text
+Image/
+├── ai_cak_ex.png
+├── ai_cak_ex01.png
+├── ai_celebration_cakes.jpeg
+├── ai_cupcakes.jpeg
+├── ai_custom_creations.jpeg
+└── screenshot_insta.png
+```
+
+The empty `cak` directory was removed as requested. Earlier references to `Image/cak/` in this chronological log describe historical locations.
+
+Served assets/imports were aligned with source naming:
+
+- Hero: `public/images/home/hero-cake-example.jpg` → `public/images/home/ai_cak_ex.jpg`; config variable `heroCakeExample`. The `.jpg` extension matches the file's actual JPEG data even though its original source filename ends in `.png`.
+- Cupcakes: `public/images/categories/cupcakes.png` → `public/images/categories/screenshot_insta.png`; config variable `cupcakePhotograph`. Its served bytes match `Image/screenshot_insta.png`.
+- Both original tracked cake-source files were compared against their pre-move Git bytes; the Hero's served image bytes are unchanged. All six current source files remain present. Hero/Category presentation components, navigation, footer, and product routes were not modified.
+
+**Future content management:**
+
+Edit the selection/order and media in `featured-products.ts`, with translated copy in the three `FeaturedProducts` namespaces. To replace an image now, add/import the approved file under public images and set its dimensions/alt key (omit crop for a standalone photograph). For future Admin integration, store validated uploads in persistent media storage and published records with localized text; resolve the active locale server-side and pass records through `<FeaturedProducts products={publishedProducts} />`. Configure only the chosen media host for remote next/image URLs, and revalidate the homepage for all locales after publishing. Upload UI/storage/publishing remain future work.
+
+**Validation:**
+
+- `npx tsc --noEmit`, `npm run lint`, and `npm run check:i18n`: passed under Node 24.
+- `npm run build`: attempted and retried with elevated execution; Turbopack remains blocked by the environment's CSS worker-port restriction. `npm run build -- --webpack` passed. Build configuration is unchanged.
+- Chromium and WebKit functional checks passed at 390px, 768px, and 1440px for EN/FR/DE, including expanded/collapsed persistent-sidebar states. Verified placement below Categories, one/two/three columns, all image loading and alt text, descriptive names/copy/category labels, absence of detail links, localized catalog navigation, language switching, no horizontal overflow, and Hero/Category/footer presence after asset renames. Desktop and phone screenshots were visually reviewed.
+- WebKit emitted the already documented background RSC access-control messages during automated navigation; the harness records those separately. All visible functionality assertions passed. These are browser viewport checks rather than physical-device tests.
+- Browser harness/screenshots: `/tmp/stephworld-navigation-check/featured.cjs` and `featured-*.png`; test tools remain outside the project dependencies.
+
+Only Step 4.3 and the requested file organization/naming changes implemented. No commerce, accounts, backend, or later homepage steps added. No commit created.
