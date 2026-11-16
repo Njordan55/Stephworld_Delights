@@ -144,5 +144,31 @@
     "confirmDescription": "Besprechen Sie Details, Verfügbarkeit und Preis mit dem Unternehmen, bevor Sie Ihre Bestellung vereinbaren.",
     "requestCake": "Individuellen Kuchen anfragen",
     "confirmationNote": "Eine Anfrage ist keine Bestellbestätigung."
+  },
+  "Gallery": {
+    "title": "Unsere Kreationen in Bildern",
+    "description": "Entdecken Sie die abgebildeten Kreationen und wählen Sie ein Foto für eine größere Ansicht aus.",
+    "viewAll": "Alle Kreationen ansehen",
+    "openImage": "Bild vergrößern: {title}",
+    "close": "Bildvorschau schließen",
+    "previous": "Vorheriges Bild",
+    "next": "Nächstes Bild",
+    "previewTitle": "Bildvorschau",
+    "keyboardHelp": "Nutzen Sie die Pfeiltasten links und rechts zum Blättern, Pos1 oder Ende zum Springen und Escape zum Schließen.",
+    "position": "Bild {current} von {total}",
+    "photoPending": "Ein Foto folgt in Kürze.",
+    "exampleImage": "Beispielbild",
+    "roseTitle": "Geburtstagskuchen mit roten Rosen",
+    "roseAlt": "Ein Geburtstagskuchen mit roten Rosen, weißen Verzierungen und einem goldenen Geburtstagsstecker.",
+    "roseDescription": "Rote Rosen, weiße Verzierungen und ein goldener Geburtstagsstecker.",
+    "cupcakesTitle": "Cupcake-Auswahl",
+    "cupcakesAlt": "Cupcakes mit türkisfarbenen und cremefarbenen Verzierungen auf einer goldenen Etagere.",
+    "cupcakesDescription": "Türkisfarbene und cremefarbene Verzierungen auf einer goldenen Etagere.",
+    "pinkTitle": "Personalisierter rosa Kuchen",
+    "pinkAlt": "Ein zweistöckiger rosa Kuchen mit Schmetterlingen und dekorativen Namen.",
+    "pinkDescription": "Schmetterlinge und dekorative Namen auf zwei rosa Etagen.",
+    "pearlTitle": "Weißer verzierter Kuchen",
+    "pearlAlt": "Ein weißer Kuchen mit perlenförmigen Verzierungen und goldenen Initialen.",
+    "pearlDescription": "Perlenförmige Verzierungen und goldene Initialen auf einem weißen Kuchen."
   }
 }

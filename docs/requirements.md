@@ -372,7 +372,20 @@ Step 4.4 added only About Preview; subsequent steps are recorded below. Existing
 - [x] Existing design tokens, inherited typography, keyboard focus styling, and reduced-motion support. No new dependencies.
 - [x] TypeScript, lint, translations, build, and responsive browser checks recorded in `dev_steps.md`.
 
-No form, online payment, checkout, automatic acceptance, fixed delivery time/price, invented contact information, or new backend behavior. The Contact page itself is unchanged. Scope stops after Step 4.5.
+No form, online payment, checkout, automatic acceptance, fixed delivery time/price, invented contact information, or new backend behavior. The Contact page itself is unchanged. Step 4.5 added only the Custom Orders guide; subsequent steps are recorded below.
+
+### Step 4.6 — Portfolio Gallery (`feature/home`)
+
+- [x] Display `GallerySection.tsx` after Hero and before Shop by Category with a square thumbnail grid: three desktop, two tablet, and one phone column.
+- [x] Separate typed records in `src/config/gallery.ts`: unique ID, source/dimensions/alt text, optional title/description/category, display order, homepage visibility, and example status.
+- [x] Use four supplied business-photo views from the existing flyer and cupcake photograph through `next/image`. Missing images show labelled disabled placeholders; illustrative images can carry an explicit example badge. Do not present AI-labelled samples as completed business work.
+- [x] Native modal enlarged preview: close button, previous/next controls, ArrowLeft/ArrowRight, Home/End, Escape, Tab containment, focus restoration, background scroll locking, and translated image-position status. Full-screen preview on phones.
+- [x] EN/FR/DE visible text, alt text, modal labels, instructions, and captions. Existing theme variables and no new dependencies.
+- [x] No View All Creations link is configured because a dedicated gallery destination does not exist; enable the optional destination only after a valid route is available.
+- [x] A data prop supports future Admin uploads, localized metadata, reorder/remove, and homepage selection. Backend/upload/publishing UI remain planned.
+- [x] TypeScript, lint, translations, build, and responsive/browser accessibility checks recorded in `dev_steps.md`.
+
+Existing homepage sections/navigation/footer remain unchanged. No shopping or backend functionality. Scope stops after Step 4.6.
 
 ### Completion Criteria
 

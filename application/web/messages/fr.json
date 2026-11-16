@@ -144,5 +144,31 @@
     "confirmDescription": "Discutez des détails, des disponibilités et du prix avec l’entreprise avant de convenir de votre commande.",
     "requestCake": "Demander un gâteau personnalisé",
     "confirmationNote": "Une demande de renseignements ne constitue pas une confirmation de commande."
+  },
+  "Gallery": {
+    "title": "Nos créations en images",
+    "description": "Parcourez les créations en images et sélectionnez une photographie pour la voir de plus près.",
+    "viewAll": "Voir toutes les créations",
+    "openImage": "Agrandir l’image : {title}",
+    "close": "Fermer l’aperçu de l’image",
+    "previous": "Image précédente",
+    "next": "Image suivante",
+    "previewTitle": "Aperçu de l’image",
+    "keyboardHelp": "Utilisez les flèches gauche et droite pour parcourir les images, Début ou Fin pour aller à une extrémité, et Échap pour fermer.",
+    "position": "Image {current} sur {total}",
+    "photoPending": "Photographie bientôt disponible.",
+    "exampleImage": "Image d’exemple",
+    "roseTitle": "Gâteau d’anniversaire aux roses rouges",
+    "roseAlt": "Un gâteau d’anniversaire avec des roses rouges, des décorations blanches et une inscription dorée.",
+    "roseDescription": "Des roses rouges, des volutes blanches et une inscription d’anniversaire dorée.",
+    "cupcakesTitle": "Assortiment de cupcakes",
+    "cupcakesAlt": "Des cupcakes aux décorations turquoise et crème sur un présentoir doré à étages.",
+    "cupcakesDescription": "Des décorations turquoise et crème sur un présentoir doré à étages.",
+    "pinkTitle": "Gâteau rose personnalisé",
+    "pinkAlt": "Un gâteau rose à deux étages avec des papillons et des prénoms décoratifs.",
+    "pinkDescription": "Des papillons et des prénoms décoratifs sur deux étages roses.",
+    "pearlTitle": "Gâteau blanc décoré",
+    "pearlAlt": "Un gâteau blanc avec des décorations en forme de perles et des initiales dorées.",
+    "pearlDescription": "Des décorations en forme de perles et des initiales dorées sur un gâteau blanc."
   }
 }

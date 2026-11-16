@@ -22,7 +22,7 @@ for (const locale of locales) {
   for (const [key, value] of entries) {
     assert.equal(typeof value, 'string', `${locale}.${key}: expected a string`);
     assert(value.trim(), `${locale}.${key}: empty translation`);
-    translate(key, {page: 'Example', year: 2026, businessName: 'Example Bakery'});
+    translate(key, {page: 'Example', year: 2026, businessName: 'Example Bakery', title: 'Example image', current: 1, total: 4});
   }
   console.log(`${locale}: ${keys.length} matching, nonempty, valid messages`);
 }

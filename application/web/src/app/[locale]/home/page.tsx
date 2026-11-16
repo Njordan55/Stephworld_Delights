@@ -4,6 +4,7 @@ import CategorySection from "@/components/home/CategorySection";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import AboutPreview from "@/components/home/AboutPreview";
 import CustomOrdersSection from "@/components/home/CustomOrdersSection";
+import GallerySection from "@/components/home/GallerySection";
 
 
 
@@ -12,6 +13,7 @@ export default async function HomePage({params}: {params: Promise<{locale: strin
   return (
     <main>
       <HeroSection />
+      <GallerySection />
       <CategorySection />
       <FeaturedProducts />
       <AboutPreview />

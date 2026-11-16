@@ -144,5 +144,31 @@
     "confirmDescription": "Discuss the details, availability, and pricing with the business before agreeing on your order.",
     "requestCake": "Request a Custom Cake",
     "confirmationNote": "An inquiry is not an order confirmation."
+  },
+  "Gallery": {
+    "title": "Our creations in pictures",
+    "description": "Browse the pictured creations and select a photograph for a closer look.",
+    "viewAll": "View All Creations",
+    "openImage": "Enlarge image: {title}",
+    "close": "Close image preview",
+    "previous": "Previous image",
+    "next": "Next image",
+    "previewTitle": "Image preview",
+    "keyboardHelp": "Use the left and right arrow keys to browse images, Home or End to jump, and Escape to close.",
+    "position": "Image {current} of {total}",
+    "photoPending": "Photograph coming soon.",
+    "exampleImage": "Example image",
+    "roseTitle": "Birthday cake with red roses",
+    "roseAlt": "A birthday cake with red roses, white decorations, and a gold birthday topper.",
+    "roseDescription": "Red roses, white swirls, and a gold birthday topper.",
+    "cupcakesTitle": "Cupcake assortment",
+    "cupcakesAlt": "Cupcakes with turquoise and cream-coloured decorations on a tiered gold stand.",
+    "cupcakesDescription": "Turquoise and cream-coloured decorations on a tiered gold stand.",
+    "pinkTitle": "Personalised pink cake",
+    "pinkAlt": "A two-tier pink cake with butterflies and decorative names.",
+    "pinkDescription": "Butterflies and decorative names across two pink tiers.",
+    "pearlTitle": "White decorated cake",
+    "pearlAlt": "A white cake with pearl-style decorations and gold initials.",
+    "pearlDescription": "Pearl-style decorations and gold initials on a white cake."
   }
 }

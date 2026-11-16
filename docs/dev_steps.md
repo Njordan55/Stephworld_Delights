@@ -444,3 +444,38 @@ Refined the three step cards into compact squares (maximum 288px wide), with sma
 ### 2026-11-16 — Clearer Custom Orders icons and tablet columns
 
 Kept the compact 288px maximum card width. Step icons and titles now use the darker foreground token, with slightly stronger icon strokes and semibold titles. Tablet viewports (≥768px) use two columns; three columns still apply when the section has ≥48rem available. Cards retain their square preference but can grow vertically to keep longer translated text readable when the sidebar narrows the tablet content.
+
+### 2026-11-16 — Step 4.6: Portfolio Gallery (`feature/home`)
+
+Inspected the homepage order, existing product/image components, all current source assets, public routes, locale catalogs, design tokens, and sidebar Escape/scroll behavior. Existing user-added gallery sample files in `Image/` were preserved; no source images were moved or deleted in this step.
+
+**Implementation:**
+
+- Added `src/components/home/GallerySection.tsx` immediately below Custom Orders. Native square thumbnail buttons form a one-column phone, two-column tablet (≥768px), and three-column desktop (≥1024px) grid, with descriptive optional titles/categories.
+- Added `src/config/gallery.ts` with typed records for unique IDs, image source/dimensions/crop, required alt text key/optional locale-resolved alt text, optional title/description/category, numeric order, homepage visibility, and example status. Records are filtered and sorted without mutating the source data. A missing image renders a clearly labelled, disabled placeholder rather than a broken preview button; `isExample` marks illustrative imagery explicitly.
+- Initial records show four views from existing supplied business imagery: red-rose cake, cupcakes, personalized pink cake, and white decorated cake. Both thumbnails and enlarged views use `next/image`. Flyer crops remain focused on the individual photograph rather than opening the full flyer. The standalone cupcake photo is contained in the enlarged view so its full proportions remain visible. Original assets are unchanged. Low-resolution flyer photos remain limited by their source resolution.
+- The supplied `ai_galery_*` samples are not presented as completed business work. Future example media must be marked as an example, or replaced with approved authentic business photographs.
+- A native `dialog.showModal()` preview provides browser-managed background inertness; explicit Tab/Shift+Tab cycling keeps focus within the preview controls consistently across browsers. The close button receives initial focus; closing restores focus to the original thumbnail and restores the body's previous overflow setting. Previous/Next controls and ArrowLeft/ArrowRight wrap through available images; Home/End jump to first/last; Escape closes. Escape does not bubble to the underlying AppShell sidebar handler. Clicking the backdrop outside the dialog also closes it.
+- Preview labels, keyboard help, descriptions, and live image-position status are translated. Native dialog semantics and labelled controls avoid introducing a modal dependency. Phone previews are full-screen so the image can be larger than the one-column thumbnail; larger screens use a bounded modal. Images retain a consistent square frame, with containment for uncropped preview photos.
+- No View All Creations link is configured because a dedicated destination does not exist. Only pass `viewAllHref` after creating/checking a valid public route. No gallery/detail route or broken navigation link was added.
+- Added 24 matching Gallery keys in EN/FR/DE (136 total per language). Extended the message-validation sample values for title/current/total interpolations. Existing theme surface/background/foreground/primary/border/overlay colors, radius, inherited typography, and quick transition duration are reused.
+- Existing navigation, Hero, Categories, Featured Products, About Preview, Custom Orders, footer, and their configurations remain unchanged. Only the homepage import/render order was extended.
+
+**Future Admin / Media Library integration:**
+
+The gallery accepts an `items` prop using the exported `GalleryItem` contract. Admin workflows should validate/store uploads in persistent media storage, collect localized required alt text and optional captions, save stable IDs and numeric order, and expose homepage-selection/removal controls. Fetch published records server-side, resolve active-locale text, and pass them to `<GallerySection items={publishedGallery} />`. Set `showOnHomepage` false or remove a record to remove it from both grid and preview navigation; adjust `order` to reorder it. A missing title falls back to alt text for preview/button naming. Configure only the chosen media host for remote image URLs and revalidate each locale homepage after publication. No Admin UI, authentication, storage, backend, or publishing endpoint is implemented here.
+
+**Validation:**
+
+- `npx tsc --noEmit`, `npm run lint`, and `npm run check:i18n`: passed under Node 24.
+- `npm run build`: attempted and retried with elevated execution; the known CSS worker-port restriction still blocks Turbopack in this environment. `npm run build -- --webpack` passed without build configuration changes.
+- Chromium and WebKit functional checks passed at 390px, 768px, and 1440px in EN/FR/DE, including expanded/collapsed persistent-sidebar states. Verified position below Custom Orders, one/two/three columns, image loading/alt text and square frames, larger preview dimensions, all four thumbnail previews, initial close-button focus, Tab/Shift+Tab containment, Enter/Space opening, ArrowLeft/ArrowRight wrap, Home/End, previous/next buttons, Escape, close/backdrop dismissal, focus restoration, scroll locking/restoration, translated counter, no horizontal overflow, language switching, no unconfigured View All link, and existing sections/footer presence. Desktop gallery and phone preview screenshots were visually reviewed.
+- WebKit emitted the already documented background RSC access-control messages during automated navigation; these were recorded separately. All gallery functionality assertions passed. Tests use browser viewport emulation, not physical devices.
+- Browser harness/screenshots: `/tmp/stephworld-navigation-check/gallery.cjs`, `gallery-*.png`, and `gallery-preview-*.png`; no test dependency added to the project.
+
+Only Step 4.6 implemented. No shopping, account, backend, or later homepage functionality added. No commit created.
+
+
+### 2026-11-16 — Gallery placement revision
+
+Moved Gallery immediately after Hero and before Shop by Category at the user’s request. Current order: Hero → Gallery → Categories → Featured Products → About Preview → Custom Orders → Footer. Gallery behavior and all other components are unchanged.
