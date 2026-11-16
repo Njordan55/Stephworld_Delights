@@ -55,7 +55,8 @@ The website must also provide an Admin Dashboard that allows authorized administ
 | 03 | Global Footer | `feature/global-footer` | Completed | [x] | [] |
 | 04 | Homepage | `feature/home` | Progress | [] | [] |
 | 05 | Products | `feature/products` | Testing | [] | [] |
-| 06 | Admin Dashboard | `feature/admin` | Future | [] | [] |
+| 06 | About Us | `feature/about-us` | Testing | [] | [] |
+| 07 | Admin Dashboard | `feature/admin` | Future | [] | [] |
 
 ### status system
 To be use consistently:
@@ -391,9 +392,9 @@ The catalog is responsive, accessible, translated, and configurable. All categor
 
 | Next | Ongoing | Complete | Verification | Done |
 |---|---|---|---|---|
-| [ ] | [ ] | [ ] | [ ] | [ ] |
+| [ ] | [ ] | [ ] | [x] | [ ] |
 
-Description: Planned — reserved for future implementation. Confirm detailed scope before development.
+Description: Step 6.1 implemented; Step 6.2 final review recorded on `feature/about-us` in `dev_steps.md`. Founder/story and owner-approved values remain explicit content placeholders. Standard production build is environment-limited.
 
 #### Objective
 
@@ -408,14 +409,38 @@ Introduce Stephworld Delights using approved business information.
 
 #### Tasks
 
-- [ ] Inspect the existing page, routes, configuration, and translations.
-- [ ] Confirm approved content and layout before implementation.
-- [ ] Keep page data separate from presentation for future Admin integration.
-- [ ] Reuse global navigation, footer, and centralized theme tokens.
-- [ ] Support English, French, and German with localized links.
-- [ ] Verify accessibility and layouts at 390px, 768px, 1024px, and 1440px.
-- [ ] Run TypeScript, ESLint, translation validation, and production build checks.
-- [ ] Record implementation and validation in requirements and development notes.
+- [x] Inspect the existing page, routes, configuration, and translations.
+- [x] Confirm existing offering/brand content and implement the requested layout; mark unavailable business facts as placeholders.
+- [ ] Supply and approve founder introduction, business background/motivation, founder or bakery photograph, and business values/commitments.
+- [x] Keep page data separate from presentation for future Admin integration.
+- [x] Reuse global navigation, footer, and centralized theme tokens.
+- [x] Support English, French, and German with localized links.
+- [x] Verify accessibility and layouts at 390px, 768px, 1024px, and 1440px.
+- [x] Run TypeScript, ESLint, translation validation, and production build checks; standard-build restriction remains below.
+- [x] Record implementation and validation in requirements and development notes.
+
+#### Step 6.1 — About Us Page
+
+- [x] Preserve localized `/abouts` routing, global navigation/sidebar behavior, footer, and centralized theme tokens.
+- [x] Add Brand Introduction, Our Story, Our Creations, Our Values, and Contact CTA sections with alternating wide-screen image/text layouts and narrow-screen stacking.
+- [x] Use the real About Preview creation photograph and three authentic catalog cards; do not substitute AI concepts for business or founder photography.
+- [x] Typed content in `src/config/about.ts` supports active-locale copy overrides, approved story paragraphs, optional uploaded media, selected creation IDs, and owner-approved value cards.
+- [x] Leave missing founder/history/motivation, portrait/premises photo, and values clearly labelled. No invented biography, certification, award, commitment, contact information, or commerce behavior.
+- [x] Preserve EN/FR/DE and locale-aware product/detail/Contact links, including homepage About Preview entry.
+- [ ] Pass standard `npm run build` outside the known Turbopack CSS worker port restriction; webpack production build passes. See `dev_steps.md` for results.
+
+Validation: 24/24 Chromium/WebKit width-language combinations pass; 12 accessibility scans report no violations. Founder/story/values placeholders remain until approved content is supplied.
+
+#### Step 6.2 — About Us Final Verification
+
+- [x] Review About route/components/content, homepage preview, authentic image sources, locale configuration, theme, navigation, and footer.
+- [x] Check section order, homepage entry, Products/Contact/detail links, image decoding/proportions, sidebar states, browser errors, and language persistence in EN/FR/DE.
+- [x] Verify 390px, 768px, 1024px, and 1440px, including live resizing, readable text, consistent section padding, image loading/alt text, and footer flow.
+- [x] Check semantic headings, keyboard navigation/focus, text contrast, reduced motion, optimized/responsive images, lazy loading, and local layout shifts.
+- [x] Run TypeScript, ESLint, translation/dependency checks, webpack production build, and independent browser/content-render checks. No About application defect requiring a source change was found.
+- [ ] Pass required standard `npm run build` in a normal terminal or CI. Both normal and elevated attempts remain blocked by the existing Turbopack CSS worker port restriction (`EPERM`).
+
+The workflow remains **Testing**, not Completed or merged. Missing owner-approved business information is reported separately from technical verification and remains clearly labelled. No commit, merge, or push performed.
 
 #### Completion Criteria
 
@@ -835,7 +860,7 @@ A phase is considered complete only after its completion criteria have been veri
 | 1 | Project Setup and Documentation | Completed — verification pending |
 | 2 | Responsive Navigation System | Next |
 | 3 | Shared Utilities | Internationalization and footer: Testing |
-| 4 | Pages Layout and Components | Homepage and Products: Testing; other pages: Planned |
+| 4 | Pages Layout and Components | Homepage, Products, and About Us: Testing; other pages: Planned |
 | 5 | Centralized Theme and Content System | Planned |
 | 6 | Admin Authentication and Dashboard | Planned |
 | 7 | Media Library and Content Editor | Planned |

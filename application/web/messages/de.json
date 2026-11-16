@@ -66,8 +66,23 @@
     "contact": "Ihre Ideen besprechen"
   },
   "About": {
-    "title": "Über Stephworld Delights",
-    "description": "Dies ist die Über-uns-Seite unserer Anwendung. Hier erfahren Sie mehr über unsere Mission, unsere Werte und das Team hinter Stephworld Delights. Wir möchten unseren Nutzern das bestmögliche Erlebnis bieten und unsere Leistungen kontinuierlich verbessern."
+    "title": "Über {businessName}",
+    "description": "Stephworld Delights vereint Kuchen, Cupcakes und personalisierte Kreationen für Ihre Feierlichkeiten.",
+    "brandPhotoAlt": "Eine weiße Torte mit perlenartigen Details und goldenen Initialen, abgebildet im Flyer von Stephworld Delights.",
+    "brandPhotoCaption": "Eine Kreation aus dem Flyer von Stephworld Delights.",
+    "brandPhotoPending": "Ein Foto einer Kreation des Unternehmens wurde noch nicht hinzugefügt.",
+    "storyTitle": "Unsere Geschichte",
+    "contentPending": "Informationen folgen",
+    "storyPending": "Die Vorstellung der Gründungsperson, der geschäftliche Hintergrund und die Motivation wurden noch nicht hinzugefügt.",
+    "storyPhotoPending": "Ein Foto der Gründungsperson oder der Backstube wird noch ergänzt.",
+    "creationsTitle": "Unsere Kreationen",
+    "creationsDescription": "Entdecken Sie die Kuchen, Cupcakes und personalisierten Kreationen in unserem Portfolio. Im Katalog finden Sie weitere Fotos und Informationen.",
+    "products": "Produkte entdecken",
+    "valuesTitle": "Unsere Werte",
+    "valuesPending": "Die Werte und Zusagen des Unternehmens erscheinen hier nach Bestätigung durch die Inhaberin oder den Inhaber.",
+    "contactTitle": "Sprechen wir über Ihre Kuchenideen",
+    "contactDescription": "Teilen Sie uns den Anlass und Ihre Ideen für eine Kreation mit. Kontaktieren Sie uns, um die Details zu besprechen. Eine Anfrage ist keine Bestellbestätigung.",
+    "contact": "Kontakt aufnehmen"
   },
   "Contact": {
     "title": "Kontakt zu Stephworld Delights",

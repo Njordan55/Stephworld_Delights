@@ -66,8 +66,23 @@
     "contact": "Discuter de vos idées"
   },
   "About": {
-    "title": "À propos de Stephworld Delights",
-    "description": "Voici la page de présentation de notre application. Découvrez notre mission, nos valeurs et l’équipe de Stephworld Delights. Nous nous engageons à offrir la meilleure expérience à nos utilisateurs et à améliorer continuellement nos services."
+    "title": "À propos de {businessName}",
+    "description": "Stephworld Delights réunit gâteaux, cupcakes et créations personnalisées pour vos célébrations.",
+    "brandPhotoAlt": "Un gâteau blanc avec des détails en perles et des initiales dorées, présenté sur le dépliant de Stephworld Delights.",
+    "brandPhotoCaption": "Une création présentée sur le dépliant de Stephworld Delights.",
+    "brandPhotoPending": "Aucune photographie d’une création de l’entreprise n’a encore été ajoutée.",
+    "storyTitle": "Notre histoire",
+    "contentPending": "Informations à venir",
+    "storyPending": "La présentation de la personne à l’origine de l’entreprise, son parcours et son inspiration n’ont pas encore été ajoutés.",
+    "storyPhotoPending": "Photographie de la personne à l’origine de l’entreprise ou de la pâtisserie à ajouter.",
+    "creationsTitle": "Nos créations",
+    "creationsDescription": "Découvrez les gâteaux, cupcakes et créations personnalisées présentés dans notre portfolio. Explorez le catalogue pour plus de photographies et d’informations.",
+    "products": "Découvrir les produits",
+    "valuesTitle": "Nos valeurs",
+    "valuesPending": "Les valeurs et engagements de l’entreprise seront présentés ici après confirmation par la personne propriétaire.",
+    "contactTitle": "Parlons de vos idées de gâteau",
+    "contactDescription": "Présentez votre occasion et la création que vous imaginez. Contactez-nous pour discuter des détails ; une demande ne confirme pas une commande.",
+    "contact": "Nous contacter"
   },
   "Contact": {
     "title": "Contacter Stephworld Delights",
