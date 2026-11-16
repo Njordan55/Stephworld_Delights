@@ -55,7 +55,8 @@ The website must also provide an Admin Dashboard that allows authorized administ
 | 03 | Global Footer | `feature/global-footer` | Completed | [x] | [] |
 | 04 | Homepage | `feature/home` | Progress | [] | [] |
 | 05 | Products | `feature/products` | Testing | [] | [] |
-| 06 | Admin Dashboard | `feature/admin` | Future | [] | [] |
+| 06 | About Us | `feature/about-us` | Testing | [] | [] |
+| 07 | Admin Dashboard | `feature/admin` | Future | [] | [] |
 
 ### status system
 To be use consistently:
@@ -391,9 +392,9 @@ The catalog is responsive, accessible, translated, and configurable. All categor
 
 | Next | Ongoing | Complete | Verification | Done |
 |---|---|---|---|---|
-| [ ] | [ ] | [ ] | [ ] | [ ] |
+| [ ] | [ ] | [ ] | [x] | [ ] |
 
-Description: Planned — reserved for future implementation. Confirm detailed scope before development.
+Description: Step 6.1 implemented on `feature/about-us`; local validation recorded in `dev_steps.md`. Founder/story and owner-approved values remain explicit content placeholders. Standard production build is environment-limited.
 
 #### Objective
 
@@ -408,14 +409,27 @@ Introduce Stephworld Delights using approved business information.
 
 #### Tasks
 
-- [ ] Inspect the existing page, routes, configuration, and translations.
-- [ ] Confirm approved content and layout before implementation.
-- [ ] Keep page data separate from presentation for future Admin integration.
-- [ ] Reuse global navigation, footer, and centralized theme tokens.
-- [ ] Support English, French, and German with localized links.
-- [ ] Verify accessibility and layouts at 390px, 768px, 1024px, and 1440px.
-- [ ] Run TypeScript, ESLint, translation validation, and production build checks.
-- [ ] Record implementation and validation in requirements and development notes.
+- [x] Inspect the existing page, routes, configuration, and translations.
+- [x] Confirm existing offering/brand content and implement the requested layout; mark unavailable business facts as placeholders.
+- [ ] Supply and approve founder introduction, business background/motivation, founder or bakery photograph, and business values/commitments.
+- [x] Keep page data separate from presentation for future Admin integration.
+- [x] Reuse global navigation, footer, and centralized theme tokens.
+- [x] Support English, French, and German with localized links.
+- [x] Verify accessibility and layouts at 390px, 768px, 1024px, and 1440px.
+- [x] Run TypeScript, ESLint, translation validation, and production build checks; standard-build restriction remains below.
+- [x] Record implementation and validation in requirements and development notes.
+
+#### Step 6.1 — About Us Page
+
+- [x] Preserve localized `/abouts` routing, global navigation/sidebar behavior, footer, and centralized theme tokens.
+- [x] Add Brand Introduction, Our Story, Our Creations, Our Values, and Contact CTA sections with alternating wide-screen image/text layouts and narrow-screen stacking.
+- [x] Use the real About Preview creation photograph and three authentic catalog cards; do not substitute AI concepts for business or founder photography.
+- [x] Typed content in `src/config/about.ts` supports active-locale copy overrides, approved story paragraphs, optional uploaded media, selected creation IDs, and owner-approved value cards.
+- [x] Leave missing founder/history/motivation, portrait/premises photo, and values clearly labelled. No invented biography, certification, award, commitment, contact information, or commerce behavior.
+- [x] Preserve EN/FR/DE and locale-aware product/detail/Contact links, including homepage About Preview entry.
+- [ ] Pass standard `npm run build` outside the known Turbopack CSS worker port restriction; webpack production build passes. See `dev_steps.md` for results.
+
+Validation: 24/24 Chromium/WebKit width-language combinations pass; 12 accessibility scans report no violations. Founder/story/values placeholders remain until approved content is supplied.
 
 #### Completion Criteria
 
@@ -835,7 +849,7 @@ A phase is considered complete only after its completion criteria have been veri
 | 1 | Project Setup and Documentation | Completed — verification pending |
 | 2 | Responsive Navigation System | Next |
 | 3 | Shared Utilities | Internationalization and footer: Testing |
-| 4 | Pages Layout and Components | Homepage and Products: Testing; other pages: Planned |
+| 4 | Pages Layout and Components | Homepage, Products, and About Us: Testing; other pages: Planned |
 | 5 | Centralized Theme and Content System | Planned |
 | 6 | Admin Authentication and Dashboard | Planned |
 | 7 | Media Library and Content Editor | Planned |

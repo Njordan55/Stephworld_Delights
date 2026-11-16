@@ -66,8 +66,23 @@
     "contact": "Discuss your ideas"
   },
   "About": {
-    "title": "About Stephworld Delights",
-    "description": "This is the about page of our application. Here you can learn more about our mission, values, and the team behind Stephworld Delights. We are committed to providing the best experience for our users and continuously improving our services."
+    "title": "About {businessName}",
+    "description": "Stephworld Delights brings together cakes, cupcakes, and personalised creations for your celebrations.",
+    "brandPhotoAlt": "A white decorated cake with pearl-style details and gold initials, pictured in the Stephworld Delights flyer.",
+    "brandPhotoCaption": "A creation pictured in the Stephworld Delights flyer.",
+    "brandPhotoPending": "A business creation photograph has not been added yet.",
+    "storyTitle": "Our Story",
+    "contentPending": "Information to come",
+    "storyPending": "The founder introduction, business background, and inspiration have not been added yet.",
+    "storyPhotoPending": "Founder or bakery photograph to be added.",
+    "creationsTitle": "Our Creations",
+    "creationsDescription": "Discover the cakes, cupcakes, and personalised creations pictured in our portfolio. Explore the catalog for more photographs and information.",
+    "products": "Explore Products",
+    "valuesTitle": "Our Values",
+    "valuesPending": "Business values and commitments will appear here once confirmed by the owner.",
+    "contactTitle": "Let’s talk about your cake ideas",
+    "contactDescription": "Share your occasion and the creation you have in mind. Contact us to discuss the details; an inquiry is not an order confirmation.",
+    "contact": "Contact Us"
   },
   "Contact": {
     "title": "Stephworld Delights Contact Page",
