@@ -69,5 +69,31 @@
   "PageIndicator": {
     "current": "Page actuelle : {page}",
     "fallback": "Page"
+  },
+  "Footer": {
+    "description": "Découvrez nos gâteaux, cupcakes et créations spéciales pour vos moments inoubliables.",
+    "headings": {
+      "explore": "Découvrir",
+      "service": "Service client",
+      "legal": "Informations légales",
+      "social": "Suivez-nous"
+    },
+    "links": {
+      "home": "Accueil",
+      "products": "Produits",
+      "abouts": "À propos",
+      "contact": "Contact",
+      "customOrders": "Commandes personnalisées",
+      "faq": "Questions fréquentes",
+      "imprint": "Mentions légales",
+      "privacy": "Politique de confidentialité",
+      "terms": "Conditions générales",
+      "instagram": "Instagram",
+      "tiktok": "TikTok",
+      "whatsapp": "WhatsApp"
+    },
+    "unavailable": "Bientôt disponible",
+    "socialPending": "Nos liens vers les réseaux sociaux seront partagés ici dès qu’ils seront disponibles.",
+    "copyright": "© {year} {businessName}. Tous droits réservés."
   }
 }

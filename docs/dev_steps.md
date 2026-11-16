@@ -201,3 +201,42 @@ Reproduced a Safari/WebKit-specific regression: selecting French closed the drop
 Updated `LanguageSelector.tsx` to dismiss on blur only when focus moves to a known element outside the selector. The existing outside-pointer handler still dismisses outside clicks; keyboard focus handling and Escape remain available. This preserves the clicked menu item's handler without changing routing or cookie behavior. ESLint, TypeScript, and the webpack production build passed. Cross-browser regression harness: `/tmp/stephworld-navigation-check/cross-browser-language.cjs`.
 
 Cross-browser checks passed in WebKit and Chromium at 1440px, 768px, and 390px: mouse/keyboard language changes, updated active label/check, translated content, query/hash preservation, cookie/refresh, outside dismissal, and Escape. No browser page errors.
+
+
+### 2026-11-16 — Global Footer (`feature/global-footer`)
+
+Inspected the shared locale layout, AppShell, theme tokens, translation architecture, and current public routes before editing. The branch was already `feature/global-footer` with a clean working tree.
+
+**Implementation:**
+
+- Added a reusable server-rendered `src/components/layout/Footer.tsx` after page content in `[locale]/layout.tsx`. It is passed through AppShell with the page, so it participates in the existing content margin/width transitions without changing sidebar state or handlers. It appears on all existing public pages, including the retained cart placeholder, without changing commerce behavior.
+- Logo and business name link to the localized homepage; the slogan reuses the existing Navigation translation. The short description is configurable via the Footer message namespace and uses content already present on the homepage.
+- Four sections use a single-column phone, two-column tablet (≥768px), and four-column desktop (≥1024px) grid. The footer stays in document flow, wraps long labels, and uses existing surface/foreground/border/primary colors and quick transition duration.
+- Added `src/config/footer.ts` for business name/logo, description key, navigation destinations/visibility, and optional social URLs. Local links use the existing locale-aware Link; enter routes without language prefixes.
+- Explore links to Home, Products, About Us. Customer Service links to Contact; Custom Orders currently links to the same Contact page for inquiries. No new ordering workflow was added.
+- Imprint and Privacy Policy have non-clickable translated “Coming soon” labels. FAQ and Terms are configured but hidden. No legal-policy content was written. Enable a destination only after the corresponding page exists and its content is approved.
+- Instagram, TikTok, and WhatsApp have null URL values. A translated message appears in Follow Us until configured. Approved HTTPS URLs render as normal external links in the same tab. Empty/malformed/non-HTTPS URLs and URLs containing credentials are excluded; no business contact details or social accounts were invented.
+- Added 20 matching Footer translation keys per locale (69 total keys in EN/FR/DE). Updated the existing message-check script's sample interpolation values to validate copyright year/business-name arguments.
+- Copyright year is generated during page rendering. Because these public pages are prerendered, rebuild the site at the start of a new year to refresh it.
+
+**Configuration:**
+
+- Edit branding/destinations in `application/web/src/config/footer.ts`.
+- Edit translated descriptions, group headings, labels, notices, and copyright wording in `messages/en.json`, `fr.json`, and `de.json`.
+- To enable Imprint/Privacy, create approved public pages and replace null hrefs with their unprefixed routes. For FAQ/Terms also change `visible` to true. Set only approved profile/contact URLs in `footerSocialLinks`.
+
+**Validation:**
+
+- `npx tsc --noEmit`, `npm run lint`, and `npm run check:i18n`: passed under Node 24.
+- `npm run build` was attempted and retried with elevated execution. Turbopack still cannot bind its CSS worker port in this environment. `npm run build -- --webpack` passed; no build scripts/configuration changed.
+- Social configuration checks passed: empty, malformed, non-HTTPS, and credential-bearing URLs are filtered out; a neutral HTTPS test fixture is accepted without modifying the actual configuration.
+- Chromium and WebKit functional checks passed at 1440px, 768px, 390px, and 320px in EN/FR/DE: four/two/one columns, normal-flow positioning after main content, no horizontal overflow, valid locale-preserving links, language switching, unavailable/future/social states, sidebar collapse/close alignment, and phone overlay behavior. Each of the 15 public locale/page combinations has exactly one footer. Screenshots were reviewed for desktop, tablet, and phone. These are browser viewport tests, not physical-device tests.
+- Browser regression harness and screenshots: `/tmp/stephworld-navigation-check/footer.cjs` and `footer-*.png`. Browser tooling remains outside project dependencies.
+- WebKit reported access-control console messages for background Contact RSC prefetches during automated page/language changes. These messages also occurred with footer prefetch disabled; direct destinations returned HTTP 200 and visible navigation worked. The final harness records these specific background messages separately from functional/page errors. No navigation behavior was changed to suppress them.
+
+No authentication, checkout, cart logic, homepage component, or navigation behavior changes. No commit created; review and merge remain manual.
+
+
+### 2026-11-16 — Compact footer spacing
+
+Removed the repeated footer logo, business name, and slogan at the user’s request. Kept the localized description and copyright. Halved category gaps, heading margins, link padding/list gaps, unavailable-note margins, outer vertical padding, and copyright spacing while retaining readable text line heights.

@@ -69,5 +69,31 @@
   "PageIndicator": {
     "current": "Aktuelle Seite: {page}",
     "fallback": "Seite"
+  },
+  "Footer": {
+    "description": "Entdecken Sie unsere Kuchen, Cupcakes und besonderen Kreationen für Ihre unvergesslichen Momente.",
+    "headings": {
+      "explore": "Entdecken",
+      "service": "Kundenservice",
+      "legal": "Rechtliches",
+      "social": "Folgen Sie uns"
+    },
+    "links": {
+      "home": "Startseite",
+      "products": "Produkte",
+      "abouts": "Über uns",
+      "contact": "Kontakt",
+      "customOrders": "Individuelle Bestellungen",
+      "faq": "Häufige Fragen",
+      "imprint": "Impressum",
+      "privacy": "Datenschutzerklärung",
+      "terms": "Allgemeine Geschäftsbedingungen",
+      "instagram": "Instagram",
+      "tiktok": "TikTok",
+      "whatsapp": "WhatsApp"
+    },
+    "unavailable": "Demnächst verfügbar",
+    "socialPending": "Unsere Social-Media-Links werden hier veröffentlicht, sobald sie verfügbar sind.",
+    "copyright": "© {year} {businessName}. Alle Rechte vorbehalten."
   }
 }
