@@ -132,5 +132,17 @@
     "photoAlt": "A white cake with pearl-style decorations and gold initials, pictured in the Stephworld Delights flyer.",
     "photoCaption": "A creation pictured in the Stephworld Delights flyer.",
     "photoPending": "A Stephworld Delights business photograph will be added here."
+  },
+  "CustomOrders": {
+    "title": "A custom cake starts with your idea.",
+    "description": "From inspiration to a conversation, here’s how to request a personalised creation.",
+    "chooseTitle": "Choose",
+    "chooseDescription": "Explore cake styles and pictured creations to gather inspiration.",
+    "requestTitle": "Request",
+    "requestDescription": "Share the occasion, preferred design, size, and date when you contact us.",
+    "confirmTitle": "Confirm",
+    "confirmDescription": "Discuss the details, availability, and pricing with the business before agreeing on your order.",
+    "requestCake": "Request a Custom Cake",
+    "confirmationNote": "An inquiry is not an order confirmation."
   }
 }

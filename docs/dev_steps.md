@@ -406,3 +406,41 @@ Edit the AboutPreview message namespace in each language file and media/action s
 - Browser harness/screenshots: `/tmp/stephworld-navigation-check/about-preview.cjs` and `about-preview-*.png`. No browser tooling added to project dependencies.
 
 Only Step 4.4 implemented. No authentication, cart, checkout, payments, backend, or later homepage work added. No commit created.
+
+### 2026-11-16 — Step 4.5: Custom Orders (`feature/home`)
+
+Inspected the homepage order, Contact placeholder, category metadata, translation namespaces, and theme tokens. The branch was already `feature/home` and the working tree was clean. There was no existing Custom Orders journey component.
+
+**Implementation:**
+
+- Added reusable `src/components/home/CustomOrdersSection.tsx` immediately below About Preview. An ordered list explains Choose → Request → Confirm. Choose covers styles/inspiration; Request covers occasion, preferred design, size, and date; Confirm directs customers to discuss details, availability, and pricing with the business before agreeing on an order.
+- A prominent Request a Custom Cake link opens the existing locale-aware `/contact` route. The section explicitly states that an inquiry is not an order confirmation. The Contact page remains unchanged, including its placeholder status; no submission form or contact information was added.
+- Used existing Lucide icons (Compass, MessageSquare, ClipboardCheck), with decorative step numbers and icon treatment hidden from assistive technology to avoid duplicating the ordered list. The CTA has visible keyboard focus and a minimum 44px height.
+- Three steps appear horizontally at ≥48rem of available content width using a container query. Narrower tablet/phone content stacks vertically for readability, including when the sidebar expands. Existing background/surface/foreground/primary/border variables, inherited typography, radius, and quick transition duration are reused. No dependencies added.
+- Added `src/config/custom-orders.ts` containing typed steps, icon choices, text keys, and action destination. The content prop accepts future Admin-published, locale-resolved titles, descriptions, and note text, without changing the presentation component. Admin storage/publishing remains future work.
+- Added ten matching CustomOrders message keys in English, French, and German (112 total keys per language). No fixed price/date/delivery promise or automatic-acceptance claim appears in the copy.
+- Existing Hero, Categories, Featured Products, About Preview, navigation, footer, and product/contact routes are unchanged. The homepage changed only to import/render the new section.
+
+**Changing content later:**
+
+Edit the CustomOrders namespace in each message file; configure step order/icon choices and the locale-neutral Contact destination in `src/config/custom-orders.ts`. A future Admin content service can pass approved, active-locale content to `<CustomOrdersSection content={publishedCustomOrders} />` and revalidate locale homepages after publication. This does not create an ordering backend or automate order acceptance.
+
+**Validation:**
+
+- `npx tsc --noEmit`, `npm run lint`, and `npm run check:i18n`: passed under Node 24.
+- `npm run build`: attempted and retried with elevated execution; the known Turbopack CSS worker-port restriction persists in this environment. `npm run build -- --webpack` passed without build configuration changes.
+- Chromium and WebKit functional checks passed at 390px, 768px, and 1440px in EN/FR/DE, including expanded/collapsed persistent-sidebar states. Verified placement below About Preview, three readable ordered steps/icons, horizontal desktop/stacked smaller layouts, translated descriptions/note, localized Contact CTA click with HTTP 200 destination, language switching, no form controls, no horizontal overflow, and existing sections/footer presence. Desktop and phone screenshots were visually reviewed.
+- WebKit emitted the previously documented background RSC access-control messages during automated navigation; these are recorded separately. All functional assertions passed; shared navigation behavior was not altered. Tests are browser viewport emulation rather than physical-device checks.
+- Browser harness/screenshots: `/tmp/stephworld-navigation-check/custom-orders.cjs` and `custom-orders-*.png`; no test dependencies added to the project.
+
+Only Step 4.5 implemented. No form, checkout, payment, account, invented contact channel, or later homepage functionality added. No commit created.
+
+
+### 2026-11-16 — Finer Custom Orders cards
+
+Refined the three step cards into compact squares (maximum 288px wide), with smaller corner radii, finer 20px icons, lighter headings, and softer primary-colored text on a slightly toned-down surface derived from existing theme variables. Reduced padding and gaps while retaining readable 14px descriptions and the existing CTA/navigation.
+
+
+### 2026-11-16 — Clearer Custom Orders icons and tablet columns
+
+Kept the compact 288px maximum card width. Step icons and titles now use the darker foreground token, with slightly stronger icon strokes and semibold titles. Tablet viewports (≥768px) use two columns; three columns still apply when the section has ≥48rem available. Cards retain their square preference but can grow vertically to keep longer translated text readable when the sidebar narrows the tablet content.

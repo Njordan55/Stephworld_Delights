@@ -132,5 +132,17 @@
     "photoAlt": "Ein weißer Kuchen mit perlenförmigen Verzierungen und goldenen Initialen aus dem Flyer von Stephworld Delights.",
     "photoCaption": "Eine Kreation aus dem Flyer von Stephworld Delights.",
     "photoPending": "Hier wird ein Unternehmensfoto von Stephworld Delights ergänzt."
+  },
+  "CustomOrders": {
+    "title": "Ihr individueller Kuchen beginnt mit Ihrer Idee.",
+    "description": "Von der Inspiration zum Gespräch: So fragen Sie eine personalisierte Kreation an.",
+    "chooseTitle": "Auswählen",
+    "chooseDescription": "Entdecken Sie Kuchenstile und unsere abgebildeten Kreationen als Inspiration.",
+    "requestTitle": "Anfragen",
+    "requestDescription": "Teilen Sie uns bei der Kontaktaufnahme den Anlass, das gewünschte Design, die Größe und das Datum mit.",
+    "confirmTitle": "Bestätigen",
+    "confirmDescription": "Besprechen Sie Details, Verfügbarkeit und Preis mit dem Unternehmen, bevor Sie Ihre Bestellung vereinbaren.",
+    "requestCake": "Individuellen Kuchen anfragen",
+    "confirmationNote": "Eine Anfrage ist keine Bestellbestätigung."
   }
 }

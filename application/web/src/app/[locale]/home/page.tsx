@@ -3,6 +3,7 @@ import HeroSection from "@/components/home/HeroSection";
 import CategorySection from "@/components/home/CategorySection";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import AboutPreview from "@/components/home/AboutPreview";
+import CustomOrdersSection from "@/components/home/CustomOrdersSection";
 
 
 
@@ -14,6 +15,7 @@ export default async function HomePage({params}: {params: Promise<{locale: strin
       <CategorySection />
       <FeaturedProducts />
       <AboutPreview />
+      <CustomOrdersSection />
     </main>
   );
 }

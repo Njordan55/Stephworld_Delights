@@ -132,5 +132,17 @@
     "photoAlt": "Un gâteau blanc avec des décorations en forme de perles et des initiales dorées, présenté dans le dépliant de Stephworld Delights.",
     "photoCaption": "Une création présentée dans le dépliant de Stephworld Delights.",
     "photoPending": "Une photographie de l’entreprise Stephworld Delights sera ajoutée ici."
+  },
+  "CustomOrders": {
+    "title": "Un gâteau personnalisé commence par votre idée.",
+    "description": "De l’inspiration à la discussion, voici comment demander une création personnalisée.",
+    "chooseTitle": "Choisir",
+    "chooseDescription": "Explorez les styles de gâteaux et nos créations en images pour trouver l’inspiration.",
+    "requestTitle": "Faire une demande",
+    "requestDescription": "Lors de votre prise de contact, précisez l’occasion, le décor souhaité, la taille et la date.",
+    "confirmTitle": "Confirmer",
+    "confirmDescription": "Discutez des détails, des disponibilités et du prix avec l’entreprise avant de convenir de votre commande.",
+    "requestCake": "Demander un gâteau personnalisé",
+    "confirmationNote": "Une demande de renseignements ne constitue pas une confirmation de commande."
   }
 }

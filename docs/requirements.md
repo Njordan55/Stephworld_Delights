@@ -360,7 +360,19 @@ No purchasing, authentication, payment, or new backend functionality. Hero and C
 - [x] Existing theme tokens and inherited typography; no new dependencies, commerce functionality, or unrelated component changes.
 - [x] TypeScript, lint, translations, build, and responsive browser checks recorded in `dev_steps.md`.
 
-Scope stops after Step 4.4. Existing Hero, Categories, Featured Products, navigation, and footer remain unchanged.
+Step 4.4 added only About Preview; subsequent steps are recorded below. Existing Hero, Categories, Featured Products, navigation, and footer remain unchanged.
+
+### Step 4.5 — Custom Orders (`feature/home`)
+
+- [x] Add `CustomOrdersSection.tsx` immediately after About Preview, preserving all existing sections.
+- [x] Three ordered steps with existing Lucide icons: Choose (styles/inspiration), Request (occasion/design/size/date), Confirm (discuss details/availability/pricing with the business).
+- [x] Prominent Request a Custom Cake CTA to the localized existing `/contact` page. An inquiry is explicitly not an order confirmation.
+- [x] Three columns when available content width is ≥48rem, two at tablet viewports (≥768px), and one on phones. Compact square cards can grow vertically for longer translations in narrow sidebar states; icons and titles use the darker foreground token.
+- [x] EN/FR/DE text in the CustomOrders namespace; configurable typed content/steps/action in `src/config/custom-orders.ts` with future Admin content-prop support.
+- [x] Existing design tokens, inherited typography, keyboard focus styling, and reduced-motion support. No new dependencies.
+- [x] TypeScript, lint, translations, build, and responsive browser checks recorded in `dev_steps.md`.
+
+No form, online payment, checkout, automatic acceptance, fixed delivery time/price, invented contact information, or new backend behavior. The Contact page itself is unchanged. Scope stops after Step 4.5.
 
 ### Completion Criteria
 
