@@ -192,5 +192,16 @@
     "pearlTitle": "Weißer verzierter Kuchen",
     "pearlAlt": "Ein weißer Kuchen mit perlenförmigen Verzierungen und goldenen Initialen.",
     "pearlDescription": "Perlenförmige Verzierungen und goldene Initialen auf einem weißen Kuchen."
+  },
+  "ProductDetails": {
+    "back": "Zurück zu den Produkten",
+    "photos": "Produktfotos",
+    "selectPhoto": "Ein Foto auswählen",
+    "showPhoto": "Foto {current} anzeigen",
+    "imagePosition": "Foto {current} von {total}",
+    "description": "Über diese Kreation",
+    "customization": "Informationen zur Personalisierung",
+    "inquiry": "Informationen anfragen",
+    "inquiryNote": "Kontaktieren Sie uns, um Ihre Ideen zu besprechen. Eine Anfrage ist keine Bestellbestätigung."
   }
 }

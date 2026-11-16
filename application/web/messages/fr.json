@@ -192,5 +192,16 @@
     "pearlTitle": "Gâteau blanc décoré",
     "pearlAlt": "Un gâteau blanc avec des décorations en forme de perles et des initiales dorées.",
     "pearlDescription": "Des décorations en forme de perles et des initiales dorées sur un gâteau blanc."
+  },
+  "ProductDetails": {
+    "back": "Retour aux produits",
+    "photos": "Photographies du produit",
+    "selectPhoto": "Choisir une photographie",
+    "showPhoto": "Afficher la photographie {current}",
+    "imagePosition": "Photographie {current} sur {total}",
+    "description": "À propos de cette création",
+    "customization": "Informations de personnalisation",
+    "inquiry": "Demander des informations",
+    "inquiryNote": "Contactez-nous pour discuter de vos idées. Une demande ne confirme pas une commande."
   }
 }

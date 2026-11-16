@@ -192,5 +192,16 @@
     "pearlTitle": "White decorated cake",
     "pearlAlt": "A white cake with pearl-style decorations and gold initials.",
     "pearlDescription": "Pearl-style decorations and gold initials on a white cake."
+  },
+  "ProductDetails": {
+    "back": "Back to Products",
+    "photos": "Product photographs",
+    "selectPhoto": "Choose a photograph",
+    "showPhoto": "Show photograph {current}",
+    "imagePosition": "Photograph {current} of {total}",
+    "description": "About this creation",
+    "customization": "Customization information",
+    "inquiry": "Request Information",
+    "inquiryNote": "Contact us to discuss your ideas. An inquiry is not an order confirmation."
   }
 }

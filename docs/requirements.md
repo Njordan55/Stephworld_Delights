@@ -320,7 +320,7 @@ The homepage is responsive, functional and prepared for administrator-managed co
 |---|---|---|---|---|
 | [ ] | [ ] | [ ] | [x] | [ ] |
 
-Description: Step 5.1 implemented on `feature/products`; verification results and environment limitations are recorded in `dev_steps.md`. Not committed or merged.
+Description: Steps 5.1 and 5.2 implemented on `feature/products`; verification results and environment limitations are recorded in `dev_steps.md`. Not committed or merged.
 
 #### Objective
 
@@ -355,7 +355,19 @@ Develop the public product catalog for the Digital Flyer & Portfolio stage.
 
 Validation: 18/18 Chromium/WebKit width-language combinations pass; nine Chromium accessibility scans report no violations. See `dev_steps.md` for scope and limitations.
 
-No product-detail route, purchasing, backend, Admin interface, invented prices, or availability is added. User-added AI sample files in `Image/` are preserved and displayed only as labelled presentation concepts.
+No purchasing, backend, Admin interface, invented prices, or availability is added. User-added AI sample files in `Image/` are preserved and displayed only as labelled presentation concepts.
+
+#### Step 5.2 — Product Details
+
+- [x] Localized `/[locale]/products/[slug]` pages use the existing central catalog lookup; seven known slugs per language, with existing 404 handling for unknown slugs.
+- [x] Catalog and homepage featured-card titles and View Details actions link to the matching localized detail page. No second product data source.
+- [x] Product title, category, existing description, main photograph/fallback, labelled AI concepts, localized inquiry button, and category-filtered Back to Products link.
+- [x] Optional detailed-description/customization fields render only when supplied. No new facts, flavors, sizes, ingredients, prices, or availability invented.
+- [x] Optional additional photographs with accessible main-image selection, translated control labels/position, keyboard activation, and selected-state semantics. Existing records have one photo each; additional-image behavior is validated with temporary fixture data, not published invented photos.
+- [x] Shared ProductImage renderer preserves `next/image` optimization/crops. Only the image selector needs a client boundary; page/content remain server-rendered.
+- [x] Available-width layout places photos left/information right on wide screens, stacks photos above text on smaller screens, and accommodates sidebar changes.
+- [x] Inquiry links to localized `/contact?product=<slug>`; Contact remains its existing placeholder and does not submit orders or process the query yet.
+- [ ] Complete standard Turbopack build verification outside the documented environment restriction. Detailed validation results are in `dev_steps.md`.
 
 #### Completion Criteria
 

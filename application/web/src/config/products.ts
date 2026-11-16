@@ -12,6 +12,7 @@ type FeaturedTextKey = keyof typeof messages.FeaturedProducts;
 type CategoryKey = 'cakes' | 'cupcakes' | 'customOrders';
 export type ProductPresentation = {
   id: string;
+  slug?: string;
   nameKey: FeaturedTextKey;
   descriptionKey: FeaturedTextKey;
   categoryKey: CategoryKey;
@@ -36,6 +37,11 @@ export type CatalogProduct = ProductPresentation & {
   categorySlug: 'cakes' | 'cupcakes' | 'custom-orders';
   featured: boolean;
   displayOrder: number;
+  additionalImages?: readonly NonNullable<ProductPresentation['image']>[];
+  detailedDescriptionKey?: FeaturedTextKey;
+  detailedDescription?: string;
+  customizationKey?: FeaturedTextKey;
+  customization?: string;
   // Reserved data only: never infer or display missing commercial information.
   price?: {amountMinor: number; currency: string};
   availability?: 'available' | 'unavailable' | 'on-request';
@@ -44,6 +50,10 @@ export type CatalogProduct = ProductPresentation & {
 export function selectCatalogProducts(products: readonly CatalogProduct[], categorySlug?: string) {
   return products.filter((product) => !categorySlug || product.categorySlug === categorySlug)
     .sort((a, b) => a.displayOrder - b.displayOrder || a.id.localeCompare(b.id));
+}
+
+export function findCatalogProduct(slug: string) {
+  return catalogProducts.find((product) => product.slug === slug);
 }
 
 // Descriptive portfolio labels, not official product names, prices, or availability.
