@@ -479,3 +479,53 @@ Only Step 4.6 implemented. No shopping, account, backend, or later homepage func
 ### 2026-11-16 — Gallery placement revision
 
 Moved Gallery immediately after Hero and before Shop by Category at the user’s request. Current order: Hero → Gallery → Categories → Featured Products → About Preview → Custom Orders → Footer. Gallery behavior and all other components are unchanged.
+
+### 2026-11-16 — Step 4.7: Homepage final verification (`feature/home`)
+
+**Architecture and scope:**
+
+Reviewed all six homepage sections, their separate typed configuration files, shared storefront layout/navigation/footer, locale routing/request configuration, three message catalogs, and centralized theme variables. Preserved the requested order: Hero → Gallery → Shop by Category → Featured Products → About Preview → Custom Orders → Footer. Most homepage presentation remains server-rendered; Gallery requires client state for its interactive preview. Passing server-rendered children through AppShell does not convert them into client components. No new feature, content redesign, application dependency, authentication, checkout, backend, or route was introduced.
+
+No broken imports or unused runtime dependency was identified. Repeated flyer-crop/image calculations across sections are a future shared-helper candidate; a broad refactor was deliberately deferred. `ActivePageIndicator.tsx` is an unimported legacy component, including an obsolete `--swd-border-radius` reference; it has no effect on the current homepage. The default ThemeProvider wrapper is unused, but its exported `getThemeVariables` helper is actively used by the locale layout. These inactive leftovers were reported rather than removed during verification.
+
+**Issues found and corrected:**
+
+- Navigation slogan used secondary gray on a light surface: axe measured only 2.31:1 contrast. It now uses the existing primary token. No brand color was added.
+- Initial desktop/tablet sidebar defaults were applied only after hydration, shifting all page content. AppShell and LeftSidebar now reserve the correct responsive widths in CSS before hydration, then retain the existing state-based collapse/open behavior. Default widths remain 280px desktop, 64px tablet, and closed phone.
+- Added reduced-motion overrides for transitions, animations, hover/press movement, and smooth scrolling without resetting the sidebar's structural translate offsets. Normal 500ms sidebar transitions remain unchanged.
+- Phone-menu background content is now inert while open. Escape restores focus to the hamburger. Disabled account controls no longer advertise an unavailable controlled sidebar; account/cart remain disabled and their implementation remains reserved.
+- With the tablet sidebar expanded, the previous forced square Custom Orders cards let longer translated text extend beyond their borders. A single constrained grid track with a square sizing pseudo-element now keeps the compact square preference while allowing content to determine a taller minimum height. Three/two/one-column rules and existing sizes/colors remain unchanged.
+
+**Automated validation:**
+
+- `npx tsc --noEmit`, `npm run lint`, and `npm run check:i18n`: passed under Node 24. All 136 keys per language match, are nonempty, and have valid message syntax.
+- `npm ls --depth=0`: passed; existing application dependencies resolve without missing packages. Browser audit tools were installed only under `/tmp`, not in the application.
+- `npm run build`: attempted normally and with elevated execution. Turbopack is still blocked by this environment's CSS worker port binding restriction (`EPERM`). This is an environment limitation, not a passing standard build.
+- `npm run build -- --webpack`: passed with TypeScript and all 20 prerendered paths generated. No build script or bundler configuration was changed to hide the standard-build limitation.
+
+**Browser verification and remaining failures:**
+
+- Tested Chromium and WebKit at 390, 768, 1024, and 1440px in EN/FR/DE: 24 combinations. Functional assertions passed in all 24: correct section order, localized headings, loaded photographs with nonempty alt text and undistorted frames, gallery opening/closing and every thumbnail, modal semantics/initial focus/Tab containment/Escape/focus restoration, image keyboard navigation, sidebar defaults/collapse/close/reopen, mobile overlay/inert background, reduced motion, category queries, every homepage CTA, active navigation, footer links, and no horizontal overflow or card text overflow in settled states.
+- Language switching retained the route, category/filter query, and hash; refresh retained the selected locale. Tested 21 unique localized link destinations with HTTP 200 responses, legacy redirects with default English and saved-locale behavior, and invalid routes returning 404. Disabled account/cart stayed disabled.
+- Chromium: **12/12 fully passed**, with no console errors, page errors, failed HTTP responses, or warnings. **24 axe scans** (page plus gallery dialog for each combination) reported no WCAG A/AA violations. Automated scans and keyboard checks are not a full accessibility certification.
+- WebKit: functional assertions passed in **12/12**, but **12/12 failed the final clean-page-error assertion**. Each emitted one background `/<locale>/contact?_rsc=… due to access control checks` page error during the explicit refresh after switching language. No console errors or HTTP error responses were recorded. A phase-traced run isolated the event to refresh; an otherwise equivalent one-case control without refresh passed with zero errors. Locale persistence and all subsequent UI actions still worked. This repeats the earlier recorded WebKit issue; request cancellation during reload is a possible explanation, not a proven root cause. It remains unresolved and is not filtered/allowlisted or described as a clean browser pass. Recheck in supported Safari and CI before merge; shared prefetch/routing behavior was not broadly changed during homepage review.
+- macOS WebKit skips buttons with plain Tab under its default keyboard traversal setting. The outer-gallery focus check used verified Option-Tab; the modal's explicit Tab/Shift+Tab containment passed. No application workaround was introduced for a browser keyboard preference.
+- Live viewport transitions desktop → tablet → phone → tablet → desktop passed in both engines, applying the correct defaults on breakpoint changes. At 768px with the sidebar expanded, German cards measured 202px inner width and 252px inner height, with equal scroll/client dimensions and no overflowing text.
+- Visually reviewed full-page content at all four widths, top-of-page viewport screenshots in German, and expanded-tablet Custom Orders cards. Full-page screenshot capture can reset emulated sidebar state at the 1024px breakpoint; functional state assertions were kept separate from that capture artifact.
+
+Initial Chromium layout shift (local PerformanceObserver, entries without recent user input):
+
+| Width | Before fixes (EN) | After fixes (maximum across EN/FR/DE) |
+|---|---:|---:|
+| 390px | 0 | 0 |
+| 768px | 0.05549 | 0.00000275 |
+| 1024px | 0.64337 | 0.00000201 |
+| 1440px | 0.18666 | 0.00000102 |
+
+Temporary reproducible harnesses/reports/screenshots: `/tmp/stephworld-navigation-check/home-final.cjs`, `home-final-chromium.json`, `home-final-webkit.cjs`, `home-final-webkit.json`, `home-webkit-trace.cjs`, `home-webkit-no-refresh.cjs`, `home-resize.cjs`, `final-top-*.png`, and `final-tablet-expanded-cards.png`. These local artifacts are not committed or added as application dependencies.
+
+**Performance and content limitations:**
+
+Images use `next/image`, responsive sizes and reserved frames; Hero is prioritized and below-the-fold photos are lazy-loaded. Existing optimized flyer crops still inherit their source resolution; the Hero remains a visibly labelled example pending an approved photograph. Local layout-shift measurements do not certify field Core Web Vitals or network-dependent LCP. Products, About, and Contact remain the existing placeholder destinations, not completed business workflows. Legal/social destinations stay unavailable until configured. No physical-device or assistive-technology screen-reader certification was performed.
+
+The workflow remains **Testing** until the standard production build passes in a normal local terminal or CI and the WebKit refresh error is resolved or explicitly assessed. Requirements status is intentionally not marked Completed/merged. No commit, merge, or push was performed.

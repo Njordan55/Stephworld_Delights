@@ -51,8 +51,8 @@ The website must also provide an Admin Dashboard that allows authorized administ
 | # | Workflow | Git Branch | Status | Merged to develop | Published to main |
 |---|---|---|---|---|---|
 | 01 | Global Navigation | `feature/global-navigation` | Completed | [x] | [] |
-| 02 | Internationalization | `feature/i18n` | Testing | [] | [] |
-| 03 | Global Footer | `feature/global-footer` | Testing | [] | [] |
+| 02 | Internationalization | `feature/i18n` | Completed | [x] | [] |
+| 03 | Global Footer | `feature/global-footer` | Completed | [x] | [] |
 | 04 | Homepage | `feature/home` | Progress | [] | [] |
 | 05 | Products | `feature/products` | Planned | [] | [] |
 | 06 | Admin Dashboard | `feature/admin` | Future | [] | [] |
@@ -235,7 +235,7 @@ Design reference: Collapsible dashboard-style navigation with a persistent activ
 All navigation components work correctly and use configurable styling instead of hardcoded brand colors.
 
 ---
-## Utility tool before continuing with phase 3
+## Phase 3 — Shared Utilities
 
 ### Internationalization (i18n)
 
@@ -273,20 +273,20 @@ Validation details, environment limitations, and migration notes are recorded in
 To activate a future destination, create its public page and set the corresponding non-prefixed `href` in `footerContent.groups`. Set `visible: true` for FAQ/Terms when ready. Supply approved social profile/contact URLs in `footerSocialLinks`. Localized description and labels are edited in `messages/{en,fr,de}.json`; do not add business details without approval.
 
 ---
-## Phase 3 — Homepage Layout and Components
+## Phase 4 — Pages Layout and Components
+### 4.1 Homepage
 
-|||**Status:** |||
+| Next | Ongoing | Complete | Verification | Done |
 |---|---|---|---|---|
-|[0] Next  | [x]ongoing  | [ ]complet  | [ ]verification  |  [ ]done |
-|---|---|---|---|---|
+| [ ] | [ ] | [ ] | [x] | [ ] |---|
 
-Description: Planned
+Description: Implemented; verification pending. Standard production build and WebKit refresh-error assessment remain merge gates. See Step 4.7 in `dev_steps.md`.
 
-### Objective
+#### Objective
 
 Develop the public homepage.
 
-### Features
+#### Features
 
 - Hero section.
 - Featured products.
@@ -297,103 +297,146 @@ Develop the public homepage.
 - Social media links.
 - Footer.
 
-### Tasks
+#### Tasks
 
-- [ ] Create reusable homepage sections.
-- [ ] Implement responsive layouts.
-- [ ] Integrate initial images and logo.
-- [ ] Add placeholder or initial business content.
-- [ ] Prepare content for future admin editing.
-- [ ] Optimize images.
+- [x] Create reusable homepage sections.
+- [x] Implement responsive layouts.
+- [x] Integrate initial images and logo.
+- [x] Add placeholder or initial business content.
+- [x] Prepare content for future admin editing.
+- [x] Optimize images.
 - [ ] Add SEO metadata.
-- [ ] Test desktop and mobile layouts.
+- [x] Test desktop and mobile layouts.
 
-### Step 4.1 — Hero Section (`feature/home`)
-
-- [x] Extend the existing `HeroSection.tsx`; preserve the homepage route and other sections.
-- [x] Brand introduction, prominent real cake photograph, short localized message, Explore Products, and custom-order/contact action.
-- [x] Use the supplied example from `Image/ai_cak_ex.png`, served as `public/images/home/ai_cak_ex.jpg`, with an explicitly translated example caption. Use `next/image` with responsive sizes and preload; no new product imagery generated.
-- [x] Configure image/crop and locale-neutral button destinations in `src/config/home.ts`; keep all copy, alt text, caption, and placeholder text in EN/FR/DE message catalogs.
-- [x] Use existing theme colors, inherited typography, border radius, and transitions. Add Hero clearance beneath the fixed top bar.
-- [x] Adapt the Hero grid to available content width using container queries; preserve sidebar expanded/collapsed resizing and phone stacking.
-- [x] Retain a translated placeholder option when the configured image is null; replace the example with an approved business photo when available.
-- [x] Accept a typed Hero content prop with static-image or URL/dimensions input and locale-resolved alt/caption overrides for future content-service integration.
-- [ ] Future Admin: upload/select the Hero image in the Media Library, manage localized alt text/captions, preview, publish, and revalidate all locale homepages without source-code edits. Storage/backend/Admin UI remain planned; see `dev_steps.md` for the replacement workflow.
-- [x] Run TypeScript, ESLint, translation, production-build, and browser checks; see `dev_steps.md` for results and environment limitations.
-
-Step 4.1 changed only the Hero. Step 4.2 below adds category cards; later homepage steps remain pending.
-
-### Step 4.2 — Product Categories (`feature/home`)
-
-- [x] Preserve Cakes, Cupcakes, and Custom Orders in the existing `CategorySection`.
-- [x] Separate typed category records, stable slugs, descriptions, and image metadata into `src/config/categories.ts`. Accept a category-data prop for future Admin content-service integration.
-- [x] Use `next/image` for real Cakes and Custom Orders photographs from the existing business flyer, with configurable CSS crops. Cupcakes uses the subsequently supplied photograph at `public/images/categories/screenshot_insta.png`; the placeholder remains available for future categories without an image.
-- [x] Responsive cards: three columns at ≥1024px, two at 768–1023px, one below 768px. Keep centralized colors, radius, and transition tokens, readable descriptions, and keyboard focus states.
-- [x] Locale-aware `/products?category=cakes`, `cupcakes`, and `custom-orders` links. The Products landing page recognises the selected category and displays its localized heading/description; no inventory/filtering/purchase workflow added.
-- [x] Preserve the query when switching languages. Missing, unknown, or repeated category values fall back to the general Products page.
-- [x] EN/FR/DE labels, descriptions, image alt text, and placeholder copy; no hardcoded translated content in React.
-- [x] TypeScript, ESLint, translations, production build, and browser validation recorded in `dev_steps.md`.
-
-Hero, navigation, and footer implementation are unchanged. Admin uploads remain future content work; no purchasing functionality is implemented. Step 4.2 added only category cards and matching landing headings; later steps are documented below.
-
-### Step 4.3 — Featured Products (`feature/home`)
-
-- [x] Add `FeaturedProducts.tsx` after Categories, with three configurable pictured creations, descriptive labels, short appearance-based descriptions, and localized category labels.
-- [x] Separate typed records in `src/config/featured-products.ts`; support future server-provided records, uploaded image URLs/dimensions, and locale-resolved names/descriptions/alt text.
-- [x] Use real cake photographs from the supplied business flyer and the supplied cupcake photograph through optimized, lazy-loaded `next/image`. No prices, inventory/availability claims, or invented official product names.
-- [x] Support a clearly labelled placeholder for absent images and an example badge when a future record uses illustrative imagery.
-- [x] Optional View Details is hidden for every current record because there are no product-detail pages. Only configure it after a published detail route exists; no nonfunctional links or new detail routes.
-- [x] Explore All Products links to the localized existing `/products` catalog landing page.
-- [x] Three columns at ≥1024px, two at 768–1023px, one below 768px. Use existing theme variables and preserve sidebar resizing.
-- [x] EN/FR/DE text and alt descriptions; TypeScript, ESLint, message validation, production-build, and browser checks recorded in `dev_steps.md`.
-- [x] Flatten source pictures from `Image/cak/` to `Image/`, preserve all six files, and remove the empty `cak` directory. Align served Hero/cupcake filenames/imports with the actual source names without changing their displayed images.
-
-No purchasing, authentication, payment, or new backend functionality. Hero and Category presentation components, navigation, and footer remain unchanged. Step 4.3 added Featured Products and the requested image organization only; subsequent steps are recorded below.
-
-### Step 4.4 — About Preview (`feature/home`)
-
-- [x] Reusable `AboutPreview.tsx` below Featured Products, with an authentic supplied business creation photograph on the left and a heading/introduction/About Us action on the right when space allows.
-- [x] Two-column desktop layout based on available content width; stacked tablet/mobile layout, preserving sidebar resizing.
-- [x] Configurable `src/config/about-preview.ts` for text keys, image metadata/crop, and action destination. A typed content prop accepts future Admin-published copy and media; null image shows a translated placeholder.
-- [x] Use optimized `next/image` for the white decorated cake from the existing business flyer. Do not depict invented bakery premises or staff.
-- [x] EN/FR/DE text, alt description, caption, and localized `/abouts` navigation. Introduction covers only the existing cake/cupcake/personalized offering; no founder biography, history, qualifications, or achievements invented.
-- [x] Existing theme tokens and inherited typography; no new dependencies, commerce functionality, or unrelated component changes.
-- [x] TypeScript, lint, translations, build, and responsive browser checks recorded in `dev_steps.md`.
-
-Step 4.4 added only About Preview; subsequent steps are recorded below. Existing Hero, Categories, Featured Products, navigation, and footer remain unchanged.
-
-### Step 4.5 — Custom Orders (`feature/home`)
-
-- [x] Add `CustomOrdersSection.tsx` immediately after About Preview, preserving all existing sections.
-- [x] Three ordered steps with existing Lucide icons: Choose (styles/inspiration), Request (occasion/design/size/date), Confirm (discuss details/availability/pricing with the business).
-- [x] Prominent Request a Custom Cake CTA to the localized existing `/contact` page. An inquiry is explicitly not an order confirmation.
-- [x] Three columns when available content width is ≥48rem, two at tablet viewports (≥768px), and one on phones. Compact square cards can grow vertically for longer translations in narrow sidebar states; icons and titles use the darker foreground token.
-- [x] EN/FR/DE text in the CustomOrders namespace; configurable typed content/steps/action in `src/config/custom-orders.ts` with future Admin content-prop support.
-- [x] Existing design tokens, inherited typography, keyboard focus styling, and reduced-motion support. No new dependencies.
-- [x] TypeScript, lint, translations, build, and responsive browser checks recorded in `dev_steps.md`.
-
-No form, online payment, checkout, automatic acceptance, fixed delivery time/price, invented contact information, or new backend behavior. The Contact page itself is unchanged. Step 4.5 added only the Custom Orders guide; subsequent steps are recorded below.
-
-### Step 4.6 — Portfolio Gallery (`feature/home`)
-
-- [x] Display `GallerySection.tsx` after Hero and before Shop by Category with a square thumbnail grid: three desktop, two tablet, and one phone column.
-- [x] Separate typed records in `src/config/gallery.ts`: unique ID, source/dimensions/alt text, optional title/description/category, display order, homepage visibility, and example status.
-- [x] Use four supplied business-photo views from the existing flyer and cupcake photograph through `next/image`. Missing images show labelled disabled placeholders; illustrative images can carry an explicit example badge. Do not present AI-labelled samples as completed business work.
-- [x] Native modal enlarged preview: close button, previous/next controls, ArrowLeft/ArrowRight, Home/End, Escape, Tab containment, focus restoration, background scroll locking, and translated image-position status. Full-screen preview on phones.
-- [x] EN/FR/DE visible text, alt text, modal labels, instructions, and captions. Existing theme variables and no new dependencies.
-- [x] No View All Creations link is configured because a dedicated gallery destination does not exist; enable the optional destination only after a valid route is available.
-- [x] A data prop supports future Admin uploads, localized metadata, reorder/remove, and homepage selection. Backend/upload/publishing UI remain planned.
-- [x] TypeScript, lint, translations, build, and responsive/browser accessibility checks recorded in `dev_steps.md`.
-
-Existing homepage sections/navigation/footer remain unchanged. No shopping or backend functionality. Scope stops after Step 4.6.
-
-### Completion Criteria
+#### Completion Criteria
 
 The homepage is responsive, functional and prepared for administrator-managed content.
 
 ---
 
-## Phase 4 — Centralized Theme and Content System
+### 4.2 Products Page
+
+| Next | Ongoing | Complete | Verification | Done |
+|---|---|---|---|---|
+| [ ] | [ ] | [ ] | [ ] | [ ] |
+
+Description: Planned — reserved for future implementation. Confirm detailed scope before development.
+
+#### Objective
+
+Develop the public product catalog for the Digital Flyer & Portfolio stage.
+
+#### Features
+
+- Cakes, Cupcakes, and Custom Orders categories.
+- Approved photographs, product names, descriptions, and alternative text.
+- Working category destinations and optional published product-detail pages.
+- No purchasing, checkout, payments, or invented availability.
+
+#### Tasks
+
+- [ ] Inspect the existing page, routes, configuration, and translations.
+- [ ] Confirm approved content and layout before implementation.
+- [ ] Keep page data separate from presentation for future Admin integration.
+- [ ] Reuse global navigation, footer, and centralized theme tokens.
+- [ ] Support English, French, and German with localized links.
+- [ ] Verify accessibility and layouts at 390px, 768px, 1024px, and 1440px.
+- [ ] Run TypeScript, ESLint, translation validation, and production build checks.
+- [ ] Record implementation and validation in requirements and development notes.
+
+#### Completion Criteria
+
+The catalog is responsive, accessible, translated, and configurable. All category links and any published detail links work.
+
+---
+
+### 4.3 About Us Page
+
+| Next | Ongoing | Complete | Verification | Done |
+|---|---|---|---|---|
+| [ ] | [ ] | [ ] | [ ] | [ ] |
+
+Description: Planned — reserved for future implementation. Confirm detailed scope before development.
+
+#### Objective
+
+Introduce Stephworld Delights using approved business information.
+
+#### Features
+
+- Business introduction and offering.
+- Authentic photographs when available.
+- Business story only after approved details are provided.
+- Links to Products and Contact.
+
+#### Tasks
+
+- [ ] Inspect the existing page, routes, configuration, and translations.
+- [ ] Confirm approved content and layout before implementation.
+- [ ] Keep page data separate from presentation for future Admin integration.
+- [ ] Reuse global navigation, footer, and centralized theme tokens.
+- [ ] Support English, French, and German with localized links.
+- [ ] Verify accessibility and layouts at 390px, 768px, 1024px, and 1440px.
+- [ ] Run TypeScript, ESLint, translation validation, and production build checks.
+- [ ] Record implementation and validation in requirements and development notes.
+
+#### Completion Criteria
+
+The page presents approved business information across all three languages and screen sizes, without inventing biographies, history, qualifications, or achievements.
+
+---
+
+### 4.4 Contact Page
+
+| Next | Ongoing | Complete | Verification | Done |
+|---|---|---|---|---|
+| [ ] | [ ] | [ ] | [ ] | [ ] |
+
+Description: Planned — reserved for future implementation. Confirm detailed scope before development.
+
+#### Objective
+
+Provide approved contact channels and guidance for custom-order inquiries.
+
+#### Features
+
+- Contact channels only when configured with approved information.
+- Guidance for sharing occasion, design, size, and preferred date.
+- Business hours and location only when approved.
+- A contact form reserved for a separately approved scope.
+
+#### Tasks
+
+- [ ] Inspect the existing page, routes, configuration, and translations.
+- [ ] Confirm approved content and layout before implementation.
+- [ ] Keep page data separate from presentation for future Admin integration.
+- [ ] Reuse global navigation, footer, and centralized theme tokens.
+- [ ] Support English, French, and German with localized links.
+- [ ] Verify accessibility and layouts at 390px, 768px, 1024px, and 1440px.
+- [ ] Run TypeScript, ESLint, translation validation, and production build checks.
+- [ ] Record implementation and validation in requirements and development notes.
+
+#### Completion Criteria
+
+Contact links work, inquiry guidance is clear and translated, and no invented contact details or automatic order acceptance is implied.
+
+---
+
+### 4.5 Additional Public Pages — Reserved
+
+Description: Planned. Use the same Status, Objective, Features, Tasks, and Completion Criteria template when each page is approved.
+
+- Imprint — requires approved business/legal details.
+- Privacy Policy — requires approved content reflecting the actual services used.
+- FAQ — requires approved questions and answers.
+- Dedicated Creations/Gallery page — optional future destination.
+- Terms & Conditions — future scope with approved content.
+
+Do not publish placeholder legal text or enable links to pages that do not exist. Authentication, cart, checkout, and Admin pages remain separately scoped.
+
+---
+
+## Phase 5 — Centralized Theme and Content System
 
 |||**Status:** |||
 |---|---|---|---|---|
@@ -452,7 +495,7 @@ Website content and visual settings can be changed without modifying reusable co
 
 ---
 
-## Phase 5 — Admin Authentication and Dashboard
+## Phase 6 — Admin Authentication and Dashboard
 
 |||**Status:** |||
 |---|---|---|---|---|
@@ -498,7 +541,7 @@ Only authorized administrators can access and modify administrative resources.
 
 ---
 
-## Phase 6 — Media Library and Content Editor
+## Phase 7 — Media Library and Content Editor
 
 |||**Status:** |||
 |---|---|---|---|---|
@@ -561,7 +604,7 @@ Administrators can change and publish website text and images without modifying 
 
 ---
 
-## Phase 7 — Admin Design Studio
+## Phase 8 — Admin Design Studio
 
 |||**Status:** |||
 |---|---|---|---|---|
@@ -618,7 +661,7 @@ Administrators can configure and publish the website's appearance without editin
 
 ---
 
-## Phase 8 — Product Management
+## Phase 9 — Product Management
 
 |||**Status:** |||
 |---|---|---|---|---|
@@ -677,7 +720,7 @@ Administrators can manage products and visitors can browse the published catalog
 
 ---
 
-## Phase 9 — Testing, Security and Deployment
+## Phase 10 — Testing, Security and Deployment
 
 |||**Status:** |||
 |---|---|---|---|---|
@@ -754,13 +797,14 @@ A phase is considered complete only after its completion criteria have been veri
 |---|---|---|
 | 1 | Project Setup and Documentation | Completed — verification pending |
 | 2 | Responsive Navigation System | Next |
-| 3 | Homepage Layout and Components | Planned |
-| 4 | Centralized Theme and Content System | Planned |
-| 5 | Admin Authentication and Dashboard | Planned |
-| 6 | Media Library and Content Editor | Planned |
-| 7 | Admin Design Studio | Planned |
-| 8 | Product Management | Planned |
-| 9 | Testing, Security and Deployment | Planned |
+| 3 | Shared Utilities | Internationalization and footer: Testing |
+| 4 | Pages Layout and Components | Homepage: Testing; other pages: Planned |
+| 5 | Centralized Theme and Content System | Planned |
+| 6 | Admin Authentication and Dashboard | Planned |
+| 7 | Media Library and Content Editor | Planned |
+| 8 | Admin Design Studio | Planned |
+| 9 | Product Management | Planned |
+| 10 | Testing, Security and Deployment | Planned |
 
 ---
 

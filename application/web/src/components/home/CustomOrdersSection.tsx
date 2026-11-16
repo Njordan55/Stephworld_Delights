@@ -21,8 +21,9 @@ export default function CustomOrdersSection({content = customOrdersContent}: {co
           {content.steps.map((step, index) => {
             const Icon = stepIcons[step.icon];
             return (
-              <li key={step.id} className="aspect-square w-full min-h-min min-w-0 max-w-72 border p-5"
+              <li key={step.id} className="grid w-full min-w-0 max-w-72 grid-cols-1 border p-5 before:col-start-1 before:row-start-1 before:aspect-square before:content-['']"
                 style={{backgroundColor: 'color-mix(in srgb, var(--swd-surface) 80%, var(--swd-border))', color: 'var(--swd-primary)', borderColor: 'var(--swd-border)', borderRadius: 'calc(var(--swd-radius-default) / 2)'}}>
+                <div className="col-start-1 row-start-1 min-w-0">
                 <div className="flex items-center justify-between gap-4" aria-hidden="true">
                   <span className="flex h-10 w-10 items-center justify-center border"
                     style={{color: 'var(--swd-foreground)', borderColor: 'var(--swd-border)', borderRadius: 'calc(var(--swd-radius-default) / 2)'}}>
@@ -32,6 +33,7 @@ export default function CustomOrdersSection({content = customOrdersContent}: {co
                 </div>
                 <h3 className="mt-4 text-lg font-semibold [overflow-wrap:anywhere]" style={{color: 'var(--swd-foreground)'}}>{step.title ?? t(step.titleKey)}</h3>
                 <p className="mt-2 text-sm leading-6">{step.description ?? t(step.descriptionKey)}</p>
+                </div>
               </li>
             );
           })}
