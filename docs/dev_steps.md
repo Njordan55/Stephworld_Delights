@@ -694,3 +694,46 @@ Still needed: approved founder introduction; business background/motivation; fou
 - Harnesses/reports: `/tmp/stephworld-navigation-check/about-page.cjs`, `about-page-results.json`, `about-page-data.cjs`, and `about-page-*.png`; no tooling added to the app dependencies.
 
 The About workflow remains Testing because standard build verification and approved business content are outstanding. Testing uses browser emulation rather than physical-device/screen-reader certification. Existing flyer images retain source-resolution limits; Contact remains its existing placeholder. No commit, merge, or push performed.
+
+
+### 2026-11-16 — Step 6.2: About Us final verification (`feature/about-us`)
+
+**Architecture and scope:**
+
+Started on the requested branch with a clean working tree. Reviewed the About route, AboutPageContent/AboutPhotograph, typed business content, homepage About Preview, original/public photos, shared catalog/cards, i18n routing/layout/provider, theme tokens, navigation/sidebar, and footer. The About page and its helpers remain server components; AppShell does not turn server-rendered children into client components. No additional client state, dependency, media, backend, or feature was needed.
+
+No broken import, unused About component, missing application dependency, or independent duplicate product source was found. Shared catalog records provide the three authentic creations and valid detail destinations. About brand-photo metadata reuses the homepage preview configuration. The crop/figure formulas in AboutPhotograph and AboutPreview are similar and are a possible future shared media helper, but extracting one is not necessary to verify this page and would broaden the scope. The old unused ActivePageIndicator navigation component and unused ThemeProvider wrapper remain outside scope; the theme-variable helper is actively used by the locale layout.
+
+No reproducible About application defect requiring a source fix was identified. Application code, translations, images, homepage, navigation, footer, and theme are unchanged. Only requirements/development notes were updated; generated next-env changes from building were restored.
+
+**Automated validation:**
+
+- `npx tsc --noEmit`: passed under Node 24.
+- `npm run lint`: passed.
+- `npm run check:i18n`: passed, with 182 matching, nonempty, valid messages per locale. No missing About UI or image translations identified.
+- `npm ls --depth=0`: passed; no missing installed dependencies or new dependency added.
+- Required `npm run build`: attempted normally and with elevated execution. Both fail at the pre-existing Turbopack CSS worker port binding restriction (`EPERM`, surfaced through globals.css). This is reported separately from About source correctness and is not counted as a passing build.
+- `npm run build -- --webpack`: passed, including TypeScript, three prerendered About routes, and 41 generated application paths. Build scripts/configuration were not altered.
+- `git diff --check`: passed.
+
+**Functional, responsive, internationalization, accessibility, and performance tests:**
+
+**24/24 browser-width-language combinations passed** in Chromium/WebKit × EN/FR/DE × 390/768/1024/1440px. No console, page, or HTTP errors were recorded. All 21 unique linked destinations returned HTTP 200. Actual navigation starts from the homepage About Preview as well as direct About visits. Exact translated headings/introduction/creation descriptions/alt text passed in the supplementary audit, along with 42 live-resize state checks across both engines and all three languages. Screenshots at all four widths were visually reviewed.
+
+**12 Chromium WCAG A/AA axe scans reported zero violations.** Local initial CLS was at most 0.00000275 across the tested widths/languages. No missing translation or layout/functional error was identified in this run.
+
+Checked the existing brand/slogan/introduction, five ordered sections, translated headings and placeholders, three real creation cards, main photograph and null-image placeholder, product/detail/Contact actions, browser back, active About link, language switching retaining `/abouts`, and settled refresh retaining locale. The story/values pending labels remain visible and no AI sample is misrepresented as About business photography.
+
+Accessibility checks cover semantic main/footer, exactly one h1, heading hierarchy, nonempty descriptive localized image alt text, keyboard traversal, visible focus outlines, action hit-area height, text contrast via WCAG A/AA axe scans, mobile background inertness/Escape, and reduced-motion handling. Native keyboard traversal uses Option-Tab under the default macOS WebKit button-navigation preference. Automated checks do not constitute full assistive-technology certification.
+
+Images use optimized `next/image` URLs and existing responsive source sizes/crop factors, with square reserved frames and no distortion. Intro media is eager; creation photos are lazy. The missing story photograph renders no broken image request. All sections use the same responsive vertical-padding rules. Footer remains in normal flow after main content with one/two/four-column layouts. Desktop alternating sections and narrower stacked layouts remain intact under sidebar collapse/expansion/close/reopen and responsive-mode transitions.
+
+Reran isolated EN/FR/DE content fixtures for pending states, supplied approved-test story/value content, replacement of pending copy, brand-image fallback, authentic-product selection, AI/unknown-record exclusion, and localized recovery/action links. Framework Image/Link adapters are used only for these isolated render checks; real browser navigation/image loading is checked independently. Fixture wording is not published business information.
+
+**Unapproved information and remaining limits:**
+
+Founder introduction, business background/motivation, founder or bakery photograph, and owner-approved values/commitments are still unavailable. Existing placeholders are intentional; no facts, commitments, address, award, credential, or testimonial were invented to complete the page. These are content/publication limitations, not missing translation keys or broken functionality. Contact remains its existing placeholder. Flyer crops retain source-resolution limits. Local CLS and browser-emulated layouts are not field Core Web Vitals or physical-device/screen-reader certification; prior rapid-refresh WebKit findings are not declared globally fixed by a settled-navigation test.
+
+About remains **Testing** and is not unconditionally ready to merge until the required standard production build succeeds in a normal terminal or CI. No application fixes were required by the completed checks. No commit, merge, or push performed.
+
+Temporary artifacts: `/tmp/stephworld-navigation-check/about-final.cjs`, `about-final-results.json`, `about-final-audit.cjs`, `about-final-audit.json`, `about-page-data.cjs`, and `about-final-*.png`. No test-only route, dependency, or content was added to the repository.

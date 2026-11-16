@@ -394,7 +394,7 @@ The catalog is responsive, accessible, translated, and configurable. All categor
 |---|---|---|---|---|
 | [ ] | [ ] | [ ] | [x] | [ ] |
 
-Description: Step 6.1 implemented on `feature/about-us`; local validation recorded in `dev_steps.md`. Founder/story and owner-approved values remain explicit content placeholders. Standard production build is environment-limited.
+Description: Step 6.1 implemented; Step 6.2 final review recorded on `feature/about-us` in `dev_steps.md`. Founder/story and owner-approved values remain explicit content placeholders. Standard production build is environment-limited.
 
 #### Objective
 
@@ -430,6 +430,17 @@ Introduce Stephworld Delights using approved business information.
 - [ ] Pass standard `npm run build` outside the known Turbopack CSS worker port restriction; webpack production build passes. See `dev_steps.md` for results.
 
 Validation: 24/24 Chromium/WebKit width-language combinations pass; 12 accessibility scans report no violations. Founder/story/values placeholders remain until approved content is supplied.
+
+#### Step 6.2 — About Us Final Verification
+
+- [x] Review About route/components/content, homepage preview, authentic image sources, locale configuration, theme, navigation, and footer.
+- [x] Check section order, homepage entry, Products/Contact/detail links, image decoding/proportions, sidebar states, browser errors, and language persistence in EN/FR/DE.
+- [x] Verify 390px, 768px, 1024px, and 1440px, including live resizing, readable text, consistent section padding, image loading/alt text, and footer flow.
+- [x] Check semantic headings, keyboard navigation/focus, text contrast, reduced motion, optimized/responsive images, lazy loading, and local layout shifts.
+- [x] Run TypeScript, ESLint, translation/dependency checks, webpack production build, and independent browser/content-render checks. No About application defect requiring a source change was found.
+- [ ] Pass required standard `npm run build` in a normal terminal or CI. Both normal and elevated attempts remain blocked by the existing Turbopack CSS worker port restriction (`EPERM`).
+
+The workflow remains **Testing**, not Completed or merged. Missing owner-approved business information is reported separately from technical verification and remains clearly labelled. No commit, merge, or push performed.
 
 #### Completion Criteria
 
