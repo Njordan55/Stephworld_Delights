@@ -321,7 +321,20 @@ Develop the public homepage.
 - [ ] Future Admin: upload/select the Hero image in the Media Library, manage localized alt text/captions, preview, publish, and revalidate all locale homepages without source-code edits. Storage/backend/Admin UI remain planned; see `dev_steps.md` for the replacement workflow.
 - [x] Run TypeScript, ESLint, translation, production-build, and browser checks; see `dev_steps.md` for results and environment limitations.
 
-Scope ends at Step 4.1. Product categories, featured products, galleries, footer, navigation state, checkout, cart, and authentication are unchanged. Later homepage steps remain pending.
+Step 4.1 changed only the Hero. Step 4.2 below adds category cards; later homepage steps remain pending.
+
+### Step 4.2 — Product Categories (`feature/home`)
+
+- [x] Preserve Cakes, Cupcakes, and Custom Orders in the existing `CategorySection`.
+- [x] Separate typed category records, stable slugs, descriptions, and image metadata into `src/config/categories.ts`. Accept a category-data prop for future Admin content-service integration.
+- [x] Use `next/image` for real Cakes and Custom Orders photographs from the existing business flyer, with configurable CSS crops. Cupcakes uses the subsequently supplied photograph at `public/images/categories/cupcakes.png`; the placeholder remains available for future categories without an image.
+- [x] Responsive cards: three columns at ≥1024px, two at 768–1023px, one below 768px. Keep centralized colors, radius, and transition tokens, readable descriptions, and keyboard focus states.
+- [x] Locale-aware `/products?category=cakes`, `cupcakes`, and `custom-orders` links. The Products landing page recognises the selected category and displays its localized heading/description; no inventory/filtering/purchase workflow added.
+- [x] Preserve the query when switching languages. Missing, unknown, or repeated category values fall back to the general Products page.
+- [x] EN/FR/DE labels, descriptions, image alt text, and placeholder copy; no hardcoded translated content in React.
+- [x] TypeScript, ESLint, translations, production build, and browser validation recorded in `dev_steps.md`.
+
+Hero, navigation, and footer implementation are unchanged. Admin uploads remain future content work; no purchasing functionality is implemented. Scope stops after Step 4.2.
 
 ### Completion Criteria
 

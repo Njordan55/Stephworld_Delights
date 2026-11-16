@@ -43,7 +43,14 @@
     "description": "Explorez nos délicieuses créations.",
     "cakes": "Gâteaux",
     "cupcakes": "Cupcakes",
-    "customOrders": "Commandes personnalisées"
+    "customOrders": "Commandes personnalisées",
+    "cakesDescription": "Découvrez des gâteaux pour vos moments inoubliables.",
+    "cupcakesDescription": "Découvrez nos créations de cupcakes.",
+    "customOrdersDescription": "Explorez des idées pour une création à votre image.",
+    "cakesAlt": "Un gâteau d’anniversaire de Stephworld Delights avec des roses rouges, une décoration à la crème et une inscription dorée.",
+    "customOrdersAlt": "Un gâteau rose personnalisé avec des papillons et des prénoms, issu du dépliant de Stephworld Delights.",
+    "photoPending": "Photographie de la catégorie bientôt disponible.",
+    "cupcakesAlt": "Des cupcakes au glaçage turquoise et crème sur un présentoir doré à étages."
   },
   "Products": {
     "title": "Les produits de Stephworld Delights",

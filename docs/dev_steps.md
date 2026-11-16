@@ -290,3 +290,40 @@ Uploaded files should live in persistent media storage rather than the deployed 
 No Admin upload UI, authentication, storage integration, database schema, or publishing endpoint is implemented here. Those belong to the planned Admin Dashboard / Media Library phase. The public Hero's data contract is ready for that integration.
 
 Verification after the example-image change: TypeScript, ESLint, all 72 translation keys per language, and the webpack production build passed. Chromium and WebKit checks passed at 1440px, 768px, and 390px in EN/FR/DE, including image loading, translated example captions/alt text, sidebar modes, button destinations, and language switching. Desktop appearance was visually reviewed. No upload backend or Admin screen added; no commit created.
+
+### 2026-11-16 — Step 4.2: Product Categories (`feature/home`)
+
+Inspected `CategorySection.tsx`, locale homepage/Products routing, shared navigation helpers, translations, and all supplied images before editing. Existing cards already linked to category query values, but the Products placeholder did not read them.
+
+**Implementation:**
+
+- Extended the existing CategorySection; preserved Cakes, Cupcakes, and Custom Orders. Cards now have square media areas, localized descriptions, directional icons, focus outlines, and transitions using existing theme variables. Grid breakpoints are one column below 768px, two at 768–1023px, and three at ≥1024px, including when the sidebar changes the content width.
+- Added `src/config/categories.ts` with typed category records, stable slugs, label/description keys, nullable image metadata, and a shared lookup. CategorySection accepts a data prop, so a future Admin content service can supply records without replacing the presentation component.
+- Cakes displays the real red-rose birthday cake from the business flyer, cropped at x=700/y=760/400×400. Custom Orders displays its real personalized pink cake, cropped at x=570/y=1180/370×370. Both use optimized, lazy-loaded `next/image` with responsive sizes. The flyer file is unmodified. Supplied `Image/cak` examples are cakes, not cupcakes; no matching cupcake photograph is available. Cupcakes therefore shows a neutral camera icon and translated photo-pending message instead of misrepresenting another cake.
+- Locale-aware links target `/products?category=cakes`, `/products?category=cupcakes`, and `/products?category=custom-orders`. The Products page now resolves the query using the shared records and shows the selected category's localized heading/description. Missing, unknown, or repeated values show the general Products content. Language switching preserves the category query.
+- Reading `searchParams` makes the Products route request-rendered instead of prerendered. The homepage and other public pages remain prerendered. No product inventory, purchasing, cart, payment, or checkout behavior is added.
+- Added six matching Categories message keys per locale: three descriptions, two alt descriptions, and a photo-pending label. EN/FR/DE catalogs now contain 78 matching keys each.
+
+**Changing category content later:**
+
+1. Add an approved standalone image to `application/web/public/images/categories/` and import it in `src/config/categories.ts`.
+2. Set the category's image to `{src, width, height, altKey}` using imported dimensions; omit `crop` for a standalone photo. Add the alt key in all three message catalogs. For Cupcakes, replace its current null image only when a suitable photo is supplied.
+3. Keep slugs stable: they identify category destinations/bookmarks independently of translated labels.
+4. Future Admin Media Library integration should upload/validate/store the image, save its URL and dimensions, resolve localized text, and pass records through the CategorySection data prop. Image metadata supports URL strings and locale-resolved `altText` as well as static imports. Configure only the chosen media host in Next.js image remote patterns and revalidate homepage/content caches on publishing. Admin upload UI/storage/backend remain planned.
+
+**Validation:**
+
+- `npx tsc --noEmit`, `npm run lint`, and `npm run check:i18n`: passed under Node 24.
+- `npm run build` attempted and retried with elevated execution; Turbopack remains blocked by the environment's CSS worker-port restriction. `npm run build -- --webpack` passed. No build configuration changes.
+- Chromium and WebKit functional checks passed at 390px, 768px, and 1440px for EN/FR/DE, including both persistent-sidebar widths where applicable. Checked one/two/three columns, optimized photo loading/alt text, cupcake placeholder, each card click and HTTP 200 category destination, selected-category headings, generic/invalid/repeated-query fallbacks, locale/query preservation on switching, no horizontal overflow, and unchanged Hero/footer presence. Desktop and phone screenshots were visually reviewed.
+- WebKit emitted the previously documented background RSC access-control messages during rapid navigation; the harness records those separately. Direct destinations returned HTTP 200 and all visible navigation/category assertions passed.
+- Browser harness/screenshots: `/tmp/stephworld-navigation-check/categories.cjs` and `categories-*.png`; test tooling remains outside project dependencies. These are browser viewport checks rather than physical-device tests.
+
+Only Step 4.2 implemented. Hero, navigation, footer, and their configuration files were not changed. No commit created.
+
+
+### 2026-11-16 — Supplied cupcake image
+
+Replaced the Cupcakes placeholder with the newly supplied `Image/cak/Screenshot 2026-11-16 at 13.12.54.png`, copied unchanged to `application/web/public/images/categories/cupcakes.png`. Category configuration now uses this standalone 1666 × 1738 image through next/image; added descriptive EN/FR/DE alt text. Other category images and the Hero remain unchanged. Original source files and the user’s renames in `Image/` were preserved.
+
+Validation: TypeScript, ESLint, all 79 translation keys per locale, and the webpack production build passed. No commit created.

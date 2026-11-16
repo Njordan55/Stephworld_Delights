@@ -43,7 +43,14 @@
     "description": "Entdecken Sie unsere köstlichen Kreationen.",
     "cakes": "Kuchen",
     "cupcakes": "Cupcakes",
-    "customOrders": "Individuelle Bestellungen"
+    "customOrders": "Individuelle Bestellungen",
+    "cakesDescription": "Entdecken Sie Kuchen für unvergessliche Momente.",
+    "cupcakesDescription": "Entdecken Sie unsere Cupcake-Kreationen.",
+    "customOrdersDescription": "Entdecken Sie Ideen für Ihre eigene Kreation.",
+    "cakesAlt": "Ein Geburtstagskuchen von Stephworld Delights mit roten Rosen, Cremeverzierung und einem goldenen Stecker.",
+    "customOrdersAlt": "Ein rosa personalisierter Kuchen mit Schmetterlingen und Namen aus dem Flyer von Stephworld Delights.",
+    "photoPending": "Ein Foto dieser Kategorie folgt in Kürze.",
+    "cupcakesAlt": "Cupcakes mit türkisfarbener und cremefarbener Verzierung auf einer goldenen Etagere."
   },
   "Products": {
     "title": "Die Produkte von Stephworld Delights",

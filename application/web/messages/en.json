@@ -43,7 +43,14 @@
     "description": "Explore our delicious creations.",
     "cakes": "Cakes",
     "cupcakes": "Cupcakes",
-    "customOrders": "Custom Orders"
+    "customOrders": "Custom Orders",
+    "cakesDescription": "Explore cakes for your memorable moments.",
+    "cupcakesDescription": "Discover our cupcake creations.",
+    "customOrdersDescription": "Explore ideas for a creation of your own.",
+    "cakesAlt": "A Stephworld Delights birthday cake with red roses, cream decoration, and a gold topper.",
+    "customOrdersAlt": "A pink personalized cake with butterflies and name decorations from the Stephworld Delights flyer.",
+    "photoPending": "Category photograph coming soon.",
+    "cupcakesAlt": "Cupcakes with turquoise and cream icing on a tiered gold stand."
   },
   "Products": {
     "title": "Stephworld Delights Products Page",
