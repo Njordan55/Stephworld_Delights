@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "check:i18n": "node scripts/check-messages.mjs"
   },
   "engines": {
     "node": ">=24 <25"
@@ -14,6 +15,7 @@
   "dependencies": {
     "lucide-react": "^1.67.0",
     "next": "^16.4.2",
+    "next-intl": "^4.15.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   },

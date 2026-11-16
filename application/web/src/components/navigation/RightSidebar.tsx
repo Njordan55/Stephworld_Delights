@@ -1,4 +1,5 @@
-import Link from "next/link";
+import {Link} from "@/i18n/navigation";
+import {useTranslations} from "next-intl";
 
 type RightSidebarProps = {
   isOpen: boolean;
@@ -9,12 +10,13 @@ export default function RightSidebar({
   isOpen,
   onClose,
 }: RightSidebarProps) {
+  const t = useTranslations("Navigation");
   return (
     <>
       {isOpen && (
         <button
           type="button"
-          aria-label="Close account menu"
+          aria-label={t("closeAccount")}
           onClick={onClose}
           className="fixed inset-0 z-40"
           style={{
@@ -25,7 +27,7 @@ export default function RightSidebar({
 
       <aside
         id="right-navigation"
-        aria-label="Account navigation"
+        aria-label={t("accountNavigation")}
         aria-hidden={!isOpen}
         inert={!isOpen}
         className={`fixed bottom-0 right-0 z-40 border-l transition-transform ${
@@ -47,7 +49,7 @@ export default function RightSidebar({
             onClick={onClose}
             className="rounded-lg px-4 py-3 transition-colors hover:bg-[var(--swd-hover)]"
           >
-            Sign In
+            {t("signIn")}
           </Link>
 
           <Link
@@ -55,7 +57,7 @@ export default function RightSidebar({
             onClick={onClose}
             className="rounded-lg px-4 py-3 transition-colors hover:bg-[var(--swd-hover)]"
           >
-            Create Account
+            {t("register")}
           </Link>
         </nav>
       </aside>

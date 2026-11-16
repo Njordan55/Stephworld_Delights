@@ -6,7 +6,7 @@
 **Project:** Stephworld Delights  
 **Application:** Bakery and cake business website  
 **Architecture:** Modular, responsive, theme-independent  
-**Current Stage:** Phase 2 — Responsive Navigation System
+**Current Stage:** Digital Flyer & Portfolio — Internationalization
 
 ### 1.1 Project Objectives
 
@@ -28,6 +28,7 @@ The website must also provide an Admin Dashboard that allows authorized administ
 | React | User interface |
 | TypeScript | Type-safe development |
 | Tailwind CSS | Styling and responsive layouts |
+| next-intl | Locale routing, messages, and language persistence |
 | Git / GitHub | Version control |
 | PostgreSQL | Proposed database |
 | Supabase | Proposed backend and storage provider |
@@ -50,7 +51,7 @@ The website must also provide an Admin Dashboard that allows authorized administ
 | # | Workflow | Git Branch | Status | Merged to develop | Published to main |
 |---|---|---|---|---|---|
 | 01 | Global Navigation | `feature/global-navigation` | Completed | [x] | [] |
-| 02 | Internationalization | `feature/i18n` | Progress | [] | [] |
+| 02 | Internationalization | `feature/i18n` | Testing | [] | [] |
 | 03 | Global Footer | `feature/global-footer` | Planned | [] | [] |
 | 04 | Homepage | `feature/home` | Pending | [] | [] |
 | 05 | Products | `feature/products` | Planned | [] | [] |
@@ -234,7 +235,29 @@ Design reference: Collapsible dashboard-style navigation with a persistent activ
 All navigation components work correctly and use configurable styling instead of hardcoded brand colors.
 
 ---
+## Utility tool before continuing with phase 3
 
+### Internationalization (i18n)
+
+**Branch:** `feature/i18n` — implemented; awaiting review/merge.
+
+- [x] English (`en`, default), French (`fr`), and German (`de`) via `next-intl`.
+- [x] Shared routing, locale navigation helpers, validated request configuration, and typed message keys under `src/i18n`.
+- [x] Namespaced message files at `application/web/messages/{en,fr,de}.json`, with consistent keys.
+- [x] Locale-based public routes: `/{locale}/home`, `/products`, `/abouts`, `/contact`, and the retained cart placeholder.
+- [x] Legacy unprefixed routes redirect using the locale cookie, falling back to English. `/` and `/{locale}` lead to the matching homepage. Browser language does not override the English first-visit default.
+- [x] A globe/current-language/chevron selector immediately before the reserved account button. Translate language names into the active language, highlight the current choice, support keyboard navigation, and dismiss on Escape or outside click.
+- [x] Switching language preserves the current page, query parameters, and hash. Navigation links and refresh retain the locale. `NEXT_LOCALE` stores preference for one year.
+- [x] Translate navigation, accessibility labels, hero, categories, buttons, page headings/placeholders, metadata description, and reserved account/cart labels. Keep the brand name unchanged.
+- [x] Preserve responsive navigation defaults, width tokens, active links, and 500ms transitions. Account/cart remain disabled; disabled account implementation does not mount or prefetch unfinished routes.
+- [x] Preserve public images and framework assets; exclude API and future unprefixed Admin Dashboard routes from locale routing. Future admin pages should provide their own layout/provider rather than depending on the public locale layout.
+- [x] Add `npm run check:i18n` to validate matching keys and ICU message syntax.
+
+Validation details, environment limitations, and migration notes are recorded in `docs/dev_steps.md`. Authentication, checkout, payments, backend work, and unrelated page layout changes are excluded.
+
+### Global Footer
+
+---
 ## Phase 3 — Homepage Layout and Components
 
 |||**Status:** |||
@@ -658,7 +681,7 @@ A phase is considered complete only after its completion criteria have been veri
 * [ ] Online payments.
 * [ ] Order tracking.
 * [ ] Customer notifications.
-* [ ] Multilingual website content.
+* [x] Multilingual existing public interface (English, French, German); future CMS-managed translations remain separate work.
 * [ ] Mobile application.
 * [ ] Advanced analytics.
 

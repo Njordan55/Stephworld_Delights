@@ -1,0 +1,73 @@
+{
+  "Navigation": {
+    "home": "Startseite",
+    "products": "Produkte",
+    "abouts": "Über uns",
+    "contact": "Kontakt",
+    "openMenu": "Navigationsmenü öffnen",
+    "closeMenu": "Navigationsmenü schließen",
+    "main": "Hauptnavigation",
+    "primary": "Primärnavigation",
+    "collapse": "Seitenleiste einklappen",
+    "expand": "Seitenleiste ausklappen",
+    "openAccount": "Kontomenü öffnen",
+    "closeAccount": "Kontomenü schließen",
+    "accountNavigation": "Kontonavigation",
+    "accountSoon": "Konto bald verfügbar",
+    "cart": "Warenkorb",
+    "viewCart": "Warenkorb ansehen",
+    "cartSoon": "Warenkorb bald verfügbar",
+    "signIn": "Anmelden",
+    "register": "Konto erstellen",
+    "slogan": "Mit Liebe gemacht",
+    "logoAlt": "Logo von Stephworld Delights"
+  },
+  "Language": {
+    "label": "Sprache wählen",
+    "en": "Englisch",
+    "fr": "Französisch",
+    "de": "Deutsch"
+  },
+  "Hero": {
+    "welcome": "Willkommen bei Stephworld Delights",
+    "title": "Köstliche Kreationen, mit Liebe gemacht.",
+    "description": "Entdecken Sie unsere Kuchen, Cupcakes und besonderen Kreationen für Ihre unvergesslichen Momente.",
+    "products": "Produkte entdecken",
+    "contact": "Kontakt aufnehmen"
+  },
+  "Categories": {
+    "title": "Nach Kategorie entdecken",
+    "description": "Entdecken Sie unsere köstlichen Kreationen.",
+    "cakes": "Kuchen",
+    "cupcakes": "Cupcakes",
+    "customOrders": "Individuelle Bestellungen"
+  },
+  "Products": {
+    "title": "Die Produkte von Stephworld Delights",
+    "description": "Willkommen auf unserer Produktseite! Entdecken Sie das vielfältige Angebot von Stephworld Delights. Wir sind stolz darauf, hochwertige Produkte anzubieten, die Ihren Bedürfnissen und Wünschen entsprechen. Stöbern Sie in unserer Kollektion und finden Sie die passenden Produkte für sich!"
+  },
+  "About": {
+    "title": "Über Stephworld Delights",
+    "description": "Dies ist die Über-uns-Seite unserer Anwendung. Hier erfahren Sie mehr über unsere Mission, unsere Werte und das Team hinter Stephworld Delights. Wir möchten unseren Nutzern das bestmögliche Erlebnis bieten und unsere Leistungen kontinuierlich verbessern."
+  },
+  "Contact": {
+    "title": "Kontakt zu Stephworld Delights",
+    "description": "Kontaktieren Sie Stephworld Delights! Ihr Feedback und Ihre Fragen sind uns wichtig. Sie erreichen uns über die folgenden Kontaktmöglichkeiten:"
+  },
+  "Cart": {
+    "title": "Warenkorb",
+    "description": "Ihr Warenkorb ist derzeit leer."
+  },
+  "Metadata": {
+    "description": "Mit Liebe gemacht"
+  },
+  "Errors": {
+    "title": "Seite nicht gefunden",
+    "description": "Die gesuchte Seite existiert nicht.",
+    "home": "Zur Startseite"
+  },
+  "PageIndicator": {
+    "current": "Aktuelle Seite: {page}",
+    "fallback": "Seite"
+  }
+}

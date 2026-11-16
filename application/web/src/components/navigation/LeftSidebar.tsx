@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import {Link, usePathname} from "@/i18n/navigation";
+import {useTranslations} from "next-intl";
 import { House, Package, Info, Mail, PanelLeftClose, PanelLeftOpen } from "lucide-react";
 
 type LeftSidebarProps = {
@@ -12,11 +12,11 @@ type LeftSidebarProps = {
 };
 
 const navigationLinks = [
-  { label: "Home", href: "/home", icon: House },
-  { label: "Products", href: "/products", icon: Package },
-  { label: "About Us", href: "/abouts", icon: Info },
-  { label: "Contact", href: "/contact", icon: Mail },
-];
+  { label: "home", href: "/home", icon: House },
+  { label: "products", href: "/products", icon: Package },
+  { label: "abouts", href: "/abouts", icon: Info },
+  { label: "contact", href: "/contact", icon: Mail },
+] as const;
 
 export default function LeftSidebar({
   isOpen,
@@ -24,8 +24,9 @@ export default function LeftSidebar({
   onCollapseToggle,
   onClose,
 }: LeftSidebarProps) {
+  const t = useTranslations("Navigation");
   const pathname = usePathname();
-  const collapseLabel = isCollapsed ? "Expand sidebar" : "Collapse sidebar";
+  const collapseLabel = isCollapsed ? t("expand") : t("collapse");
   const CollapseIcon = isCollapsed ? PanelLeftOpen : PanelLeftClose;
 
   return (
@@ -33,7 +34,7 @@ export default function LeftSidebar({
       {isOpen && (
         <button
           type="button"
-          aria-label="Close navigation menu"
+          aria-label={t("closeMenu")}
           onClick={onClose}
           className="fixed inset-0 z-40 md:hidden"
           style={{ backgroundColor: "var(--swd-overlay)" }}
@@ -42,7 +43,7 @@ export default function LeftSidebar({
 
       <aside
         id="left-navigation"
-        aria-label="Main navigation"
+        aria-label={t("main")}
         aria-hidden={!isOpen}
         inert={!isOpen}
         className={`fixed bottom-0 left-0 z-40 overflow-y-auto border-r transition-[width,transform,translate] md:shadow-none ${
@@ -80,7 +81,7 @@ export default function LeftSidebar({
         </div>
         <nav
           id="primary-navigation"
-          aria-label="Primary"
+          aria-label={t("primary")}
           className={`flex flex-col gap-1 pb-4 pt-2 ${isCollapsed ? "px-1" : "px-4"}`}
         >
           {navigationLinks.map(({ label, href, icon: Icon }) => {
@@ -95,8 +96,8 @@ export default function LeftSidebar({
                     onClose();
                   }
                 }}
-                aria-label={label}
-                title={isCollapsed ? label : undefined}
+                aria-label={t(label)}
+                title={isCollapsed ? t(label) : undefined}
                 aria-current={isActive ? "page" : undefined}
                 className={`flex min-h-12 items-center gap-3 border-l-4 py-3 text-sm font-medium transition-[background-color,opacity,transform] hover:opacity-75 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--swd-primary)] ${
                   isCollapsed ? "justify-center pr-1" : "px-4"
@@ -110,7 +111,7 @@ export default function LeftSidebar({
                 }}
               >
                 <Icon size={20} className="shrink-0" aria-hidden="true" />
-                {!isCollapsed && <span className="whitespace-nowrap">{label}</span>}
+                {!isCollapsed && <span className="whitespace-nowrap">{t(label)}</span>}
               </Link>
             );
           })}

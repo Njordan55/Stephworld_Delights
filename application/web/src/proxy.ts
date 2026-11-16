@@ -1,0 +1,16 @@
+import createMiddleware from 'next-intl/middleware';
+import {NextRequest} from 'next/server';
+import {routing} from './i18n/routing';
+
+const handleI18nRouting = createMiddleware(routing);
+
+export default function proxy(request: NextRequest) {
+  // Use URL > saved locale cookie > English, rather than the browser language.
+  const headers = new Headers(request.headers);
+  headers.set('accept-language', routing.defaultLocale);
+  return handleI18nRouting(new NextRequest(request, {headers}));
+}
+
+export const config = {
+  matcher: '/((?!api|trpc|admin|_next|_vercel|.*\\..*).*)'
+};

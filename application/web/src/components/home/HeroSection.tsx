@@ -1,6 +1,8 @@
-import Link from "next/link";
+import {Link} from "@/i18n/navigation";
+import {useTranslations} from "next-intl";
 
 export default function HeroSection() {
+  const t = useTranslations("Hero");
   return (
     <section
       aria-labelledby="home-hero-title"
@@ -15,19 +17,18 @@ export default function HeroSection() {
           className="mb-4 text-sm font-medium uppercase tracking-widest"
           style={{ color: "var(--swd-secondary)" }}
         >
-          Welcome to Stephworld Delights
+          {t('welcome')}
         </p>
 
         <h1
           id="home-hero-title"
           className="max-w-2xl text-4xl font-bold sm:text-5xl"
         >
-          Delicious creations, made with love.
+          {t('title')}
         </h1>
 
         <p className="mt-6 max-w-xl text-base sm:text-lg">
-          Discover our cakes, cupcakes, and special creations
-          for your memorable moments.
+          {t('description')}
         </p>
 
         <div className="mt-8 flex flex-wrap gap-4">
@@ -40,7 +41,7 @@ export default function HeroSection() {
               borderRadius: "var(--swd-radius-default)",
             }}
           >
-            Explore Products
+            {t('products')}
           </Link>
 
           <Link
@@ -51,7 +52,7 @@ export default function HeroSection() {
               borderRadius: "var(--swd-radius-default)",
             }}
           >
-            Contact Us
+            {t('contact')}
           </Link>
         </div>
       </div>
