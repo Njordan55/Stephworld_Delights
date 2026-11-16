@@ -54,7 +54,7 @@ The website must also provide an Admin Dashboard that allows authorized administ
 | 02 | Internationalization | `feature/i18n` | Completed | [x] | [] |
 | 03 | Global Footer | `feature/global-footer` | Completed | [x] | [] |
 | 04 | Homepage | `feature/home` | Progress | [] | [] |
-| 05 | Products | `feature/products` | Planned | [] | [] |
+| 05 | Products | `feature/products` | Testing | [] | [] |
 | 06 | Admin Dashboard | `feature/admin` | Future | [] | [] |
 
 ### status system
@@ -318,9 +318,9 @@ The homepage is responsive, functional and prepared for administrator-managed co
 
 | Next | Ongoing | Complete | Verification | Done |
 |---|---|---|---|---|
-| [ ] | [ ] | [ ] | [ ] | [ ] |
+| [ ] | [ ] | [ ] | [x] | [ ] |
 
-Description: Planned — reserved for future implementation. Confirm detailed scope before development.
+Description: Steps 5.1 and 5.2 implemented; Step 5.3 reviewed on `feature/products`; verification results and environment limitations are recorded in `dev_steps.md`. Not committed or merged.
 
 #### Objective
 
@@ -335,14 +335,51 @@ Develop the public product catalog for the Digital Flyer & Portfolio stage.
 
 #### Tasks
 
-- [ ] Inspect the existing page, routes, configuration, and translations.
-- [ ] Confirm approved content and layout before implementation.
-- [ ] Keep page data separate from presentation for future Admin integration.
-- [ ] Reuse global navigation, footer, and centralized theme tokens.
-- [ ] Support English, French, and German with localized links.
-- [ ] Verify accessibility and layouts at 390px, 768px, 1024px, and 1440px.
-- [ ] Run TypeScript, ESLint, translation validation, and production build checks.
-- [ ] Record implementation and validation in requirements and development notes.
+- [x] Inspect the existing page, routes, configuration, and translations.
+- [x] Confirm approved content and layout before implementation.
+- [x] Keep page data separate from presentation for future Admin integration.
+- [x] Reuse global navigation, footer, and centralized theme tokens.
+- [x] Support English, French, and German with localized links.
+- [x] Verify accessibility and layouts at 390px, 768px, 1024px, and 1440px.
+- [x] Run TypeScript, ESLint, translation validation, and production build checks; standard build restriction remains below.
+- [x] Record implementation and validation in requirements and development notes.
+
+#### Step 5.1 — Products Catalog
+
+- [x] Central catalog records with ID, slug, translated text keys/active-locale overrides, category, photo/alt/crop, featured flag, and display order. Optional price/availability types are reserved and have no configured values or visible commerce UI.
+- [x] Reuse the three existing photographed creations and descriptive labels; add four user-authorized, clearly labelled AI presentation concepts to the catalog. Homepage Featured Products continues to select the three real creations from the shared records.
+- [x] Server-rendered catalog with heading/introduction, responsive cards, result count, inquiry guidance, and localized Contact CTA.
+- [x] URL-driven All Products/category links; support homepage query links and browser history. Unknown, empty, or repeated category values display all products with an explanatory message.
+- [x] Derive filter choices from categories represented in supplied records. Support a translated no-match/empty-catalog state and missing-photo placeholders for future supplied data.
+- [ ] Pass standard `npm run build` outside the environment's Turbopack CSS worker port restriction. Alternative webpack production build passes.
+
+Validation: 18/18 Chromium/WebKit width-language combinations pass; nine Chromium accessibility scans report no violations. See `dev_steps.md` for scope and limitations.
+
+No purchasing, backend, Admin interface, invented prices, or availability is added. User-added AI sample files in `Image/` are preserved and displayed only as labelled presentation concepts.
+
+#### Step 5.2 — Product Details
+
+- [x] Localized `/[locale]/products/[slug]` pages use the existing central catalog lookup; seven known slugs per language, with existing 404 handling for unknown slugs.
+- [x] Catalog and homepage featured-card titles and View Details actions link to the matching localized detail page. No second product data source.
+- [x] Product title, category, existing description, main photograph/fallback, labelled AI concepts, localized inquiry button, and category-filtered Back to Products link.
+- [x] Optional detailed-description/customization fields render only when supplied. No new facts, flavors, sizes, ingredients, prices, or availability invented.
+- [x] Optional additional photographs with accessible main-image selection, translated control labels/position, keyboard activation, and selected-state semantics. Existing records have one photo each; additional-image behavior is validated with temporary fixture data, not published invented photos.
+- [x] Shared ProductImage renderer preserves `next/image` optimization/crops. Only the image selector needs a client boundary; page/content remain server-rendered.
+- [x] Available-width layout places photos left/information right on wide screens, stacks photos above text on smaller screens, and accommodates sidebar changes.
+- [x] Inquiry links to localized `/contact?product=<slug>`; Contact remains its existing placeholder and does not submit orders or process the query yet.
+- [ ] Complete standard Turbopack build verification outside the documented environment restriction. Detailed validation results are in `dev_steps.md`.
+
+#### Step 5.3 — Products Final Verification
+
+- [x] Review catalog/detail routes, centralized product data, shared cards/images, gallery, locale helpers, homepage links, theme, and shared navigation/footer.
+- [x] Fix gallery counter/selected-state consistency after the selected photo is removed from supplied data.
+- [x] Correct detail-image responsive sizes for stacked layouts at small desktop widths with a persistent sidebar.
+- [x] Verify catalog filters, URL/history, localized card links, all seven detail destinations, Contact/back links, unknown-slug 404s, empty/missing-image states, and AI labels.
+- [x] Verify EN/FR/DE at 390px, 768px, 1024px, and 1440px, including sidebar states, image proportions, readable grids/details, keyboard/focus, reduced motion, and footer flow.
+- [x] Validate message parity, TypeScript, ESLint, production webpack build, and browser accessibility checks; see `dev_steps.md` for exact results and local performance limits.
+- [ ] Pass the required standard `npm run build` in a normal local terminal or CI. Both normal and elevated attempts remain blocked by Turbopack CSS worker port binding (`EPERM`) in this environment.
+
+Products remains **Testing**, not Completed or merged. Functional/visual verification does not waive the standard-build gate. No commit, merge, or push performed.
 
 #### Completion Criteria
 
@@ -798,7 +835,7 @@ A phase is considered complete only after its completion criteria have been veri
 | 1 | Project Setup and Documentation | Completed — verification pending |
 | 2 | Responsive Navigation System | Next |
 | 3 | Shared Utilities | Internationalization and footer: Testing |
-| 4 | Pages Layout and Components | Homepage: Testing; other pages: Planned |
+| 4 | Pages Layout and Components | Homepage and Products: Testing; other pages: Planned |
 | 5 | Centralized Theme and Content System | Planned |
 | 6 | Admin Authentication and Dashboard | Planned |
 | 7 | Media Library and Content Editor | Planned |

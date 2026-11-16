@@ -53,8 +53,17 @@
     "cupcakesAlt": "Des cupcakes au glaçage turquoise et crème sur un présentoir doré à étages."
   },
   "Products": {
-    "title": "Les produits de Stephworld Delights",
-    "description": "Bienvenue sur notre page de produits ! Découvrez la large gamme proposée par Stephworld Delights. Nous sommes fiers de vous offrir des produits de qualité qui répondent à vos besoins et à vos envies. Parcourez notre collection et trouvez les produits parfaits pour vous !"
+    "title": "Nos créations",
+    "description": "Découvrez nos gâteaux, cupcakes et créations personnalisées en images, ainsi que des concepts de présentation IA clairement identifiés. Contactez-nous pour discuter de vos idées.",
+    "filterLabel": "Filtrer les produits par catégorie",
+    "allProducts": "Tous les produits",
+    "unknownCategory": "Cette catégorie n’est pas reconnue. Tous les produits sont affichés.",
+    "resultCount": "{count, plural, =0 {Aucune création à afficher} one {# création} other {# créations}}",
+    "emptyTitle": "Aucune création à afficher",
+    "emptyDescription": "Aucune création photographiée ne correspond à cette sélection. Découvrez tous les produits ou contactez-nous pour discuter de vos idées.",
+    "inquiryTitle": "Une création en tête ?",
+    "inquiryDescription": "Précisez l’occasion, vos idées de décoration, la taille et la date souhaitée. Les détails, la disponibilité et le prix sont à discuter avec l’entreprise ; une demande ne confirme pas une commande.",
+    "contact": "Discuter de vos idées"
   },
   "About": {
     "title": "À propos de Stephworld Delights",
@@ -121,7 +130,20 @@
     "cupcakesAlt": "Un présentoir doré à étages avec des cupcakes aux décorations turquoise et crème.",
     "pinkCakeName": "Gâteau rose personnalisé",
     "pinkCakeDescription": "Deux étages roses avec des papillons et des prénoms décoratifs.",
-    "pinkCakeAlt": "Un gâteau rose à deux étages avec des papillons et les prénoms Kira et Dahlia."
+    "pinkCakeAlt": "Un gâteau rose à deux étages avec des papillons et les prénoms Kira et Dahlia.",
+    "aiExampleImage": "Exemple de présentation IA",
+    "celebrationExampleName": "Concept de gâteau de fête",
+    "celebrationExampleDescription": "Exemple de présentation : un gâteau ivoire avec des touches dorées et une rose blanche.",
+    "celebrationExampleAlt": "Image de présentation IA d’un gâteau ivoire décoré d’or et d’une rose blanche.",
+    "pastelExampleName": "Concept de cupcakes pastel",
+    "pastelExampleDescription": "Exemple de présentation : des cupcakes avec une décoration pochée rose, crème et verte.",
+    "pastelExampleAlt": "Image de présentation IA de cupcakes décorés en rose pastel, crème et vert.",
+    "themedExampleName": "Concept de gâteau à thème",
+    "themedExampleDescription": "Exemple de présentation : un gâteau à étages aux couleurs du coucher de soleil avec des figurines d’animaux.",
+    "themedExampleAlt": "Image de présentation IA d’un gâteau à étages orange et jaune avec des figurines d’animaux.",
+    "weddingExampleName": "Concept de gâteau de mariage",
+    "weddingExampleDescription": "Exemple de présentation : un gâteau blanc à trois étages accompagné de fleurs rose pâle.",
+    "weddingExampleAlt": "Image de présentation IA d’un gâteau blanc à trois étages à côté de fleurs roses."
   },
   "AboutPreview": {
     "eyebrow": "À propos de Stephworld Delights",
@@ -170,5 +192,16 @@
     "pearlTitle": "Gâteau blanc décoré",
     "pearlAlt": "Un gâteau blanc avec des décorations en forme de perles et des initiales dorées.",
     "pearlDescription": "Des décorations en forme de perles et des initiales dorées sur un gâteau blanc."
+  },
+  "ProductDetails": {
+    "back": "Retour aux produits",
+    "photos": "Photographies du produit",
+    "selectPhoto": "Choisir une photographie",
+    "showPhoto": "Afficher la photographie {current}",
+    "imagePosition": "Photographie {current} sur {total}",
+    "description": "À propos de cette création",
+    "customization": "Informations de personnalisation",
+    "inquiry": "Demander des informations",
+    "inquiryNote": "Contactez-nous pour discuter de vos idées. Une demande ne confirme pas une commande."
   }
 }

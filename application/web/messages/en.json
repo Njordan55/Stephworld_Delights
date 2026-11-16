@@ -53,8 +53,17 @@
     "cupcakesAlt": "Cupcakes with turquoise and cream icing on a tiered gold stand."
   },
   "Products": {
-    "title": "Stephworld Delights Products Page",
-    "description": "Welcome to our products page! Here you can explore the wide range of products offered by Stephworld Delights. We take pride in providing high-quality items that cater to your needs and preferences. Browse through our collection and discover the perfect products for you!"
+    "title": "Our creations",
+    "description": "Explore our pictured cakes, cupcakes, and personalised creations, alongside clearly labelled AI presentation concepts. Contact us to discuss your ideas.",
+    "filterLabel": "Filter products by category",
+    "allProducts": "All Products",
+    "unknownCategory": "This category is not recognised. Showing all products.",
+    "resultCount": "{count, plural, =0 {No creations to show} one {# creation} other {# creations}}",
+    "emptyTitle": "No creations to show",
+    "emptyDescription": "There are no pictured creations matching this selection. Explore all products or contact us to discuss your ideas.",
+    "inquiryTitle": "Have a creation in mind?",
+    "inquiryDescription": "Share your occasion, design ideas, size, and preferred date. Details, availability, and pricing are discussed with the business; an inquiry is not an order confirmation.",
+    "contact": "Discuss your ideas"
   },
   "About": {
     "title": "About Stephworld Delights",
@@ -121,7 +130,20 @@
     "cupcakesAlt": "A tiered gold stand holding cupcakes with turquoise and cream-coloured decorations.",
     "pinkCakeName": "Personalised pink cake",
     "pinkCakeDescription": "Two pink tiers with butterflies and decorative names.",
-    "pinkCakeAlt": "A two-tier pink cake with butterfly decorations and the names Kira and Dahlia."
+    "pinkCakeAlt": "A two-tier pink cake with butterfly decorations and the names Kira and Dahlia.",
+    "aiExampleImage": "AI presentation example",
+    "celebrationExampleName": "Celebration cake concept",
+    "celebrationExampleDescription": "Presentation example: an ivory cake with gold accents and a white rose.",
+    "celebrationExampleAlt": "AI presentation image of an ivory celebration cake with gold decoration and a white rose.",
+    "pastelExampleName": "Pastel cupcake concept",
+    "pastelExampleDescription": "Presentation example: cupcakes with pink, cream, and green piped decoration.",
+    "pastelExampleAlt": "AI presentation image of cupcakes with pastel pink, cream, and green decoration.",
+    "themedExampleName": "Themed cake concept",
+    "themedExampleDescription": "Presentation example: a tiered cake with sunset colours and animal-themed toppers.",
+    "themedExampleAlt": "AI presentation image of an orange and yellow tiered cake with animal-themed toppers.",
+    "weddingExampleName": "Wedding cake concept",
+    "weddingExampleDescription": "Presentation example: a three-tier white cake with soft pink floral styling.",
+    "weddingExampleAlt": "AI presentation image of a three-tier white cake beside pink flowers."
   },
   "AboutPreview": {
     "eyebrow": "About Stephworld Delights",
@@ -170,5 +192,16 @@
     "pearlTitle": "White decorated cake",
     "pearlAlt": "A white cake with pearl-style decorations and gold initials.",
     "pearlDescription": "Pearl-style decorations and gold initials on a white cake."
+  },
+  "ProductDetails": {
+    "back": "Back to Products",
+    "photos": "Product photographs",
+    "selectPhoto": "Choose a photograph",
+    "showPhoto": "Show photograph {current}",
+    "imagePosition": "Photograph {current} of {total}",
+    "description": "About this creation",
+    "customization": "Customization information",
+    "inquiry": "Request Information",
+    "inquiryNote": "Contact us to discuss your ideas. An inquiry is not an order confirmation."
   }
 }

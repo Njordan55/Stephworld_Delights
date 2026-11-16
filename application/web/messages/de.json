@@ -53,8 +53,17 @@
     "cupcakesAlt": "Cupcakes mit türkisfarbener und cremefarbener Verzierung auf einer goldenen Etagere."
   },
   "Products": {
-    "title": "Die Produkte von Stephworld Delights",
-    "description": "Willkommen auf unserer Produktseite! Entdecken Sie das vielfältige Angebot von Stephworld Delights. Wir sind stolz darauf, hochwertige Produkte anzubieten, die Ihren Bedürfnissen und Wünschen entsprechen. Stöbern Sie in unserer Kollektion und finden Sie die passenden Produkte für sich!"
+    "title": "Unsere Kreationen",
+    "description": "Entdecken Sie unsere abgebildeten Kuchen, Cupcakes und personalisierten Kreationen sowie deutlich gekennzeichnete KI-Präsentationskonzepte. Kontaktieren Sie uns, um Ihre Ideen zu besprechen.",
+    "filterLabel": "Produkte nach Kategorie filtern",
+    "allProducts": "Alle Produkte",
+    "unknownCategory": "Diese Kategorie ist nicht bekannt. Alle Produkte werden angezeigt.",
+    "resultCount": "{count, plural, =0 {Keine Kreationen vorhanden} one {# Kreation} other {# Kreationen}}",
+    "emptyTitle": "Keine Kreationen vorhanden",
+    "emptyDescription": "Für diese Auswahl sind keine Kreationen abgebildet. Entdecken Sie alle Produkte oder kontaktieren Sie uns, um Ihre Ideen zu besprechen.",
+    "inquiryTitle": "Haben Sie eine Kreation im Sinn?",
+    "inquiryDescription": "Teilen Sie uns den Anlass, Ihre Gestaltungsideen, die Größe und den gewünschten Termin mit. Details, Verfügbarkeit und Preis werden mit dem Unternehmen besprochen. Eine Anfrage ist keine Bestellbestätigung.",
+    "contact": "Ihre Ideen besprechen"
   },
   "About": {
     "title": "Über Stephworld Delights",
@@ -121,7 +130,20 @@
     "cupcakesAlt": "Eine goldene Etagere mit Cupcakes mit türkisfarbenen und cremefarbenen Verzierungen.",
     "pinkCakeName": "Personalisierter rosa Kuchen",
     "pinkCakeDescription": "Zwei rosa Etagen mit Schmetterlingen und dekorativen Namen.",
-    "pinkCakeAlt": "Ein zweistöckiger rosa Kuchen mit Schmetterlingen und den Namen Kira und Dahlia."
+    "pinkCakeAlt": "Ein zweistöckiger rosa Kuchen mit Schmetterlingen und den Namen Kira und Dahlia.",
+    "aiExampleImage": "KI-Präsentationsbeispiel",
+    "celebrationExampleName": "Festtorten-Konzept",
+    "celebrationExampleDescription": "Präsentationsbeispiel: eine elfenbeinfarbene Torte mit goldenen Akzenten und einer weißen Rose.",
+    "celebrationExampleAlt": "KI-Präsentationsbild einer elfenbeinfarbenen Festtorte mit Golddekor und einer weißen Rose.",
+    "pastelExampleName": "Pastell-Cupcake-Konzept",
+    "pastelExampleDescription": "Präsentationsbeispiel: Cupcakes mit rosa, cremefarbenem und grünem Spritzdekor.",
+    "pastelExampleAlt": "KI-Präsentationsbild von Cupcakes mit pastellrosa, cremefarbenem und grünem Dekor.",
+    "themedExampleName": "Motivtorten-Konzept",
+    "themedExampleDescription": "Präsentationsbeispiel: eine mehrstöckige Torte in Sonnenuntergangsfarben mit Tierfiguren.",
+    "themedExampleAlt": "KI-Präsentationsbild einer orange-gelben mehrstöckigen Torte mit Tierfiguren.",
+    "weddingExampleName": "Hochzeitstorten-Konzept",
+    "weddingExampleDescription": "Präsentationsbeispiel: eine weiße dreistöckige Torte mit zartrosa Blumendekoration.",
+    "weddingExampleAlt": "KI-Präsentationsbild einer weißen dreistöckigen Torte neben rosa Blumen."
   },
   "AboutPreview": {
     "eyebrow": "Über Stephworld Delights",
@@ -170,5 +192,16 @@
     "pearlTitle": "Weißer verzierter Kuchen",
     "pearlAlt": "Ein weißer Kuchen mit perlenförmigen Verzierungen und goldenen Initialen.",
     "pearlDescription": "Perlenförmige Verzierungen und goldene Initialen auf einem weißen Kuchen."
+  },
+  "ProductDetails": {
+    "back": "Zurück zu den Produkten",
+    "photos": "Produktfotos",
+    "selectPhoto": "Ein Foto auswählen",
+    "showPhoto": "Foto {current} anzeigen",
+    "imagePosition": "Foto {current} von {total}",
+    "description": "Über diese Kreation",
+    "customization": "Informationen zur Personalisierung",
+    "inquiry": "Informationen anfragen",
+    "inquiryNote": "Kontaktieren Sie uns, um Ihre Ideen zu besprechen. Eine Anfrage ist keine Bestellbestätigung."
   }
 }
