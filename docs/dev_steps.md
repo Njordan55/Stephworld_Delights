@@ -240,3 +240,53 @@ No authentication, checkout, cart logic, homepage component, or navigation behav
 ### 2026-11-16 — Compact footer spacing
 
 Removed the repeated footer logo, business name, and slogan at the user’s request. Kept the localized description and copyright. Halved category gaps, heading margins, link padding/list gaps, unavailable-note margins, outer vertical padding, and copyright spacing while retaining readable text line heights.
+
+
+### 2026-11-16 — Step 4.1: Homepage Hero (`feature/home`)
+
+Inspected the Hero, locale homepage routing, theme variables, EN/FR/DE catalogs, and available public assets before editing. The branch was already `feature/home` and the working tree was clean. The only supplied business imagery is the logo and `public/branding/flyer.jpeg`; the flyer contains actual cake photographs.
+
+**Implementation:**
+
+- Extended the existing `HeroSection.tsx` rather than creating a duplicate homepage component. The brand introduction, marketing headline/description, two localized actions, and prominent square cake image use the existing colors, inherited typography, radius, and transition tokens.
+- Added `src/config/home.ts`: image source, crop coordinates, translation keys for image/caption, and unprefixed action destinations. Product navigation points to `/products`; custom-order inquiries point to the existing `/contact` page. No order/checkout flow was added.
+- Reused the birthday cake with red roses from the supplied 1132 × 1600 flyer. A CSS crop at original-image coordinates x=700, y=760, width=400, height=400 displays that real photograph without generating imagery or altering the original asset. The photograph is served by `next/image` with responsive sizes and preload.
+- The cropped source has limited resolution because it comes from a flyer. A higher-resolution approved standalone image can replace it in configuration; omit `crop` for a standalone photo. Setting `image` to null displays a translated placeholder.
+- A container-query grid switches to two columns at 56rem of available content width, rather than using only the browser width. This keeps sidebar resizing intact; narrower tablet/phone content stacks. Top padding includes the navigation height so the fixed top bar does not obscure the introduction.
+- Kept copy in the existing Hero namespaces; updated the custom-order button wording and added photo alt/caption/placeholder in all three locales. Message validation now checks 72 matching keys per locale.
+- Homepage routing, category component, footer, navigation handlers, account/cart flags, and all backend/commerce functionality remain unchanged.
+
+**Validation:**
+
+- `npx tsc --noEmit`, `npm run lint`, and `npm run check:i18n`: passed with Node 24.
+- `npm run build`: attempted and retried with elevated execution; Turbopack remains blocked from binding its CSS processing worker port in this environment. `npm run build -- --webpack` passed without changing the build configuration.
+- Chromium and WebKit functional checks passed at 1440px, 768px, and 390px for English, French, and German. Verified optimized image loading and alt text, translated caption/buttons, two-column/stacked layout, expanded/collapsed sidebar alignment where available, fixed-top-bar clearance, no horizontal overflow, both button destinations, and language switching on the homepage. Existing footer remains present.
+- Desktop and phone screenshots were visually reviewed, including the real cake crop and long German text. These are browser viewport checks, not physical-device tests.
+- The initial rapid-navigation WebKit run recorded the previously documented background RSC access-control errors. The final rerun checked destination HTTP 200 responses and completed all functional checks; no such messages were emitted on that rerun. This Hero-only change does not alter shared navigation/prefetch behavior.
+- Browser harness/screenshots: `/tmp/stephworld-navigation-check/hero.cjs` and `hero-*.png`. Tooling stays outside project dependencies.
+
+Scope stops at Step 4.1 — Hero Section. No later homepage steps implemented; no commit created.
+
+### 2026-11-16 — Hero example image and future Admin uploads
+
+Replaced the flyer crop with the user-supplied example `Image/cak/ai_cak_ex` (JPEG, 1200 × 1199). Copied it without image alterations to `application/web/public/images/home/hero-cake-example.jpg` so Next.js can serve it with a normal filename. The original files in `Image/` are preserved. EN/FR/DE captions clearly identify this as an example pending a business photograph; alt text now describes the pink cake.
+
+**How to replace the image now:**
+
+1. Put an approved photograph in `application/web/public/images/home/`, preferably with a new filename such as `hero-cake.jpg` to avoid cached old images.
+2. In `application/web/src/config/home.ts`, change the image import to that file and use the imported image for `src`, `width`, and `height`. No change to `HeroSection.tsx` is needed. Omit `crop` for a standalone photograph; optional crop coordinates are original-image pixels.
+3. Update `Hero.photoAlt` and `Hero.photoCaption` in `messages/en.json`, `fr.json`, and `de.json`. Remove the example wording only when the photograph is an approved business image.
+4. Run `npm run check:i18n`, TypeScript, ESLint, and the production build from `application/web`. Preview desktop/tablet/phone and redeploy the site. Configuration/file changes currently require a rebuild/deployment.
+5. Setting `heroContent.image` to `null` shows the translated placeholder instead.
+
+**Future Admin upload workflow — planned, not implemented in this step:**
+
+The Hero now accepts a `content` prop using the exported `HeroContent`/`HeroPhoto` contract. Image `src` supports either a static import or a URL string with explicit `width` and `height`; optional `altText` and `caption` accept text already resolved for the active locale. Current message keys remain the fallback. This allows a future content service to supply uploaded media without rewriting the Hero presentation.
+
+The Admin platform should let an authorized user upload/select a Hero image in the Media Library, enter EN/FR/DE alt text and captions, preview the crop/layout, and publish it. The server should validate uploads, store files in persistent media storage, and save the media URL, dimensions, localized text, and optional crop in a content record. The locale homepage should fetch that published record and pass the resolved data to `<HeroSection content={publishedHero} />`, falling back to the current configuration when no published record exists.
+
+Uploaded files should live in persistent media storage rather than the deployed application's `public` directory. Once the storage provider is chosen, allow only its actual image host/path through Next.js `images.remotePatterns` (or use a controlled same-origin media URL). Publishing must revalidate the cached homepage for all supported locales so an Admin image change appears without a source-code edit or application rebuild.
+
+No Admin upload UI, authentication, storage integration, database schema, or publishing endpoint is implemented here. Those belong to the planned Admin Dashboard / Media Library phase. The public Hero's data contract is ready for that integration.
+
+Verification after the example-image change: TypeScript, ESLint, all 72 translation keys per language, and the webpack production build passed. Chromium and WebKit checks passed at 1440px, 768px, and 390px in EN/FR/DE, including image loading, translated example captions/alt text, sidebar modes, button destinations, and language switching. Desktop appearance was visually reviewed. No upload backend or Admin screen added; no commit created.

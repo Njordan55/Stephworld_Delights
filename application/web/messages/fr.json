@@ -33,7 +33,10 @@
     "title": "De délicieuses créations, faites avec amour.",
     "description": "Découvrez nos gâteaux, cupcakes et créations spéciales pour vos moments inoubliables.",
     "products": "Découvrir les produits",
-    "contact": "Nous contacter"
+    "contact": "Parlons de votre commande",
+    "photoAlt": "Exemple de gâteau d’anniversaire rose avec des macarons, des décorations blanches et des touches dorées.",
+    "photoCaption": "Image de gâteau d’exemple — à remplacer par une photographie de l’entreprise.",
+    "imagePlaceholder": "Espace réservé à une photographie de gâteau de Stephworld Delights."
   },
   "Categories": {
     "title": "Découvrir par catégorie",

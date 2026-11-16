@@ -33,7 +33,10 @@
     "title": "Köstliche Kreationen, mit Liebe gemacht.",
     "description": "Entdecken Sie unsere Kuchen, Cupcakes und besonderen Kreationen für Ihre unvergesslichen Momente.",
     "products": "Produkte entdecken",
-    "contact": "Kontakt aufnehmen"
+    "contact": "Individuelle Bestellung anfragen",
+    "photoAlt": "Beispiel eines rosa Geburtstagskuchens mit Macarons, weißer Dekoration und goldenen Akzenten.",
+    "photoCaption": "Beispielbild eines Kuchens — wird durch ein Unternehmensfoto ersetzt.",
+    "imagePlaceholder": "Platz für ein Kuchenfoto von Stephworld Delights."
   },
   "Categories": {
     "title": "Nach Kategorie entdecken",

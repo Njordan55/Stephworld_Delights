@@ -33,7 +33,10 @@
     "title": "Delicious creations, made with love.",
     "description": "Discover our cakes, cupcakes, and special creations for your memorable moments.",
     "products": "Explore Products",
-    "contact": "Contact Us"
+    "contact": "Discuss a custom order",
+    "photoAlt": "Example pink birthday cake with macarons, white decorations, and gold accents.",
+    "photoCaption": "Example cake image — to be replaced with a business photograph.",
+    "imagePlaceholder": "Space reserved for a Stephworld Delights cake photograph."
   },
   "Categories": {
     "title": "Shop by Category",

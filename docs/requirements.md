@@ -53,7 +53,7 @@ The website must also provide an Admin Dashboard that allows authorized administ
 | 01 | Global Navigation | `feature/global-navigation` | Completed | [x] | [] |
 | 02 | Internationalization | `feature/i18n` | Testing | [] | [] |
 | 03 | Global Footer | `feature/global-footer` | Testing | [] | [] |
-| 04 | Homepage | `feature/home` | Pending | [] | [] |
+| 04 | Homepage | `feature/home` | Progress | [] | [] |
 | 05 | Products | `feature/products` | Planned | [] | [] |
 | 06 | Admin Dashboard | `feature/admin` | Future | [] | [] |
 
@@ -307,6 +307,21 @@ Develop the public homepage.
 - [ ] Optimize images.
 - [ ] Add SEO metadata.
 - [ ] Test desktop and mobile layouts.
+
+### Step 4.1 — Hero Section (`feature/home`)
+
+- [x] Extend the existing `HeroSection.tsx`; preserve the homepage route and other sections.
+- [x] Brand introduction, prominent real cake photograph, short localized message, Explore Products, and custom-order/contact action.
+- [x] Use the supplied example from `Image/cak/ai_cak_ex`, served as `public/images/home/hero-cake-example.jpg`, with an explicitly translated example caption. Use `next/image` with responsive sizes and preload; no new product imagery generated.
+- [x] Configure image/crop and locale-neutral button destinations in `src/config/home.ts`; keep all copy, alt text, caption, and placeholder text in EN/FR/DE message catalogs.
+- [x] Use existing theme colors, inherited typography, border radius, and transitions. Add Hero clearance beneath the fixed top bar.
+- [x] Adapt the Hero grid to available content width using container queries; preserve sidebar expanded/collapsed resizing and phone stacking.
+- [x] Retain a translated placeholder option when the configured image is null; replace the example with an approved business photo when available.
+- [x] Accept a typed Hero content prop with static-image or URL/dimensions input and locale-resolved alt/caption overrides for future content-service integration.
+- [ ] Future Admin: upload/select the Hero image in the Media Library, manage localized alt text/captions, preview, publish, and revalidate all locale homepages without source-code edits. Storage/backend/Admin UI remain planned; see `dev_steps.md` for the replacement workflow.
+- [x] Run TypeScript, ESLint, translation, production-build, and browser checks; see `dev_steps.md` for results and environment limitations.
+
+Scope ends at Step 4.1. Product categories, featured products, galleries, footer, navigation state, checkout, cart, and authentication are unchanged. Later homepage steps remain pending.
 
 ### Completion Criteria
 
