@@ -53,10 +53,11 @@ The website must also provide an Admin Dashboard that allows authorized administ
 | 01 | Global Navigation | `feature/global-navigation` | Completed | [x] | [] |
 | 02 | Internationalization | `feature/i18n` | Completed | [x] | [] |
 | 03 | Global Footer | `feature/global-footer` | Completed | [x] | [] |
-| 04 | Homepage | `feature/home` | Progress | [] | [] |
-| 05 | Products | `feature/products` | Testing | [] | [] |
-| 06 | About Us | `feature/about-us` | Testing | [] | [] |
-| 07 | Admin Dashboard | `feature/admin` | Future | [] | [] |
+| 04 | Homepage | `feature/home` | Completed | [x] | [] |
+| 05 | Products | `feature/products` | Completed | [x] | [] |
+| 06 | About Us | `feature/about-us` | Completed | [x] | [] |
+| 07 | Contact Page | `feature/contact` | Testing | [] | [] |
+| 08 | Admin Dashboard | `feature/admin` | Future | [] | [] |
 
 ### status system
 To be use consistently:
@@ -452,35 +453,41 @@ The page presents approved business information across all three languages and s
 
 | Next | Ongoing | Complete | Verification | Done |
 |---|---|---|---|---|
-| [ ] | [ ] | [ ] | [ ] | [ ] |
+| [ ] | [ ] | [ ] | [x] | [ ] |
 
-Description: Planned — reserved for future implementation. Confirm detailed scope before development.
+Description: Step 7.1 implemented on `feature/contact`. Step 7.2 final verification is recorded in `docs/dev_steps.md`; the standard production build remains blocked by the environment's Turbopack CSS worker port permission error.
 
 #### Objective
 
-Provide approved contact channels and guidance for custom-order inquiries.
+Provide a responsive, multilingual Contact page with configurable channels and a truthful inquiry interface prepared for future backend integration.
 
 #### Features
 
-- Contact channels only when configured with approved information.
-- Guidance for sharing occasion, design, size, and preferred date.
-- Business hours and location only when approved.
-- A contact form reserved for a separately approved scope.
+- Owner-requested masked telephone and location placeholders, without fake links.
+- Hide unconfigured email and social channels.
+- Required First name / Last name side by side; optional Region / State side by side underneath.
+- Required email, inquiry type and message; optional telephone, category and custom-cake event date.
+- Product/category context from valid catalog inquiry links; empty selections from plain Contact links.
+- Accessible client validation and explicit unavailable-submission messaging.
+- EN/FR/DE translations, shared theme, navigation, sidebar and footer.
 
 #### Tasks
 
-- [ ] Inspect the existing page, routes, configuration, and translations.
-- [ ] Confirm approved content and layout before implementation.
-- [ ] Keep page data separate from presentation for future Admin integration.
-- [ ] Reuse global navigation, footer, and centralized theme tokens.
-- [ ] Support English, French, and German with localized links.
-- [ ] Verify accessibility and layouts at 390px, 768px, 1024px, and 1440px.
-- [ ] Run TypeScript, ESLint, translation validation, and production build checks.
-- [ ] Record implementation and validation in requirements and development notes.
+- [x] Inspect architecture, product integration, configuration and dependencies.
+- [x] Keep content and validation separate from presentation.
+- [x] Preserve the requested masked contact details and paired fields.
+- [x] Support localized links, labels, placeholders and validation messages.
+- [x] Keep Send disabled without an approved submission backend; never claim delivery.
+- [x] Verify validation boundaries and invalid/unconfigured contact-method handling.
+- [x] Run TypeScript, ESLint and translation checks.
+- [x] Verify EN/FR/DE at 390/768/1024/1440px in Chromium and WebKit (24/24 passed); 12 Chromium accessibility scans had zero violations.
+- [x] Verify validation, inquiry contexts, localized navigation, keyboard access, disabled submission and sidebar layouts; record results in development notes.
+- [ ] Obtain a successful standard `npm run build` in a normal terminal or CI.
+- [ ] Mark the workflow done after required verification gates pass.
 
 #### Completion Criteria
 
-Contact links work, inquiry guidance is clear and translated, and no invented contact details or automatic order acceptance is implied.
+The Contact interface passes functional, responsive, accessibility and build verification. Submission remains explicitly unavailable until an approved service, server-side validation, abuse protection and appropriate privacy information exist. Approved contact channels must be supplied before customers can actually contact the business through this page. No invented contact information or automatic order acceptance is implied.
 
 ---
 

@@ -52,7 +52,7 @@ export default function ProductCatalog({products = catalogProducts, categorySlug
         <section aria-labelledby="catalog-inquiry-title" className="mt-12 rounded-[var(--swd-radius-default)] border p-6" style={{borderColor: 'var(--swd-border)', backgroundColor: 'var(--swd-surface)'}}>
           <h2 id="catalog-inquiry-title" className="text-xl font-semibold">{t('inquiryTitle')}</h2>
           <p className="mt-3 max-w-2xl leading-7">{t('inquiryDescription')}</p>
-          <Link href="/contact" className="mt-5 inline-flex min-h-11 max-w-full items-center gap-2 rounded-[var(--swd-radius-default)] px-5 py-3 text-sm font-semibold transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--swd-primary)]"
+          <Link href={categorySlug ? {pathname: '/contact', query: {category: categorySlug}} : '/contact'} className="mt-5 inline-flex min-h-11 max-w-full items-center gap-2 rounded-[var(--swd-radius-default)] px-5 py-3 text-sm font-semibold transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--swd-primary)]"
             style={{backgroundColor: 'var(--swd-primary)', color: 'var(--swd-background)', transitionDuration: 'var(--swd-quick-transition-duration)'}}>
             {t('contact')}<ArrowUpRight size={18} className="shrink-0" aria-hidden="true" />
           </Link>

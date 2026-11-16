@@ -737,3 +737,92 @@ Founder introduction, business background/motivation, founder or bakery photogra
 About remains **Testing** and is not unconditionally ready to merge until the required standard production build succeeds in a normal terminal or CI. No application fixes were required by the completed checks. No commit, merge, or push performed.
 
 Temporary artifacts: `/tmp/stephworld-navigation-check/about-final.cjs`, `about-final-results.json`, `about-final-audit.cjs`, `about-final-audit.json`, `about-page-data.cjs`, and `about-final-*.png`. No test-only route, dependency, or content was added to the repository.
+
+
+### 2026-11-16 — Step 7.1: Contact Page (`feature/contact`)
+
+**Inspection and business source:**
+
+Started on the requested branch with a clean working tree. Inspected the Contact placeholder, locale routes/helpers, theme/shared layout/navigation/footer, social configuration, central product/category records, inquiry destinations, installed dependencies, and available source images. No API route, submission backend, form-service integration, mail dependency, or configured social URL was found. No environment secrets were read or added.
+
+The owner requested that the business telephone and location remain hidden for now. Public configuration therefore leaves both unset and renders non-clickable placeholders (+49 xxx xxxxxx and localized Location: xxxxxx). Email and social channels remain unconfigured and hidden. No working contact channel or submission service is claimed.
+
+**Implementation:**
+
+- Contact route remains `/{locale}/contact`, now a server-rendered, query-dependent page with a heading/introduction, configured contact links/location, inquiry guidance, and a small client inquiry form. Wide available content uses two columns; smaller content stacks. Shared design tokens, max reading width, 44px controls, focus outlines, and existing sidebar/footer are retained.
+- `src/config/contact.ts` owns approved email/telephone/location and constructs visible methods. Blank/invalid email/phone entries are skipped; social records come from the existing footer configuration and require HTTPS without URL credentials. Phone/location placeholders are text only; no fake dial link is created. No duplicate social settings, secret, or external submission dependency was created.
+- `InquiryForm.tsx` supports required First name and Last name side by side, optional Region and State side by side directly underneath, email, optional telephone, required inquiry type (General inquiry / Custom cake / Product information / Other), optional category (Cakes / Cupcakes / Custom Orders), required message, optional event date only for custom-cake inquiries, and read-only product context. A native select keeps category independent from inquiry type, satisfying both the four-type requirement and the requested cake/cupcake/custom default behavior.
+- `src/lib/inquiry-validation.ts` keeps validation separate from presentation: required first name/last name/email/type/message; email syntax; each name and optional region/state 100/email 254/optional phone 40 character limits; trimmed message 20–2,000 characters; recognized type/category; optional real calendar date on/after the current local date for Custom cake. Changing type away from Custom cake clears its date/error. A preferred date never confirms availability.
+- Field labels, autocomplete, required state, linked error/help IDs, `aria-invalid`, an alert summary, first-invalid-field focus, and a validation-only status are provided. Blur validates a field; Check details validates all fields. No personal values are logged, written to local/session storage/cookies, serialized into navigation URLs, or transmitted by this form. Only non-personal product/category context is used in URLs.
+- No approved submission service exists. Send stays disabled and the page explicitly says nothing is sent or saved. Check details reports validation only, never delivery success. Form submission is prevented, and the entire fieldset stays disabled until hydration to avoid accidental native submission before handlers attach. No consent checkbox or GDPR-compliance claim was added. Placeholders remain visible without JavaScript, and form controls stay disabled until hydration.
+- A valid `?product=<slug>` is resolved against the existing central catalog, displays the active-locale product name, preselects Product information, and selects its category. Product context takes precedence over a conflicting category. Unknown/repeated product references are not echoed and fall back to an explanatory message/empty selections unless a separate valid category exists.
+- `?category=cakes|cupcakes|custom-orders` is supported. Filtered catalog inquiry CTAs now include their selected category. Cakes/Cupcakes preselect Product information; Custom Orders preselects Custom cake. Plain `/contact` links from home, About, navigation/footer, and an unfiltered catalog leave both selections empty. Product-detail links already carry the slug and did not need modification. Global/home CTAs are intentionally unchanged, per the requested empty defaults from those pages.
+- Query/locale-specific form keys reset draft selection when entering a different context, including returning to plain Contact or switching locale. Language navigation retains product/category query context; customer draft values are not persisted across these page changes.
+- Contact translations bring validation to 236 matching keys per locale. All labels/placeholders/validation/status/channel text are translated. No account, cart, checkout, backend, or unrelated page layout changed.
+
+**Future integration and dependencies:**
+
+Edit approved channel data in `src/config/contact.ts`; social URLs remain in `src/config/footer.ts`. Supply only business-verified values. A location is optional and can be removed with null. Before enabling submission, approve an actual backend/form service, implement authoritative server-side validation and abuse protection, review privacy/retention information for the chosen service, configure secrets only server-side, and provide truthful loading/error/delivery responses. The current client checks are not a security boundary or order submission system. Do not enable Send solely because validation passes.
+
+**Validation:**
+
+- TypeScript, ESLint, and translation checks passed; 236 matching, nonempty, valid messages per language.
+- Required standard `npm run build` was attempted and still fails at the existing Turbopack CSS worker port restriction (EPERM). `npm run build -- --webpack` passed with TypeScript and 41 generated paths; Contact is dynamic because it resolves query parameters. Build configuration is unchanged.
+- Isolated validation tests passed for required/whitespace values, malformed email/type/category, message boundaries 0/19/20/2,000/2,001, optional phone limit, leap/nonexistent calendar dates, past dates, and ignoring hidden date values for other inquiry types.
+- Contact-method tests passed for published telephone formatting, unset/invalid method hiding, configured synthetic mail/tel/HTTPS records, and rejection of HTTP/script/credential URLs. Synthetic addresses are test fixtures only and are not published contacts.
+- Initial browser checks covered inquiry contexts, validation, navigation, and sidebars. After the owner’s field revisions, a focused browser regression checks EN/FR/DE at 390/768/1440px, paired field alignment, placeholders, name validation, optional region/state, disabled sending, and overflow. See the revision verification below.
+
+Outstanding dependencies: optional business email/social channels and an approved submission backend. Telephone/location publication is intentionally deferred at the owner’s request. The standard build still requires a normal terminal/CI check. No commit, merge, or push performed.
+
+**Owner-requested field revision — verified:**
+
+- Business telephone/location are withheld; placeholders are non-clickable.
+- First name / Last name stay side by side at every width. Optional Region / State fields sit side by side directly below, use free text for international locations, and validate a 100-character maximum.
+- Fixed wrapped German mobile labels so paired inputs remain aligned.
+- Focused Chromium regression passed all 9 combinations of EN/FR/DE × 390/768/1440px: field alignment, masked details, required names, optional location fields, validation-only status, disabled submission, no horizontal overflow, and no page errors.
+- TypeScript, ESLint, translation parity (236 keys per locale), and the webpack production build passed after these changes. The previously reported standard Turbopack environment restriction remains unresolved.
+- Temporary regression script/screenshots: /tmp/stephworld-navigation-check/contact-fields.cjs and contact-fields-*.png.
+
+### 2026-11-16 — Step 7.2: Contact Final Verification (`feature/contact`)
+
+**Scope and architecture review**
+
+Reviewed the Contact server route, client InquiryForm, pure validation module, contact/social configuration, centralized products/categories, catalog and detail inquiry links, EN/FR/DE messages, locale routing/language selector, theme tokens, AppShell, navigation and Footer. One form and one existing product source are used; no duplicate product database, unused Contact component, broken import or new dependency was identified. HTTPS checks at the shared social configuration and Contact boundary are defensive validation, not separate social datasets. No architectural or feature changes were needed.
+
+The working tree already contained Step 7.1 and the owner's configuration edits; these were preserved. This verification changes only the requirements and development notes. Temporary browser scripts remain outside the repository.
+
+**Automated results**
+
+- `npx tsc --noEmit`: passed under Node 24.
+- `npm run lint`: passed.
+- `npm run check:i18n`: passed; 236 matching, nonempty, valid keys in each locale.
+- `npm ls --depth=0`: passed.
+- Required `npm run build`: failed both normally and on elevated retry. Turbopack cannot bind the CSS worker port (`EPERM`, reported through globals.css). This is not reported as a successful production build.
+- `npm run build -- --webpack`: passed, including TypeScript and 41 generated paths. Build scripts/configuration were not altered.
+- Pure validation checks passed: required split names, whitespace, email syntax, valid/unknown inquiry type and category, optional region/state limits, phone limit, message boundaries, leap/nonexistent/past dates and hidden-date handling. Configured synthetic contacts and invalid/unconfigured channels passed method-validation tests; no fixture address was published.
+
+**Security and submission review**
+
+No approved backend or external submission service exists. Send is disabled; even a native form submit is prevented after hydration, and fields stay disabled before hydration/without JavaScript. The no-JavaScript browser check passed. Check details explicitly reports validation only, with translated text that nothing has been sent or saved. The UI does not claim delivery or accept an order.
+
+The inspected Contact code contains no fetch/action handler, personal-data console logging, local/session storage writes or credential references. Browser tests use synthetic values and monitor requests/URL/storage around validation. No new secret or credential was introduced. This is a scoped code/browser review, not a general penetration test or deployment-secret audit. Server-side validation is not applicable to the currently disabled submission path; it, abuse protection and service-specific privacy information remain prerequisites for enabling a real service.
+
+Email/social URLs are unset and hidden. The owner-requested phone/location masks remain non-clickable exceptions to hiding unconfigured details. No live social destination can be verified until an approved URL is supplied. No phone-service reachability or location verification is claimed.
+
+**Translation, accessibility and visual review**
+
+Exact translated labels, placeholders, headings, unavailable notices, help text and date labels were checked in EN/FR/DE. Existing translation parsing also checks all validation message keys. Inputs have associated labels, required state and linked error text; invalid submission focuses the first error. Native keyboard focus, visible outlines, error announcements and reduced-motion CSS are covered. Screenshots at 390/768/1024/1440px were visually inspected: paired name/location inputs remain aligned, content stacks when space is narrow, the desktop form sits beside contact details, and the footer remains in flow. No redesign was made.
+
+All seven current catalog slugs resolved to the correct localized name/category/inquiry type in all three languages (21 reference checks). Plain Contact defaults remain empty. Unsaved form drafts reset on locale/page/context navigation; only non-personal product/category context is preserved in the URL. This is an explicit no-save interface, not a working delivery channel.
+
+**Completed browser matrix**
+
+24/24 combinations passed: Chromium and WebKit × EN/FR/DE × 390/768/1024/1440px. No console, page or HTTP errors were recorded. Twelve Chromium WCAG A/AA axe scans reported zero violations. Tests exercised required-field/email/message/date validation, accessible errors and focus, Enter-key handling without sending, disabled Send, masked contacts, aligned paired fields, all three category defaults, product inquiry CTAs, invalid/repeated references, home/footer empty defaults, language switching preserving Contact and product context, keyboard focus, mobile overlay/Escape, desktop/tablet sidebar toggles and overflow. Browser request monitoring found no synthetic inquiry transmission during validation, and local/session storage remained empty.
+
+Language switching was tested through the actual selector with settled navigation before moving to another document. This successful run does not claim that the previously documented rapid hard-navigation WebKit/RSC cancellation behavior is fixed globally. No Contact defect requiring a code change was found.
+
+**Remaining limitations and release gate**
+
+The Contact workflow remains Testing, not Done, pending a successful required standard build in a normal terminal or CI. Approved working business contact channels and a submission service remain publication dependencies. Automated accessibility checks do not replace physical-device or screen-reader testing. No commit, merge or push was performed.
+
+Temporary artifacts: `/tmp/stephworld-navigation-check/contact-final.cjs`, `contact-final-results.json`, `contact-final-data.cjs`, `contact-final-nojs.cjs`, `contact-final-content.cjs`, `contact-final-references.cjs`, and `contact-final-*.png`.
