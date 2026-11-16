@@ -54,7 +54,7 @@ The website must also provide an Admin Dashboard that allows authorized administ
 | 02 | Internationalization | `feature/i18n` | Completed | [x] | [] |
 | 03 | Global Footer | `feature/global-footer` | Completed | [x] | [] |
 | 04 | Homepage | `feature/home` | Progress | [] | [] |
-| 05 | Products | `feature/products` | Planned | [] | [] |
+| 05 | Products | `feature/products` | Testing | [] | [] |
 | 06 | Admin Dashboard | `feature/admin` | Future | [] | [] |
 
 ### status system
@@ -318,9 +318,9 @@ The homepage is responsive, functional and prepared for administrator-managed co
 
 | Next | Ongoing | Complete | Verification | Done |
 |---|---|---|---|---|
-| [ ] | [ ] | [ ] | [ ] | [ ] |
+| [ ] | [ ] | [ ] | [x] | [ ] |
 
-Description: Planned — reserved for future implementation. Confirm detailed scope before development.
+Description: Step 5.1 implemented on `feature/products`; verification results and environment limitations are recorded in `dev_steps.md`. Not committed or merged.
 
 #### Objective
 
@@ -335,14 +335,27 @@ Develop the public product catalog for the Digital Flyer & Portfolio stage.
 
 #### Tasks
 
-- [ ] Inspect the existing page, routes, configuration, and translations.
-- [ ] Confirm approved content and layout before implementation.
-- [ ] Keep page data separate from presentation for future Admin integration.
-- [ ] Reuse global navigation, footer, and centralized theme tokens.
-- [ ] Support English, French, and German with localized links.
-- [ ] Verify accessibility and layouts at 390px, 768px, 1024px, and 1440px.
-- [ ] Run TypeScript, ESLint, translation validation, and production build checks.
-- [ ] Record implementation and validation in requirements and development notes.
+- [x] Inspect the existing page, routes, configuration, and translations.
+- [x] Confirm approved content and layout before implementation.
+- [x] Keep page data separate from presentation for future Admin integration.
+- [x] Reuse global navigation, footer, and centralized theme tokens.
+- [x] Support English, French, and German with localized links.
+- [x] Verify accessibility and layouts at 390px, 768px, 1024px, and 1440px.
+- [x] Run TypeScript, ESLint, translation validation, and production build checks; standard build restriction remains below.
+- [x] Record implementation and validation in requirements and development notes.
+
+#### Step 5.1 — Products Catalog
+
+- [x] Central catalog records with ID, slug, translated text keys/active-locale overrides, category, photo/alt/crop, featured flag, and display order. Optional price/availability types are reserved and have no configured values or visible commerce UI.
+- [x] Reuse the three existing photographed creations and descriptive labels; add four user-authorized, clearly labelled AI presentation concepts to the catalog. Homepage Featured Products continues to select the three real creations from the shared records.
+- [x] Server-rendered catalog with heading/introduction, responsive cards, result count, inquiry guidance, and localized Contact CTA.
+- [x] URL-driven All Products/category links; support homepage query links and browser history. Unknown, empty, or repeated category values display all products with an explanatory message.
+- [x] Derive filter choices from categories represented in supplied records. Support a translated no-match/empty-catalog state and missing-photo placeholders for future supplied data.
+- [ ] Pass standard `npm run build` outside the environment's Turbopack CSS worker port restriction. Alternative webpack production build passes.
+
+Validation: 18/18 Chromium/WebKit width-language combinations pass; nine Chromium accessibility scans report no violations. See `dev_steps.md` for scope and limitations.
+
+No product-detail route, purchasing, backend, Admin interface, invented prices, or availability is added. User-added AI sample files in `Image/` are preserved and displayed only as labelled presentation concepts.
 
 #### Completion Criteria
 
@@ -798,7 +811,7 @@ A phase is considered complete only after its completion criteria have been veri
 | 1 | Project Setup and Documentation | Completed — verification pending |
 | 2 | Responsive Navigation System | Next |
 | 3 | Shared Utilities | Internationalization and footer: Testing |
-| 4 | Pages Layout and Components | Homepage: Testing; other pages: Planned |
+| 4 | Pages Layout and Components | Homepage and Products: Testing; other pages: Planned |
 | 5 | Centralized Theme and Content System | Planned |
 | 6 | Admin Authentication and Dashboard | Planned |
 | 7 | Media Library and Content Editor | Planned |
