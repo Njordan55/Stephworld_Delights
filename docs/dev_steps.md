@@ -826,3 +826,5 @@ Language switching was tested through the actual selector with settled navigatio
 The Contact workflow remains Testing, not Done, pending a successful required standard build in a normal terminal or CI. Approved working business contact channels and a submission service remain publication dependencies. Automated accessibility checks do not replace physical-device or screen-reader testing. No commit, merge or push was performed.
 
 Temporary artifacts: `/tmp/stephworld-navigation-check/contact-final.cjs`, `contact-final-results.json`, `contact-final-data.cjs`, `contact-final-nojs.cjs`, `contact-final-content.cjs`, `contact-final-references.cjs`, and `contact-final-*.png`.
+
+### 2026-11-22 neu deployment for development branch.
